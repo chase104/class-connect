@@ -1,0 +1,35 @@
+.header-holder{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch !important;
+  text-decoration: none;
+color: inherit;
+}
+
+.MuiAppBar-root{
+  background-color: #1565C0 !important;
+}
+.app-title{
+  font-family: 'Audiowide', cursive !important;
+  font-size: 2.5vw !important;
+  text-decoration: none;
+color: inherit;
+}
+.header-one{
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.header-two{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-three{
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+}

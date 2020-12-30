@@ -1,0 +1,23 @@
+.navbar-icon{
+  color: white;
+}
+.icon-group-holder{
+  width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+.icon-holder{
+  background-color: #1565C0;
+  height: 100%;
+  width: 20%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.icon-holder:hover{
+  filter: brightness(120%);
+}
+.icon-holder:active{
+  background-color: #176dcf
+}
