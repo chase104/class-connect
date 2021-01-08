@@ -1,0 +1,7 @@
+.resource-block:hover{
+  cursor: pointer;
+  filter: brightness(130%);
+}
+.lighter-box{
+  background-color: #3086e8 !important;
+}
