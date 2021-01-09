@@ -18,11 +18,11 @@ code {
   display: flex;
 }
 .rest{
-  height: 100vh;
+  height: fit-content;
   background-image: url('./images/background.png');
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
 
 }
 .no-select {

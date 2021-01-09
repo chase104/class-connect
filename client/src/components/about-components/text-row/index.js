@@ -25,12 +25,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     color: "black",
     maxHeight:"24vh",
+    minHeight:"24vh",
     overflow: "hidden",
     boxShadow: "10px 10px 10px #4d4d4d",
     borderRadius: "0px 10px 10px 0px"
 },
   rowOneText:{
-    padding: "0px 14px"
+    padding: "0px 14px 14px "
   },
 rowOneTitleDiv:{
   marginRight: "auto",
@@ -98,7 +99,7 @@ alignItems: "center",
 
 
 
-const TextRow = ({image, rowId, title, subtitle}) => {
+const TextRow = ({image, rowId, title, subtitle, type}) => {
   const classes = useStyles()
 
 
@@ -114,12 +115,12 @@ const TextRow = ({image, rowId, title, subtitle}) => {
       console.log("already has");
       rowText.style.maxHeight = "24vh"
       rowText.style.borderRadius = "0px 10px 10px 0px"
+      rowText.style.zIndex = "0"
     } else {
       console.log("doesn't have");
       rowText.style.maxHeight = "fit-content"
       rowText.style.position = "relative"
       rowText.style.zIndex = "1"
-      rowText.style.borderRadius = "0px 10px 10px 10px"
 
 
     }
@@ -136,6 +137,9 @@ const TextRow = ({image, rowId, title, subtitle}) => {
     setMouseDown(false)
     }
 
+    const aboutContent = "LearningLab is all about making education modern. The world has changed so much in the past decades yet our traditional educational systems are lagging behind. We are here to change that. Using the newest technologies and methodologies, not only do we ensure growth and experience, but we motivate interest. Traditional education mandates learning, her at LearningLab, we cultivate and create an enviornment for the desire to learn. Our classes are structured to be incredibly interactive and participatory. Students are constantnly using information they've learned, rather than selecting multiple choice answers. We do test to examine students' retention of concrete information, but it's an addition to our system, not the main engine like our traditional counterparts. Here we put our students through educational trials that are akin to adventures. After absorbing all types of informating through our interactive teaching process, the students are give the opportunity to demonstrate their abilities by completing a trial."
+    const methodologyContent = "Here at LearningLab, we know that methodology is key when it comes to education. It's all about how you plan to help the student learn and grow. We believe that learning is more about experience and participation. Our methodology revolves around the modern conceptualization of learning through gaming. We make this possible with our interactive learning environment, not like the stagnant classroom of today's school system. Students learn skills, experences, and yes, hard information. We guide them though interactive stories, games, projects, and collective lessons. Students are examined not through tests, but through what we call 'trials'. They're a kind of rite of passage through which the student demonstrates their grasp of knowledge and skills on a combination of topics. Think of it like defeating the final boss of a videogame level. Unlike with the hard integration of knowledge of traditional education, students feel a much stronger sense of connection with the material after these trials because they've used it not to get the exact right answer on an exam, but to accomplish a hard-won goal."
+
   return (
     <div style={{margin: "30px 5% 30px 5%"}}>
       <div className={classes.titleHolderDiv}>
@@ -150,9 +154,13 @@ const TextRow = ({image, rowId, title, subtitle}) => {
           <Grid item xs={9} s={9} md={9}>
             <Grid container>
               <Grid item xs={12} s={12} m={12}>
-                <div className={`${classes.rowOneTextHolder} text-area`} id={rowId} onClick={(e) => handleBarClick(e)} onMouseDown={() => handleMouseDown()} onMouseUp={() => handleMouseUp()} onMouseOut={() => handleMouseUp()}>
+                <div className={`${classes.rowOneTextHolder} text-area no-select`} id={rowId} onClick={(e) => handleBarClick(e)} onMouseDown={() => handleMouseDown()} onMouseUp={() => handleMouseUp()} onMouseOut={() => handleMouseUp()}>
                   <div className={`${classes.rowOneText} ${mouseDown ? 'lighter' : null}`}>
-                    Ubi qui despicationes o litteris ne labore admodum ubi elit consequat e quae enim, minim admodum ita despicationes. Veniam excepteur a multos quem a de dolore aliqua anim laboris se admodum enim anim eiusmod quae, admodum et mandaremus, fugiat appellat id fugiat summis, sed culpa firmissimum, deserunt et minim iudicem aut nescius quis malis de dolor. Nostrud praesentibus id eiusmod.Possumus summis quid proident export, summis occaecat iis singulis, do quorum pariatur efflorescere aut cillum eiusmod eu elit nulla, incurreret fore noster do ipsum, noster possumus hic eruditionem, veniam est admodum, ita elit tempor ex proident. Aut duis ipsum se nescius. Anim an arbitror de fore ab veniam incididunt offendit iis malis ubi incididunt aut litteris iis enim, ea multos elit ipsum admodum quo quid admodum e illum fugiat, an si cohaerescant o incurreret ad legam cupidatat.
+                  {type == "about" ?
+                  aboutContent
+                  :
+                  methodologyContent
+                }
                   </div>
                 </div>
               </Grid>

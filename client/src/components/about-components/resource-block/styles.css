@@ -1,7 +1,10 @@
 .resource-block:hover{
   cursor: pointer;
-  filter: brightness(130%);
+  filter: brightness(90%);
 }
 .lighter-box{
   background-color: #3086e8 !important;
+}
+.grey-box{
+  background-color:  #8c8c8c !important
 }
