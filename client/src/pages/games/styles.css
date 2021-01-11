@@ -1,0 +1,39 @@
+.yes{
+  background-color: #a3c9f5 ;
+  border: 1px solid white;
+  transition: 250ms
+}
+.yes:hover{
+  background-color: #5ea1ed ;
+  cursor: pointer;
+
+
+}
+.no{
+  background-color: #1979e6 ;
+  border: 1px solid white;
+  transition: 250ms;
+  transition-property: background-color;
+
+}
+.no:hover{
+  cursor: pointer;
+  background-color: #5ea1ed
+}
+.game-image-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms;
+}
+.game-image-container:hover{
+  transform: rotate(10deg)
+}
+.darker-blue{
+  background-color: #1565c0 !important
+}
+.lighter-blue{
+  background-color: #e8f2fc !important
+}

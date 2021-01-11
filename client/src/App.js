@@ -6,6 +6,7 @@ import Navbar from './components/navigation/navbar/index.js'
 import Slogan from './components/slogantwo/index.js'
 import LoggedOutDashboard from './pages/dashboards/logged-out-dashboard/index.js'
 import About from './pages/about/index.js'
+import Games from './pages/games/index.js'
 import Login from './pages/login/index.js'
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Container } from '@material-ui/core'
@@ -35,9 +36,10 @@ function App() {
 
 
 
-              <div className="rest" style={{marginBottom: "500px"}}>
+              <div className="rest" >
                 <Route exact path="/" component={LoggedOutDashboard} />
-                <Route path="/about" component={About} />
+                <Route path="/about" component={About} style={{marginBottom: "500px"}}/>
+                <Route path="/games" component={Games} />
                 <Route path="/login" component={Login} />
               </div>
           </div>

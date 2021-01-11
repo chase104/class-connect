@@ -16,7 +16,9 @@ code {
 
 .app-container{
   display: flex;
+  margin-bottom: 500px
 }
+
 .rest{
   height: fit-content;
   background-image: url('./images/background.png');
@@ -38,4 +40,8 @@ code {
 .no-decoration{
     text-decoration: none;
   color: inherit;
+}
+
+.hide-div{
+  display: none !important;
 }

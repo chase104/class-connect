@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "0px 10px 10px 0px"
 },
   rowOneText:{
-    padding: "0px 14px 14px "
+    padding: "0px 14px 14px",
+    textAlign: "justify"
   },
 rowOneTitleDiv:{
   marginRight: "auto",

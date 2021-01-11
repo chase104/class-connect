@@ -17,21 +17,14 @@ const Slogan = (props) => {
   console.log("slogan ", props);
   const classes = useStyles()
   //history check
-  const [overlay, setOverlay] = useState(null)
-  useEffect(() => {
-    console.log("slogan location", props.location.pathname);
-    if (props.location.pathname == "/"){
-      setOverlay("placeholder-div")
-    } else {
-      setOverlay("placeholder-div blue-overlay")
-    }
-    console.log(overlay);
-  }, [props.location.pathname])
+
+
+
 
 
 
   return (
-    <Grid container  justify="center" style={{borderBottom: "1px solid #1565c0"}}>
+    <Grid container id="slogan-container" justify="center" style={{borderBottom: "1px solid #1565c0"}} className="">
       <Grid item xs={1} sm={2}>
         <div  className="slogan-div"></div>
       </Grid>

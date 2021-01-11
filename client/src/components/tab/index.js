@@ -28,11 +28,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Tab = ({message}) => {
   const classes = useStyles();
-  console.log(classes.tab);
-  console.log(message);
+
   return (
     <Grid container  justify="end">
-      <Grid item xs={7} sm={7} className={classes.tabHolder}>
+      <Grid item xs={6} sm={6} className={classes.tabHolder}>
         <div className={classes.tab}>{message}</div>
       </Grid>
       <Grid item xs={2} sm={2}>

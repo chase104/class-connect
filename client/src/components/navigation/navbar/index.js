@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {Toolbar, AppBar, Typography, Grid} from '@material-ui/core';
 import './styles.css'
@@ -22,10 +22,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Navbar = () => {
+
+
+const Navbar = (props) => {
+  console.log(props);
+
+
+
   const classes = useStyles()
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color="primary" id="navbar-container">
         <Toolbar className="header-holder">
           <Grid container style={{height: "8vh"}}>
             <Grid item  xs={8} sm={7} className={classes.titleGridDiv}>

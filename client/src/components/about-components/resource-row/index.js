@@ -275,7 +275,7 @@ const bottomButtons = () => {
       break;
     case 2:
       finalButton = (
-        <a target="_" href="https://www.youtube.com/watch?v=E_z6SWNTOak" className="no-decoration" style={{marginLeft: "auto", marginRight: "5vw"}}>
+        <a target="_" href="/games" className="no-decoration" style={{marginLeft: "auto", marginRight: "5vw"}}>
           <Button className={`${classes.bottomButton} bottom-button`}> See Example Game </Button>
         </a>
       )
