@@ -181,7 +181,7 @@ const ResourceRow = ({type, title, subtitle}) => {
 
   const handleOpen = (e) => {
     console.log("opening");
-    console.log(e.target.id);
+    console.log(e.target);
     if (e.target.id <= 5) {
       console.log("below 6");
       setModalInformation({...resourceInformation[e.target.id], modalTitle: "Your Resources"})

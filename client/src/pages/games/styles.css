@@ -37,3 +37,8 @@
 .lighter-blue{
   background-color: #e8f2fc !important
 }
+.construction-img{
+  transform: rotate(-10deg);
+  transition: 1500ms;
+  transition-timing-function: ease-in-out;
+}
