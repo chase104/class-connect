@@ -1,0 +1,43 @@
+import React, {useEffect} from 'react'
+import './styles.css'
+import { Container, Grid } from '@material-ui/core';
+import Tab from '../../components/tab/index.js'
+import { makeStyles } from '@material-ui/core/styles'
+
+import ResourcesRow from '../../components/about-components/resources-row/index.js'
+import ResourceRow from '../../components/about-components/resource-row/index.js'
+import arrows from '../../assets/images/arrows.png'
+import treasureMap from '../../assets/images/treasure-map.png'
+import TextRow from '../../components/about-components/text-row/index.js'
+
+const useStyles = makeStyles({
+  rowOne:{
+    maxHeight: "20vh",
+    marginBottom: "30px"
+  }
+})
+
+const About = () => {
+
+const classes = useStyles()
+
+
+
+  return (
+    <div className="about-container">
+      <Tab message="About LearningLab"/>
+      <Container>
+        <TextRow image={treasureMap} type="about" rowId={"row-one"} title="LearningLab" subtitle="We've simplified education" key={"row-one"}/>
+        <TextRow image={arrows} type="methodology" rowId={"row-two"} title="Our Methodology" subtitle="You're on solid ground" key={"row-two"}/>
+        <ResourceRow type={"resource"} title={"Your Resources"} subtitle={"We've got your back"} key={"resource-one"}/>
+        <ResourceRow type={"steps"} title={"First Steps"} subtitle={"Getting started is the important part"} key={"resource-two"}/>
+
+      </Container>
+
+
+
+    </div>
+  )
+}
+
+export default About

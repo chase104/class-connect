@@ -1,0 +1,28 @@
+.text-title{
+  margin-right: auto;
+  margin-left: 10px;
+  margin-top: 8px;
+  font-size: 20px;
+    font-family: 'Audiowide', cursive !important;
+
+}
+.expand{
+
+  max-height: fit-content !important;
+  position: relative;
+  z-index: 1;
+
+}
+.highlight-bar{
+  transition-duration: 1000ms;
+  transition-property: height;
+}
+
+.text-area:hover{
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.lighter{
+  background-color: #cccccc !important
+}
