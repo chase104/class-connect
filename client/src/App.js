@@ -7,12 +7,13 @@ import Slogan from './components/slogantwo/index.js'
 import LoggedOutDashboard from './pages/dashboards/logged-out-dashboard/index.js'
 import About from './pages/about/index.js'
 import Games from './pages/games/index.js'
+import Homepage from './pages/homepage/index.js'
 import Login from './pages/login/index.js'
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Container } from '@material-ui/core'
 import PdfPage from './pages/pdf-page/index.js'
-
-
+import Faq from './pages/faq/index.js'
+import Plans from './pages/plans/index.js'
 
 const theme = createMuiTheme({
   palette: {
@@ -37,10 +38,12 @@ function App() {
 
 
               <div className="rest" >
-                <Route exact path="/" component={LoggedOutDashboard} />
-                <Route path="/about" component={About} style={{marginBottom: "500px"}}/>
+                <Route exact path="/" component={Homepage} />
+                <Route path="/about" component={About} />
                 <Route path="/games" component={Games} />
                 <Route path="/login" component={Login} />
+                <Route path="/faq" component={Faq} />
+                <Route path="/plans" component={Plans} />
               </div>
           </div>
 
