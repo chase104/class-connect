@@ -340,7 +340,7 @@ const body = (
       }
         <div className={classes.modalTitle}>{modalInformation.title}</div>
         <IconButton style={{marginLeft: "auto", alignSelf: "flex-start"}} onClick={() => handleClose()}>
-          <CloseIcon />
+          <CloseIcon style={{color: "white"}}/>
         </IconButton>
       </div>
 
@@ -374,7 +374,7 @@ const [stepInformation, setStepInformation] = useState([
 
 
   return (
-    <div style={{margin: "30px 5% 30px 5%"}}>
+    <div style={{margin: "45px 5% 0px 5%"}}>
       <div className={classes.titleHolderDiv}>
         <div className={classes.rowTitle}>{title}</div>
         <div className={classes.rowSubtitle}>{subtitle}</div>

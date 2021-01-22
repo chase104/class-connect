@@ -32,7 +32,8 @@ const useStyles = makeStyles((theme) => ({
 },
   rowOneText:{
     padding: "0px 14px 14px",
-    textAlign: "justify"
+    textAlign: "justify",
+    fontSize: "20px"
   },
 rowOneTitleDiv:{
   marginRight: "auto",
@@ -88,7 +89,7 @@ flexDirection: "column",
 alignItems: "center",
 width: "fit-content",
 background: "white",
-padding: "8px 24px",
+padding: "8px 48px",
 borderRadius: "10px 10px 0px 0px",
 boxShadow: "4px -4px 10px darkslategrey",
 alignItems: "center",
@@ -138,8 +139,9 @@ const TextRow = ({image, rowId, title, subtitle, type}) => {
     setMouseDown(false)
     }
 
-    const aboutContent = "LearningLab is all about making education modern. The world has changed so much in the past decades yet our traditional educational systems are lagging behind. We are here to change that. Using the newest technologies and methodologies, not only do we ensure growth and experience, but we motivate interest. Traditional education mandates learning, her at LearningLab, we cultivate and create an enviornment for the desire to learn. Our classes are structured to be incredibly interactive and participatory. Students are constantnly using information they've learned, rather than selecting multiple choice answers. We do test to examine students' retention of concrete information, but it's an addition to our system, not the main engine like our traditional counterparts. Here we put our students through educational trials that are akin to adventures. After absorbing all types of informating through our interactive teaching process, the students are give the opportunity to demonstrate their abilities by completing a trial."
-    const methodologyContent = "Here at LearningLab, we know that methodology is key when it comes to education. It's all about how you plan to help the student learn and grow. We believe that learning is more about experience and participation. Our methodology revolves around the modern conceptualization of learning through gaming. We make this possible with our interactive learning environment, not like the stagnant classroom of today's school system. Students learn skills, experences, and yes, hard information. We guide them though interactive stories, games, projects, and collective lessons. Students are examined not through tests, but through what we call 'trials'. They're a kind of rite of passage through which the student demonstrates their grasp of knowledge and skills on a combination of topics. Think of it like defeating the final boss of a videogame level. Unlike with the hard integration of knowledge of traditional education, students feel a much stronger sense of connection with the material after these trials because they've used it not to get the exact right answer on an exam, but to accomplish a hard-won goal."
+    const learningLabContent = "The Adventurer's College is a modern online school that can offer interactive language classes with native-speaking teachers to you child. Our focus on learning through gamification, which is on the cutting edge of language education, ensures learning that's meaningful, permanent, and fun. Classes are held completely online through our lightning-fast platform. Our platform gives students a completely different online-class experience. Students don't simply watch a screen, but have the ability to inteact with class content. Teachers host games that focus on teaching concepts, vocabulary, and grammar. We believe in teaching in a much more interactive way."
+    const aboutContent = "The Adventurer's College is all about making education modern. The world has changed so much in the past decades yet our traditional educational systems are lagging behind. We are here to change that. Using the newest technologies and methodologies, not only do we ensure growth and experience, but we motivate interest. Traditional education mandates learning, her at The Adventurer's College, we cultivate and create an enviornment for the desire to learn. Our classes are structured to be incredibly interactive and participatory. Students are constantnly using information they've learned, rather than selecting multiple choice answers. We do test to examine students' retention of concrete information, but it's an addition to our system, not the main engine like our traditional counterparts. Here we put our students through educational trials that are akin to adventures. After absorbing all types of informating through our interactive teaching process, the students are give the opportunity to demonstrate their abilities by completing a trial."
+    const methodologyContent = "Here at The Adventurer's College, we know that methodology is key when it comes to education. It's all about how you plan to help the student learn and grow. We believe that learning is more about experience and participation. Our methodology revolves around the modern conceptualization of learning through gaming. We make this possible with our interactive learning environment, not like the stagnant classroom of today's school system. Students learn skills, experences, and yes, hard information. We guide them though interactive stories, games, projects, and collective lessons. Students are examined not through tests, but through what we call 'trials'. They're a kind of rite of passage through which the student demonstrates their grasp of knowledge and skills on a combination of topics. Think of it like defeating the final boss of a videogame level. Unlike with the hard integration of knowledge of traditional education, students feel a much stronger sense of connection with the material after these trials because they've used it not to get the exact right answer on an exam, but to accomplish a hard-won goal."
 
   return (
     <div style={{margin: "30px 5% 30px 5%"}}>
@@ -159,8 +161,10 @@ const TextRow = ({image, rowId, title, subtitle, type}) => {
                   <div className={`${classes.rowOneText} ${mouseDown ? 'lighter' : null}`}>
                   {type == "about" ?
                   aboutContent
-                  :
+                  : type == "methodology" ?
                   methodologyContent
+                  :
+                  learningLabContent
                 }
                   </div>
                 </div>

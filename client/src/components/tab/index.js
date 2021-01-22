@@ -5,7 +5,7 @@ import { Grid, Typography, makeStyles } from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
   tab:{
     fontSize: "30px",
-    background: "rgba(21, 101, 192, 1)",
+    background: "#1FC3CD",
     borderRadius: "0px 0px 20px 20px",
     color: "white",
     paddingBottom: "4px",

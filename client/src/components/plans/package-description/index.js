@@ -18,9 +18,10 @@ const useStyles = makeStyles((theme) => ({
   },
   packageTab:{
     width: "fit-content",
-    backgroundColor: "#1565C0",
-    padding: "4px 12px",
+    backgroundColor: "#1FC3CD",
+    padding: "4px 24px",
     color: "white",
+    fontWeight: "bold",
     fontSize: "24px",
     borderRadius: "10px 10px 0px 0px",
     boxShadow: "6px 0px 12px darkslategrey",
@@ -57,7 +58,7 @@ const PackageDescription = ({type, image, benefits, price, description, }) => {
     <div className={classes.descriptionContainer}>
       <Grid container style={{justifyContent: "center"}}>
         <Grid item xs={11} sm={10} style={{display: "flex",}}>
-          <div className={classes.packageTab}>{type + " Package"}</div>
+          <div className={classes.packageTab}>{type}</div>
           <div className={classes.packageTab}>{"$ " +price}</div>
         </Grid>
         <Grid item xs={11} sm={10} md={10} style={{border: "1px solid black"}}>

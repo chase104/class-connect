@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Tab from '../../components/tab/index.js'
 import PlanComparison from '../../components/plans/comparison/index.js'
 import PackageDescription from '../../components/plans/package-description/index.js'
@@ -35,9 +35,10 @@ const Plans = () => {
       price: 695,
       description: "The Full-Access package give you absolutely everything you need for the complete LearningLab experience, in addition to all our other services, you also get access to our exciting host of games related to class-material. This helps greatly to reinforce concepts and terms from class. You'll also have an additional 6 classes added to the course that serve to solidify everything learned. Lastly, you will also be able to schedule two (2) videocalls with a member of our Educational Assistance Team, in which you'll have a conversation about your child's progress."},
   ])
-
+  useEffect(() => {
+  }, [])
   return (
-    <div>
+    <div style={{marginBottom: "10vh"}}>
       <Tab message="Class Packages"/>
       <PlanComparison benefits={[packageState[1].benefits, packageState[2].benefits, packageState[3].benefits]} types={[packageState[1].type, packageState[2].type, packageState[3].type]}/>
       {packageState.map((plan) => {

@@ -1,0 +1,11 @@
+.individual-prompt:hover{
+  filter: brightness(90%);
+  cursor: pointer
+}
+.mouse-down{
+  filter:brightness(100%) !important;
+}
+.application-button:hover {
+  filter: brightness(90%);
+  cursor: pointer
+}

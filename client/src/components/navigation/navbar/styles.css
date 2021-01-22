@@ -1,5 +1,4 @@
 
-
 .MuiAppBar-root{
 }
 .app-title{
@@ -24,4 +23,11 @@
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
+}
+
+.flex-display{
+  display: flex
+}
+.null-display{
+  display: none !important
 }

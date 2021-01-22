@@ -1,11 +1,24 @@
 import React, {useState, useEffect} from 'react'
 import {Grid} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles'
 
 import './styles.css'
 
+const useStyles = makeStyles((theme) => ({
+gameBlock:{
+  height: "15vh",
+  display: "flex",
 
-const IndividualGame = ({classes, image, gameId, openModal}) => {
+},
+gameImage:{
+  height: "11vh",
+  width: "auto"
+},
 
+}))
+
+const IndividualGame = ({image, gameId, openModal}) => {
+  const classes = useStyles()
   const [mouseDown, setMouseDown] = useState(false)
 
   useEffect(() => {
@@ -26,7 +39,7 @@ const IndividualGame = ({classes, image, gameId, openModal}) => {
   return (
             <Grid item xs={3} sm={3}
               id={gameId}
-              className={` no-select ${classes.gameBlock} ${gameId % 2 == 0 ? "yes" : "no"} ${mouseDown ? (gameId % 2 == 0) ? 'darker-blue' : 'lighter-blue' : null}` }
+              className={` no-select ${classes.gameBlock} ${gameId % 2 == 0 ? "yes" : "no"} ${mouseDown ? 'down-color' : null}` }
               onMouseDown={() => handleMouseDown()}
               onMouseUp={() => handleMouseUp()}
               onMouseOut={() => handleMouseUp()}

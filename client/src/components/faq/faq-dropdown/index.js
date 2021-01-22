@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   answerContainer: {
     color: "white",
     textAlign: "justify",
-    backgroundColor: "#1565C0",
+    backgroundColor: " #411271",
 
 
 

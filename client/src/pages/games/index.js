@@ -74,6 +74,7 @@ gameBlock:{
   display: "flex",
 
 },
+
 gameImage:{
   height: "11vh",
   width: "auto"

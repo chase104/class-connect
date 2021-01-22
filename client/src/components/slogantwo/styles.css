@@ -15,3 +15,9 @@
     font-size: 24px;
     margin-top: 8px;
 }
+.flex-display{
+  display: flex
+}
+.null-display{
+  display: none !important
+}
