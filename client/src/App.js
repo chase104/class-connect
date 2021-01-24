@@ -13,6 +13,7 @@ import Login from './pages/login/index.js'
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Container } from '@material-ui/core'
 import PdfPage from './pages/pdf-page/index.js'
+import Application from './pages/application/index.js'
 import Faq from './pages/faq/index.js'
 import Plans from './pages/plans/index.js'
 import Footer from './components/footer/index.js'
@@ -28,7 +29,7 @@ const theme = createMuiTheme({
       main: "#1fc3cd"
     },
     secondary: {
-      main: "#4315c0"
+      main: "#ffffff"
     }
   }
 })
@@ -70,6 +71,7 @@ export default function App() {
                 <div className="rest" >
                     <Route path="/" component={Navbar} />
                     <Route path="/" component={Slogan} />
+                    <Route path="/application" component={Application} />
                     <Route exact path="/" component={Homepage} />
                     <Route path="/about" component={About} />
                     <Route path="/games" component={Games} />

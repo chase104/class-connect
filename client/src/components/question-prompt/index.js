@@ -66,7 +66,7 @@ console.log(props);
 
   return (
     <Grid container className={classes.promptContainer}>
-      <Grid item xs={11} sm={10} md={10} className={classes.title}>Have Questions?</Grid>
+      <Grid item xs={11} sm={10} md={10} className={classes.title}>Want to know more?</Grid>
       <Grid item xs={11} sm={10} md={10}>
         <Grid container style={{boxShadow: "10px 10px 10px lightslategrey"}}>
             <Grid item xs={4} sm={4} className={`${classes.individualPrompt} individual-prompt no-select ${mouseDown ? "mouse-down" : null}`} style={{borderRight: "1px solid black"}}

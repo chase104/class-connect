@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "4px"
   },
   CheckCircle:{
-    color: "#1565C0"
+    color: "#01AA31"
   },
   image: {
     width: "100%"

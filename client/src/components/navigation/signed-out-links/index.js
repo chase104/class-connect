@@ -31,7 +31,7 @@ const SignedOutLinks = () => {
           </Link>
         </Grid>
         <Grid item sm={3}>
-          <Link to="/about" className="no-decoration">
+          <Link to="/application" className="no-decoration">
           <div className="icon-holder" >
             <div className="title-icon-holder">
               <h4 className="navbar-icon no-select no-margin" >
