@@ -24,11 +24,12 @@ const useStyles = makeStyles((theme) => ({
   displaybuttonHolder:{
     width: "fit-content",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    cursor: "pointer"
   }
   }))
 
-const BottomBar = ({ appLocation, numberOfPages }) => {
+const BottomBar = ({ appLocation, numberOfPages, changeAppLocation }) => {
   const classes = useStyles()
   console.log(appLocation, numberOfPages);
 
@@ -51,22 +52,23 @@ const BottomBar = ({ appLocation, numberOfPages }) => {
     }
   }, [])
   console.log(pagesArray);
+
   return (
     <div className={classes.barContainer}>
-      <Button variant="contained" color="primary" className={classes.button}>Back</Button>
+      <Button variant="contained" color="primary" className={classes.button} onClick={() => changeAppLocation("back")}>Back</Button>
       <div className={classes.displayHolder}>
         {
           pagesArray ?
           pagesArray.map((number) => {
             if (number == appLocation[1]){
               return (
-                <div style={{width: "fit-content"}} className={classes.displaybuttonHolder}>
+                <div style={{width: "fit-content"}} className={classes.displaybuttonHolder} id={number}>
                   <RadioButtonChecked />
                 </div>
               )
             }
             return (
-              <div style={{width: "fit-content"}} className={classes.displaybuttonHolder}>
+              <div style={{width: "fit-content"}} className={classes.displaybuttonHolder} id={number} onClick={() => changeAppLocation(number)}>
                 <RadioButtonUnchecked />
               </div>
             )
@@ -75,7 +77,7 @@ const BottomBar = ({ appLocation, numberOfPages }) => {
           null
         }
       </div>
-      <Button variant="contained" color="primary" className={classes.button} >Next</Button>
+      <Button variant="contained" color="primary" className={classes.button} onClick={() => changeAppLocation("next")}>Next</Button>
     </div>
   )
 }
