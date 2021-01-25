@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }))
 
 const BottomBar = ({ appLocation, numberOfPages, changeAppLocation }) => {
+
   const classes = useStyles()
   console.log(appLocation, numberOfPages);
 
@@ -50,7 +51,10 @@ const BottomBar = ({ appLocation, numberOfPages, changeAppLocation }) => {
         tempArray.push(i)
       }
     }
-  }, [])
+  }, [numberOfPages])
+
+
+
   console.log(pagesArray);
 
   return (

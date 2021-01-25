@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const ApplicationPage = ({ youState, appLocation, changeAppLocation }) => {
+const ApplicationPage = ({ youState, studentState, planState, appLocation, changeAppLocation }) => {
   const classes = useStyles()
 
   const [pageState, setPageState] = useState(null)
@@ -35,8 +35,8 @@ const ApplicationPage = ({ youState, appLocation, changeAppLocation }) => {
   }
   return (
     <div className={classes.pageContainer}>
-      <Content youState={youState} appLocation={appLocation} changeState={(objectPair) => changeState(objectPair)}/>
-      <BottomBar appLocation={appLocation} numberOfPages={youState.length} changeAppLocation={(newLocation) => addStateChangeLocation(newLocation)}/>
+      <Content youState={youState} studentState={studentState} planState={planState} appLocation={appLocation} changeState={(objectPair) => changeState(objectPair)}/>
+      <BottomBar appLocation={appLocation} numberOfPages={appLocation[0] == 0 ? youState.length : studentState.length} changeAppLocation={(newLocation) => addStateChangeLocation(newLocation)}/>
     </div>
   )
 }
