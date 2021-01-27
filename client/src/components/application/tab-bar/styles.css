@@ -1,0 +1,11 @@
+.tab:hover{
+  filter: brightness(110%);
+  cursor: pointer
+}
+.tab:active{
+  filter: brightness(100%);
+  cursor: pointer
+}
+.highlight{
+  background-color: #999999 !important
+}

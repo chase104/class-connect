@@ -1,0 +1,25 @@
+.blinker-holder{
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+.blinker-icon{
+  color: white;
+  width: 2vw !important;
+  height: 2vw !important;
+}
+.available-color{
+  color: white;
+  font-size:  2rem
+}
+a{
+  width: fit-content;
+}
+.link-hover{
+    width: fit-content;
+    background-color: #1FC3CD;
+    padding: 4px;
+}
+.link-hover:hover{
+  filter: brightness(90%);
+}

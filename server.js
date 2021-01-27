@@ -1,7 +1,18 @@
 const express = require('express')
+const mongoose = require('mongoose')
+
+
 
 const app = express()
 require('dotenv').config()
+
+const connection_url = `mongodb+srv://dbAdmin:${process.env.MONGODDBPASSWORD}@cluster0.a3pnl.mongodb.net/userDb?retryWrites=true&w=majority`
+
+mongoose.connect(connection_url, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+})
 
 app.get('/api/customers', (req, res) => {
   const customers = [

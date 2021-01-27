@@ -16,16 +16,51 @@ code {
 
 .app-container{
   display: flex;
-  margin-bottom: 500px
 }
-
+.overlay {
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #1565c0;
+  pointer-events: none;
+}
+.text {
+  color: white;
+  font-size: xx-large;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.about-container:hover .overlay{
+  opacity: .9;
+}
+.home-text-container:hover{
+  opacity: 0;
+  transition: .5s ease;
+}
 .rest{
-  height: fit-content;
-  background-image: url('./images/background.png');
-  background-position: center;
+  background-image: url('./images/landscape.png');
+  background-position: top;
   background-size: cover;
   background-repeat: repeat-y;
-
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.archer-block{
+  background-color: blue
 }
 .no-select {
   -webkit-touch-callout: none; /* iOS Safari */
@@ -44,4 +79,25 @@ code {
 
 .hide-div{
   display: none !important;
+}
+
+
+
+.body-content{
+  display: block;
+  width: 100%;
+  height: auto;
+  background-color:rgba(255, 255, 255, 0.85);
+  padding: 5px;
+  border-radius: 20px;
+  font-size: 1.5vw;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.primary-color{
+  background: "#1565C0"
 }

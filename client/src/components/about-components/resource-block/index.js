@@ -12,11 +12,11 @@ const Resource = ({title, image, classes, style, type, openModal, id}) => {
     console.log(type);
     if (type == "resource") {
       setStyles({
-        backgroundColor: "#1565c0"
+        backgroundColor: "#1FC3CD"
       })
       setTitleStyles({
         fontWeight: "bold",
-        color: "white"
+        color: "black"
       })
     } else {
       setStyles({
