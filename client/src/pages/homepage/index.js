@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ReactPlayer from "react-player";
 
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textHolder: {
     textAlign: "justify",
-    padding: "0px 8px",
+    padding: 16,
     fontSize: "24px",
   },
   playerWrapper: {
@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = (props) => {
   const classes = useStyles();
   const planData = useContext(PlanContext);
-  console.log(props);
   return (
     <div style={{ marginBottom: "10vh" }}>
       <Tab message="Home" />
@@ -53,7 +52,6 @@ const HomePage = (props) => {
         <Grid item xs={11} sm={10}>
           <Grid container style={{ justifyContent: "center" }}>
             <Grid xs={6} sm={6} md={6}>
-              {/* <VideoPlayer /> */}
               <div className={classes.playerWrapper}>
                 <ReactPlayer
                   className={classes.reactPlayer}
@@ -67,18 +65,20 @@ const HomePage = (props) => {
               <Link to="/about" className="no-decoration">
                 <div className={`${classes.homeAboutContainer} `}>
                   <div className={classes.textHolder}>
-                    LearningLab is a modern online school that can offer
-                    interactive language classes with native-speaking teachers
-                    to you child. Our focus on learning through gamification,
-                    which is on the cutting edge of language education, ensures
-                    learning that's meaningful, permanent, and fun. Classes are
-                    held completely online through our lightning-fast platform.
-                    Our platform gives students a completely different
-                    online-class experience. Students don't simply watch a
-                    screen, but have the ability to inteact with class content.
-                    Teachers host games that focus on teaching concepts,
-                    vocabulary, and grammar. We believe in teaching in a much
-                    more interactive way.
+                    <Typography variant="body1">
+                      LearningLab is a modern online school that can offer
+                      interactive language classes with native-speaking teachers
+                      to you child. Our focus on learning through gamification,
+                      which is on the cutting edge of language education,
+                      ensures learning that's meaningful, permanent, and fun.
+                      Classes are held completely online through our
+                      lightning-fast platform. Our platform gives students a
+                      completely different online-class experience. Students
+                      don't simply watch a screen, but have the ability to
+                      inteact with class content. Teachers host games that focus
+                      on teaching concepts, vocabulary, and grammar. We believe
+                      in teaching in a much more interactive way.
+                    </Typography>
                   </div>
                   <div className={"read-more"}>Read More</div>
                 </div>
