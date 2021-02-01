@@ -180,7 +180,7 @@ const Games = () => {
     }
 
   }, [])
-
+ 
   useEffect(() =>{
     setTimeout(function(){
       const constructionElement = document.getElementById('construction-img')

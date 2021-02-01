@@ -1,0 +1,19 @@
+.button-hover:hover{
+  filter:brightness(80%);
+}
+
+
+.arrow-down{
+  font-size: 3rem;
+  transition: 1000ms ease-in-out !important;
+  transition-property: margin-top, margin-bottom !important;
+  margin-top: 0px ;
+  margin-bottom: 0px
+}
+.arrow-up{
+  font-size: 3rem;
+  transition: 1000ms ease-in-out !important;
+  transition-property: margin-top, margin-bottom !important;
+  margin-top: -40px ;
+  margin-bottom: 40px ;
+}
