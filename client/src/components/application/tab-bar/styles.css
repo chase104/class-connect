@@ -7,5 +7,7 @@
   cursor: pointer
 }
 .highlight{
-  background-color: #999999 !important
+  background-color: #1fc3cd !important;
+  color: white;
+  font-weight: bold
 }

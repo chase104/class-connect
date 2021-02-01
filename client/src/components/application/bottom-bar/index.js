@@ -9,60 +9,63 @@ const useStyles = makeStyles((theme) => ({
     height: "10%",
     display: "flex",
     justifyContent:" space-evenly",
-    padding: "0px 8px",
     alignItems: "center",
-    backgroundColor: "#d9d9d9"
+    backgroundColor: "#e6e6e6"
   },
   button:{
     fontWeight: "bold",
     color: "white",
-    fontSize: "16px"
+    fontSize: "16px",
+    margin: "14px 0px"
   },
   displayHolder:{
-    display:"flex"
+    display:"flex",
+    alignItems: "center",
   },
   displaybuttonHolder:{
     width: "fit-content",
     display: "flex",
     alignItems: "center",
     cursor: "pointer"
+  },
+  displayButton: {
+    display: "flex !important"
+  },
+  noDisplay: {
+    display: "none !important"
   }
   }))
 
 const BottomBar = ({ appLocation, numberOfPages, changeAppLocation }) => {
 
   const classes = useStyles()
-  console.log(appLocation, numberOfPages);
 
   const [pagesArray, setPagesArray] = useState(false)
   const [hotPage, setHotPage] = useState()
 
   useEffect(() => {
-    console.log("useEffecting", numberOfPages);
     let tempArray = []
     for (var i=0; i < numberOfPages; i++){
-      console.log("looping");
       if (i == numberOfPages-1){
         tempArray.push(i)
-        console.log("setting pages", tempArray);
         setPagesArray([...tempArray])
       } else {
-        console.log("pushing");
         tempArray.push(i)
       }
     }
   }, [numberOfPages])
 
 
-
-  console.log(pagesArray);
+  const sectionProxyArray = [0,1,2,3]
 
   return (
     <div className={classes.barContainer}>
       <Button variant="contained" color="primary" className={classes.button} onClick={() => changeAppLocation("back")}>Back</Button>
       <div className={classes.displayHolder}>
+
+
         {
-          pagesArray ?
+          pagesArray.length >= 1 ?
           pagesArray.map((number) => {
             if (number == appLocation[1]){
               return (
@@ -70,18 +73,26 @@ const BottomBar = ({ appLocation, numberOfPages, changeAppLocation }) => {
                   <RadioButtonChecked />
                 </div>
               )
+            } else {
+              return (
+                <div style={{width: "fit-content"}} className={classes.displaybuttonHolder} id={number} onClick={() => changeAppLocation(number)}>
+                  <RadioButtonUnchecked />
+                </div>
+              )
             }
-            return (
-              <div style={{width: "fit-content"}} className={classes.displaybuttonHolder} id={number} onClick={() => changeAppLocation(number)}>
-                <RadioButtonUnchecked />
-              </div>
-            )
+
           })
           :
           null
         }
+
       </div>
-      <Button variant="contained" color="primary" className={classes.button} onClick={() => changeAppLocation("next")}>Next</Button>
+      {appLocation[0] == 3 ?
+        <div></div>
+        :
+        <Button variant="contained" color="primary" className={classes.button} onClick={() => changeAppLocation("next")}>Next</Button>
+       }
+
     </div>
   )
 }
