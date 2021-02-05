@@ -9,7 +9,10 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { Grid } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 import Select from '@material-ui/core/Select';
 
@@ -93,21 +96,24 @@ const useStyles = makeStyles((theme) => ({
   },
   noDisplay: {
     display: "none !important"
+  },
+  submitHolder:{
+    display:"flex",
+    alignItems:"center",
+  },
+  checkboxError:{
+    color: "red"
+  },
+  checkboxHolder: {
+    display: "flex",
+    flexDirection: "column"
   }
 
 }))
 
 const Content = ({ youState, studentState, planState, appLocation, changeState, submitApplication }) => {
   const classes = useStyles()
-
-
   let tempAnswers = {}
-
-
-
-
-
-
 
   const [tempAnswersState, setTempAnswersState] = useState(tempAnswers)
   const [resetState, setResetState] = useState(true)
@@ -152,6 +158,9 @@ const Content = ({ youState, studentState, planState, appLocation, changeState, 
 
   })
   const [arrowToggle, setArrowToggle] = useState(true)
+  const [submitCheckbox, setSubmitCheckbox] = useState(false)
+  const [checkboxError, setCheckboxError] = useState(false)
+
   let calendarId
 
     useEffect(() => {
@@ -214,6 +223,16 @@ const Content = ({ youState, studentState, planState, appLocation, changeState, 
   const handleCalendarChange = () => {
     console.log(calendarValue);
 
+  }
+
+  const handleCheckboxChange = () => {
+    console.log("checkbox changed")
+
+    setSubmitCheckbox(!submitCheckbox)
+  }
+
+  const checkSubmit = () => {
+    submitCheckbox ? submitApplication() : setCheckboxError(true)
   }
 
   const returnTitle = () => {
@@ -320,7 +339,6 @@ const Content = ({ youState, studentState, planState, appLocation, changeState, 
           appLocation[0] == 1 ?
             studentState[appLocation[1]].map((component) => {
               if (component.type == "input") {
-                  console.log("item: ", component.label, component.location);
                   return (
                       <TextField variant="outlined" label={component.label} id={component.location} key={component.location} className={classes.shortWidth} value={tempAnswersState[component.location]} onClick={(e) => handleInputClick(e)}  onChange={(e) => handleInputChange(e)}></TextField>
                   )
@@ -440,8 +458,25 @@ const Content = ({ youState, studentState, planState, appLocation, changeState, 
           returnForm()
         }
         <div className={`${appLocation[0] == 3 ? classes.displayButtonHolder : classes.noDisplay}`}>
-          <ArrowDownwardIcon fontSize="large" className={`${arrowToggle == true ? "arrow-up" : "arrow-down"}`} id="arrow-icon"/>
-          <Button variant="contained" color="primary`" size="large" className={`${classes.displayButton} button-hover`} onClick={() => submitApplication()}>Submit</Button>
+          <div className={classes.checkboxHolder}>
+            <div className={`${checkboxError == true ? classes.checkboxError : classes.noDisplay}`}>confirm you've reviewed the summary before submitting</div>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={submitCheckbox}
+                  onChange={handleCheckboxChange}
+                  name="checkedB"
+                  color="primary"
+                />
+                }
+              label="I've reviewed my application, and all information included is accurate and true"
+            />
+          </div>
+
+          <div className={classes.submitHolder}>
+          <ArrowForwardIcon fontSize="large" className={`${arrowToggle == true ? "arrow-left" : "arrow-right"}`} id="arrow-icon"/>
+          <Button variant="contained" color="primary`" size="large" className={`${classes.displayButton} button-hover`} onClick={() => checkSubmit()}>Submit</Button>
+          </div>
         </div>
 
     </div>

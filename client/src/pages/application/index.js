@@ -27,9 +27,10 @@ const useStyles = makeStyles((theme) => ({
 }
 
 }))
-const Application = () => {
-  const classes = useStyles()
 
+const Application = (props) => {
+  const classes = useStyles()
+  console.log(props);
   const [appLocation, setAppLocation] = useState([0, 0])
   const [youState, setYouState] = useState([
     [
@@ -116,7 +117,7 @@ const Application = () => {
       },
       {
         type: "input",
-        key: "01",
+        key: "firstname",
         location: "021",
         label: "First name",
         answer: null
@@ -129,7 +130,7 @@ const Application = () => {
         answer: null
       },
       {
-        type: "email",
+        type: "input",
         key: "email",
         location: "023",
         label: "Email",
@@ -195,14 +196,14 @@ const Application = () => {
       },
       {
         type: "input",
-        key: "firstname",
+        key: "first-name",
         location: "101",
         label: "First name",
         answer: null
       },
       {
         type: "input",
-        key: "lastname",
+        key: "last-name",
         location: "102",
         label: "Last name",
         answer: null
@@ -250,7 +251,7 @@ const Application = () => {
       },
       {
         type: "input",
-        key: "grade",
+        key: "years-studied",
         location: "113",
         label: "Years Studying English",
         answer: null
@@ -288,9 +289,6 @@ const Application = () => {
     ],
   ])
 
-useEffect(() => {
-
-}, [appLocation])
 
   const changeAppLocation = (newLocation, pageState, tab) => {
     console.log("Changing location, contents", newLocation, pageState, tab);
@@ -393,17 +391,24 @@ useEffect(() => {
     planState.map((section) => {
       processSection(section)
     })
-      console.log(applicationData);
+
+    axios({
+      method: "POST",
+      url: "/submit-application",
+      data: {
+        email: youState[0][3].answer,
+        applicationData: applicationData,
+        submitDate: new Date(),
+        studentName: studentState[0][1].answer + " " + studentState[0][2].answer,
+        applicationStatus: "pending",
+      }
+    }).then((res) => {
+      console.log(res);
+      props.history.push('/')
+    })
 
   }
 
-    // axios({
-    //   method: "POST",
-    //   url: "/submit-application",
-    //   data: applicationData
-    // }).then((res) => {
-    //   console.log(res);
-    // })
 
 
   return (

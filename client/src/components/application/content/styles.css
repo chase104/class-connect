@@ -3,17 +3,17 @@
 }
 
 
-.arrow-down{
+.arrow-right{
   font-size: 3rem;
   transition: 1000ms ease-in-out !important;
-  transition-property: margin-top, margin-bottom !important;
-  margin-top: 0px ;
-  margin-bottom: 0px
+  transition-property: margin-left, margin-right !important;
+  margin-left: 0px;
+  margin-right: 0px
 }
-.arrow-up{
+.arrow-left{
   font-size: 3rem;
   transition: 1000ms ease-in-out !important;
-  transition-property: margin-top, margin-bottom !important;
-  margin-top: -40px ;
-  margin-bottom: 40px ;
+  transition-property: margin-left, margin-right !important;
+  margin-left: -40px ;
+  margin-right: 40px ;
 }

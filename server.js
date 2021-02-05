@@ -56,7 +56,13 @@ app.delete('/delete-trials', (req, res) => {
 
 app.post('/submit-application', (req, res) => {
   console.log(req.body);
-  res.status(200).send(req.body)
+  ApplicationModel.create(req.body, (err, data) => {
+    if (err) {
+      res.status(500).send(err)
+    } else {
+      res.status(201).send(data)
+    }
+  })
 })
 
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './styles.css'
 import Tab from '../../components/tab/index.js'
 import VideoPlayer from '../../components/home-components/video-player/index.js'
@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 const HomePage = (props) => {
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
   const classes = useStyles()
   const planData = useContext(PlanContext)
   console.log(props);
