@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Provider from "../../contexts";
+import { Context } from "../../contexts";
 
 import Tab from "../../components/tab/index.js";
 import ApplicationPage from "../../components/application/application-page/index.js";
@@ -39,15 +39,9 @@ const Application = (props) => {
     setYouState,
     planState,
     setPlanState,
-  } = useContext(Provider);
-
-  // axios({
-  //   method: "POST",
-  //   url: "/submit-application",
-  //   data: applicationData
-  // }).then((res) => {
-  //   console.log(res);
-  // })
+    studentState,
+    setStudentState,
+  } = useContext(Context);
 
   return (
     <div style={{ marginBottom: "10vh" }}>

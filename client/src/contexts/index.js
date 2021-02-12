@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react";
 import _ from "lodash";
 
-const Context = React.createContext();
+export const Context = createContext(null);
 
-export default function Provider({ children }) {
+export function ContextProvider({ children }) {
   const [appLocation, setAppLocation] = useState([0, 0]);
   const [youState, setYouState] = useState([
     [
@@ -259,14 +259,19 @@ export default function Provider({ children }) {
       },
     ],
   ]);
+
   return (
     <Context.Provider
-      appLocation={appLocation}
-      setAppLocation={setAppLocation}
-      youState={youState}
-      setYouState={setYouState}
-      planState={planState}
-      setPlanState={setPlanState}
+      value={{
+        appLocation,
+        setAppLocation,
+        youState,
+        setYouState,
+        planState,
+        setPlanState,
+        studentState,
+        setStudentState,
+      }}
     >
       {children}
     </Context.Provider>
