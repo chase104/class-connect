@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { Context } from "../../contexts";
+import { FormContext, YouContext } from "../../contexts";
 
 import Tab from "../../components/tab/index.js";
 import ApplicationPage from "../../components/application/application-page/index.js";
@@ -32,16 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Application = (props) => {
   const classes = useStyles();
-  const {
-    appLocation,
-    setAppLocation,
-    youState,
-    setYouState,
-    planState,
-    setPlanState,
-    studentState,
-    setStudentState,
-  } = useContext(Context);
+  const { appLocation, youState } = useContext(YouContext);
+  const { planState, studentState } = useContext(FormContext);
 
   return (
     <div style={{ marginBottom: "10vh" }}>

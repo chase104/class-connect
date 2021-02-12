@@ -4,7 +4,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ReactPlayer from "react-player";
 
-import { PlanContext } from "../../App";
+import { FormContext } from "../../contexts";
 
 import Tab from "../../components/tab/index.js";
 import PlanComparison from "../../components/plans/comparison/index.js";
@@ -43,13 +43,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HomePage = (props) => {
-
   useEffect(() => {
-    window.scrollTo(0,0)
-  }, [])
-  const classes = useStyles()
-  const planData = useContext(PlanContext)
-  console.log(props);
+    window.scrollTo(0, 0);
+  }, []);
+  const classes = useStyles();
+  const { plans } = useContext(FormContext);
   return (
     <div style={{ marginBottom: "10vh" }}>
       <Tab message="Home" />
@@ -95,12 +93,8 @@ const HomePage = (props) => {
       <PlanComparison
         props={props}
         homepage={true}
-        benefits={[
-          planData[1].benefits,
-          planData[2].benefits,
-          planData[3].benefits,
-        ]}
-        types={[planData[1].type, planData[2].type, planData[3].type]}
+        benefits={[plans[1].benefits, plans[2].benefits, plans[3].benefits]}
+        types={[plans[1].type, plans[2].type, plans[3].type]}
       />
       <QuestionPrompt props={props} />
     </div>
