@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom'
@@ -9,10 +9,12 @@ import LoggedOutDashboard from './pages/dashboards/logged-out-dashboard/index.js
 import About from './pages/about/index.js'
 import Games from './pages/games/index.js'
 import Homepage from './pages/homepage/index.js'
+import PdfPractice from './pages/pdf-practice/index.js'
 import Login from './pages/login/index.js'
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Container } from '@material-ui/core'
 import PdfPage from './pages/pdf-page/index.js'
+import PdfWork from './pages/pdf-practice/indexx.js'
 import Application from './pages/application/index.js'
 import Faq from './pages/faq/index.js'
 import Plans from './pages/plans/index.js'
@@ -34,11 +36,12 @@ const theme = createMuiTheme({
   }
 })
 
-export const PlanContext = createContext()
+export const AppContext = createContext()
 
 export default function App() {
-  const [plans, setPlans] = useState(
-    [
+
+  const [appState, setAppState] = useState({
+    plans: [
       {type: "New Recruit",
         image: trialImage,
         benefits: ["One set of classes (3)", "Educational Assitance Team", "Lesson material access", "Games access"],
@@ -59,13 +62,44 @@ export default function App() {
         benefits: ["One unit of classes (65)", "Educational Assitance Team", "Lesson material access", "Progress reports", "Games access", "Extra review classes (6)", "Two (2) progress report videocalls"],
         price: 695,
         description: "The Full-Access package give you absolutely everything you need for the complete LearningLab experience, in addition to all our other services, you also get access to our exciting host of games related to class-material. This helps greatly to reinforce concepts and terms from class. You'll also have an additional 6 classes added to the course that serve to solidify everything learned. Lastly, you will also be able to schedule two (2) videocalls with a member of our Educational Assistance Team, in which you'll have a conversation about your child's progress."},
-    ]
-  )
+    ],
+    applicationSuccessModal: false,
+    applicationResult: null,
+    email: "bbb"
+  })
+
+
+  const toggleApplication = (option, result, email) => {
+    console.log(email);
+    if (option) {
+      setAppState({
+        ...appState,
+        applicationSuccessModal: true,
+        applicationResult: result,
+        email: email
+
+      })
+    } else {
+      setAppState({
+        ...appState,
+        applicationSuccessModal: false,
+        applicationResult: result,
+      })
+    }
+  }
+  const setEmail = (email) => {
+    setAppState({
+      ...appState,
+    })
+    console.log("setting email :", email)
+
+  }
+
 
   return (
     <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <PlanContext.Provider value={plans}>
+          <AppContext.Provider value={{appState: appState, toggleApplication: (option, result, email) => toggleApplication(option, result, email), setEmail: (email) => setEmail(email) }}>
             <div className="App">
                 <Route exact path="/pdfpage" component={PdfPage} />
                 <div className="rest" >
@@ -78,11 +112,13 @@ export default function App() {
                     <Route path="/login" component={Login} />
                     <Route path="/faq" component={Faq} />
                     <Route path="/plans" component={Plans} />
-                    <Route path="/" component={Footer} />
+                    <Route path="/pdf" component={PdfPractice} />
+                    <Route path="/practice" component={PdfWork} />
 
+                    <Route path="/" component={Footer} />
                 </div>
             </div>
-            </PlanContext.Provider>
+            </AppContext.Provider>
         </ThemeProvider>
     </BrowserRouter>
 

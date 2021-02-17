@@ -54,7 +54,7 @@ const Navbar = (props) => {
             <Grid item  xs={8} sm={7} md={7} className={classes.titleGridDiv}>
                 <Link to="/" className="no-decoration">
                 <Typography variant="h3" className={classes.appTitle}>
-                    The Adventurer's College
+                    Adventurer's College
                 </Typography>
                 </Link>
             </Grid>

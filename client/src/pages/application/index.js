@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+
 import "./styles.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Tab from "../../components/tab/index.js";
 import TabBar from "../../components/application/tab-bar/index.js";
+import { AppContext } from '../../App.js'
 import ApplicationPage from "../../components/application/application-page/index.js";
 import axios from "axios";
-
+import { saveAs } from 'file-saver'
 const useStyles = makeStyles((theme) => ({
   applicationContainer:{
       backgroundColor: "transparent",
@@ -30,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Application = (props) => {
   const classes = useStyles()
-  console.log(props);
   const [appLocation, setAppLocation] = useState([0, 0])
   const [youState, setYouState] = useState([
     [
@@ -158,7 +159,6 @@ const Application = (props) => {
         answer: null,
       },
     ],
-
     [
       {
         type: "title",
@@ -186,6 +186,7 @@ const Application = (props) => {
         answer: null,
       },
     ],
+
   ]);
   const [studentState, setStudentState] = useState([
     [
@@ -285,16 +286,14 @@ const Application = (props) => {
         answer: null,
       },
     ],
-  ])
+  ]);
 
 
   const changeAppLocation = (newLocation, pageState, tab) => {
-    console.log("Changing location, contents", newLocation, pageState, tab);
     let boolean;
     let newState;
     const navigate = (stateLength, type) => {
       let previousPageLastPart;
-      console.log("in navigate");
       switch (type) {
         case "student":
           previousPageLastPart = youState.length - 1;
@@ -320,7 +319,6 @@ const Application = (props) => {
             : setAppLocation([appLocation[0] - 1, previousPageLastPart])
           : setAppLocation([appLocation[0], appLocation[1] - 1]);
       } else if (tab) {
-        console.log("tab wins!");
         setAppLocation([newLocation, 0]);
       } else {
         setAppLocation([appLocation[0], newLocation]);
@@ -331,10 +329,8 @@ const Application = (props) => {
       newState = youState;
       // if answers, change state
       if (pageState != null) {
-        console.log(pageState);
 
         Object.keys(pageState).map((key) => {
-          console.log(key);
           newState[key.charAt(1)][key.charAt(2)].answer = pageState[key];
         });
         setYouState([...newState]);
@@ -356,12 +352,9 @@ const Application = (props) => {
       newState = planState;
       if (pageState != null) {
         Object.keys(pageState).map((key) => {
-          console.log("made it to keys");
           newState[key.charAt(1)][key.charAt(2)].answer = pageState[key];
         });
-        console.log("past keys");
         setPlanState([...newState]);
-        console.log("past set");
       }
       navigate(planState.length - 1, "plan");
     } else {
@@ -369,24 +362,43 @@ const Application = (props) => {
     }
   };
 
-  const submitApplication = () => {
-    console.log("submit function");
-    let applicationData = [];
+  const setEmail = useContext(AppContext).setEmail
+  const toggleApplication = useContext(AppContext).toggleApplication
 
-    const processSection = (section) => {
+  const submitApplication = () => {
+    let applicationData = [];
+    let email
+    let parentName = null
+    let namecounter = 0;
+
+  const processSection = (section, isYouState) => {
       let sectionArray = [];
       sectionArray.push({ sectionTitle: section[0].label });
+
       for (var i = 1; i < section.length + 1; i++) {
         if (i == section.length) {
           applicationData.push(sectionArray);
         } else {
-          sectionArray.push({ [section[i].key]: section[i].answer });
+          let typeBoolean = false
+          if (section[i].key == "firstname" || section[i].key == "lastname") {
+            typeBoolean = true
+          }
+          if (isYouState && section[i].key == "email" && section[i].answer != null && email == null) {
+            email = section[i].answer
+            sectionArray.push({ [section[i].key]: section[i].answer });
+          } else if (isYouState && typeBoolean && namecounter < 2 && section[i].answer != null) {
+            console.log(parentName, section[i].answer);
+            parentName == null ? parentName = section[i].answer : parentName = `${parentName} ${section[i].answer}`;
+            sectionArray.push({ [section[i].key]: section[i].answer });
+          } else {
+            sectionArray.push({ [section[i].key]: section[i].answer });
+          }
         }
       }
     };
 
     youState.map((section) => {
-      processSection(section);
+      processSection(section, true);
     });
     studentState.map((section) => {
       processSection(section);
@@ -394,32 +406,35 @@ const Application = (props) => {
     planState.map((section) => {
       processSection(section)
     })
-
+    console.log("submitting...");
+    console.log(applicationData);
     axios({
       method: "POST",
       url: "/submit-application",
       data: {
-        email: youState[0][3].answer,
+        email: email,
         applicationData: applicationData,
         submitDate: new Date(),
         studentName: studentState[0][1].answer + " " + studentState[0][2].answer,
+        parentName: parentName,
         applicationStatus: "pending",
       }
     }).then((res) => {
-      console.log(res);
-      props.history.push('/')
+      if (res.status == "201") {
+        console.log(res.data.email);
+        toggleApplication(true, true, res.data.email)
+        props.history.push('/')
+        //could make axios call here for email sending
+      } else {
+        toggleApplication(true, false)
+        props.history.push('/')
+      }
     })
 
   }
 
 
-  // axios({
-  //   method: "POST",
-  //   url: "/submit-application",
-  //   data: applicationData
-  // }).then((res) => {
-  //   console.log(res);
-  // })
+
 
   return (
     <div style={{ marginBottom: "10vh" }}>

@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react'
-import myPdf from '../../assets/docs/potato-mtn.pdf'
+import myPdf from '../../assets/docs/application.pdf'
 
 
 const PdfPage = () => {

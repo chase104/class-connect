@@ -1,10 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, IconButton, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ReactPlayer from "react-player";
+import Modal from '@material-ui/core/Modal';
+import CloseIcon from '@material-ui/icons/Close';
+import elmoGif from '../../assets/images/elmo.gif'
+import elmoConfusedGif from '../../assets/images/elmo.gif'
 
-import { PlanContext } from "../../App";
+import { AppContext } from "../../App";
 
 import Tab from "../../components/tab/index.js";
 import PlanComparison from "../../components/plans/comparison/index.js";
@@ -40,16 +44,166 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
   },
+  modalHolder:{
+    width: "70%",
+    [theme.breakpoints.down('xs')]: {
+      width: "90%"
+    },
+    maxHeight: "70vh",
+
+    backgroundColor: "#1fc3cd",
+    border: "2px solid black",
+    boxShadow: "10px 10px 10px black",
+    padding: "12px",
+    display: "flex",
+    flexDirection: "column",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "20vh",
+  },
+  modalTitleHolder:{
+    display: "flex",
+    flexDirection: "row-reverse",
+    alignItems: "center",
+    width: "100%",
+  fontWeight: "bold",
+  fontSize: "32px",
+  color: "white",
+  [theme.breakpoints.down('xs')]: {
+    fontSize: "18px"
+  }
+},
+  modalTitle:{
+    marginLeft: "auto",
+    marginRight: "auto"
+  },
+  modalContent:{
+    color: "white",
+    marginTop: "4vh",
+    marginBottom: "8vh",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    fontWeight: "bold",
+    marginLeft: "20px",
+    marginRight: "20px",
+    letterSpacing: "1px",
+    fontSize: "20px"
+  },
+  closeButton:{
+    position: "absolute",
+  },
+  gif:{
+    width: "50%",
+    maxWidth: "300px",
+    marginTop: "10px",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  readMore:{
+    position: "absolute",
+      top: "0",
+      height: "40vh",
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      fontSize: "40px",
+      color: "white",
+      backgroundColor: "#1FC3CD",
+      opacity: "0",
+      transition: "500ms",
+      transitionProperty: "opacity",
+      '&:hover': {
+        opacity: "0.95",
+        cursor: "pointer"
+      }
+  },
+  hideScrollbar:{
+    overflow: "scroll",
+    scrollbarWidth: "none",
+    '&::-webkit-scrollbar': {
+      display: "none"
+    }
+  }
 }));
 
 const HomePage = (props) => {
+  const classes = useStyles()
 
   useEffect(() => {
     window.scrollTo(0,0)
   }, [])
-  const classes = useStyles()
-  const planData = useContext(PlanContext)
-  console.log(props);
+
+  const appContext = useContext(AppContext)
+  const toggleApplication = appContext.toggleApplication
+
+  const [planData, setPlanData] = useState(appContext.appState.plans)
+  const [applicationResult, setApplicationResult] = useState(appContext.appState.applicationResult)
+  const [applicationModal, setApplicationModal] = useState(appContext.appState.applicationSuccessModal)
+  const [email, setEmail] = useState(appContext.appState.email)
+
+
+  const successMessage = (
+    <div  className={classes.modalHolder}>
+      <div className={classes.modalTitleHolder}>
+
+        <div className={classes.modalTitle}>Success!</div>
+        <IconButton className={classes.closeButton} onClick={() => closeModal()}>
+          <CloseIcon />
+        </IconButton>
+      </div>
+
+      <div id="simple-modal-description" className={classes.modalContent}>
+        <p style={{textAlign: "center"}}>Oops!</p>
+        <p style={{textAlign: "center"}}>It looks like this game is still under way</p>
+      </div>
+
+    </div>
+  )
+  const modalMessage = (
+    <div  className={`${classes.modalHolder} ${classes.hideScrollbar}`}>
+      <div className={classes.modalTitleHolder}>
+        <div className={classes.modalTitle}>{applicationResult ? "Congratulations!" : "Oops!"}</div>
+        <IconButton className={classes.closeButton} onClick={() => closeModal()}>
+          <CloseIcon />
+        </IconButton>
+      </div>
+      {
+        applicationResult ?
+        <img src={elmoGif} className={classes.gif}/>
+        :
+        <img src={elmoConfusedGif} className={classes.gif}/>
+      }
+
+      <div id="simple-modal-description" className={classes.modalContent}>
+        <p style={{textAlign: "center"}}>
+        {applicationResult ?
+          <div>Your application has been successfully submitted! We've sent a copy of your application to
+          {
+            <div style={{fontWeight:"bold", fontSize: "24px"}}>{email}</div>
+          } The email also explains what'll happen next.</div>
+          :
+          <div>It looks like something went wrong and your application wasn't submitted. Please contact our Educational Assistance Team for help.</div>
+        }
+        </p>
+        <p style={{textAlign: "center"}}>{
+          applicationResult ?
+            "The average application takes about 4 days to process, so be on the lookout for the email!"
+            : "It looks like something went wrong and your application wasn't submitted. Please contact our Educational Assistance Team for help."
+        }</p>
+      </div>
+    </div>
+  )
+
+
+
+  const closeModal = () => {
+    setApplicationModal(false)
+    toggleApplication(false, null)
+  }
+
   return (
     <div style={{ marginBottom: "10vh" }}>
       <Tab message="Home" />
@@ -85,7 +239,7 @@ const HomePage = (props) => {
                       in teaching in a much more interactive way.
                     </Typography>
                   </div>
-                  <div className={"read-more"}>Read More</div>
+                  <div className={classes.readMore}>Read More</div>
                 </div>
               </Link>
             </Grid>
@@ -103,6 +257,18 @@ const HomePage = (props) => {
         types={[planData[1].type, planData[2].type, planData[3].type]}
       />
       <QuestionPrompt props={props} />
+      <Modal
+      open={applicationModal}
+      onClose={closeModal}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+      disableScrollLock={true}
+
+      >
+      {
+        modalMessage
+      }
+      </Modal>
     </div>
   );
 };

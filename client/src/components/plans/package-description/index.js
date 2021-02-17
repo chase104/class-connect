@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 const PackageDescription = ({type, image, benefits, price, description, }) => {
 
   const classes = useStyles()
-  console.log(type, benefits, price, description);
   return (
     <div className={classes.descriptionContainer}>
       <Grid container style={{justifyContent: "center"}}>

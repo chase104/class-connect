@@ -59,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "8px",
     fontWeight: "bold"
   },
+  sectionTitleError:{
+    marginRight: "8px",
+    fontWeight: "bold",
+  },
   calendarHolder:{
     marginTop: "16px",
     display: "flex",
@@ -107,12 +111,18 @@ const useStyles = makeStyles((theme) => ({
   checkboxHolder: {
     display: "flex",
     flexDirection: "column"
+  },
+  errorHolder:{
+    display: "flex",
+    padding: "4px 4px 4px 0px",
+    backgroundColor: "#ff6666"
   }
 
 }))
 
 const Content = ({ youState, studentState, planState, appLocation, changeState, submitApplication }) => {
   const classes = useStyles()
+
   let tempAnswers = {}
 
   const [tempAnswersState, setTempAnswersState] = useState(tempAnswers)
@@ -160,15 +170,20 @@ const Content = ({ youState, studentState, planState, appLocation, changeState, 
   const [arrowToggle, setArrowToggle] = useState(true)
   const [submitCheckbox, setSubmitCheckbox] = useState(false)
   const [checkboxError, setCheckboxError] = useState(false)
-
+  const [emailError, setEmailError] = useState(false)
+  let errorPresent
+  let emailCounter = 0
   let calendarId
+
+    useEffect(() => {
+      errorPresent = false
+      emailCounter = 0
+      setEmailError(false)
+    }, [appLocation])
 
     useEffect(() => {
       setResetState(!resetState)
     }, [appLocation])
-
-
-
 
     useEffect(() => {
 
@@ -227,12 +242,24 @@ const Content = ({ youState, studentState, planState, appLocation, changeState, 
 
   const handleCheckboxChange = () => {
     console.log("checkbox changed")
-
+    if (!submitCheckbox) {
+      setCheckboxError(false)
+    }
     setSubmitCheckbox(!submitCheckbox)
   }
 
   const checkSubmit = () => {
-    submitCheckbox ? submitApplication() : setCheckboxError(true)
+    if (submitCheckbox) {
+      console.log("email counter: ", emailCounter);
+      if (emailCounter >= 1) {
+        submitApplication()
+      } else {
+        setEmailError(true)
+      }
+    } else {
+      setCheckboxError(true)
+    }
+
   }
 
   const returnTitle = () => {
@@ -258,11 +285,31 @@ const Content = ({ youState, studentState, planState, appLocation, changeState, 
      let pageItem
      if (page[i].type == "title"){
        pageItem = (<div className={classes.summaryTitle}>{page[i].label}</div>)
+     } else if (page[i].key == "email"){
+       if (page[i].answer != null){
+         emailCounter++
+         pageItem = (
+           <div style={{display: "flex", alignItems: "center", justifyContent: "start"}}>
+              <div className={classes.sectionTitle}>{page[i].label + ": "}</div>
+              <div>{page[i].answer != null ? page[i].answer : "no answer"}</div>
+           </div>
+
+         )
+       } else {
+         pageItem = (
+           <div style={{display: "flex", alignItems: "center", justifyContent: "start"}}>
+              <div className={classes.errorHolder}>
+              <div className={classes.sectionTitleError}>{page[i].label + ": "}</div>
+              <div>no answer</div>
+              </div>
+           </div>
+         )
+       }
+
      } else {
        pageItem = (
          <div style={{display: "flex", alignItems: "center", justifyContent: "start"}}>
             <div className={classes.sectionTitle}>{page[i].label + ": "}</div>
-
             <div>{page[i].answer != null ? page[i].answer : "no answer"}</div>
          </div>
        )
@@ -460,6 +507,7 @@ const Content = ({ youState, studentState, planState, appLocation, changeState, 
         <div className={`${appLocation[0] == 3 ? classes.displayButtonHolder : classes.noDisplay}`}>
           <div className={classes.checkboxHolder}>
             <div className={`${checkboxError == true ? classes.checkboxError : classes.noDisplay}`}>confirm you've reviewed the summary before submitting</div>
+            <div className={`${emailError == true ? classes.checkboxError : classes.noDisplay}`}>Please include an email in your application</div>
             <FormControlLabel
               control={
                 <Checkbox
