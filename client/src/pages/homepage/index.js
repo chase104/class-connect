@@ -8,7 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import elmoGif from '../../assets/images/elmo.gif'
 import elmoConfusedGif from '../../assets/images/elmo.gif'
 
-import { AppContext } from "../../App";
+import { FormContext } from "../../contexts";
 
 import Tab from "../../components/tab/index.js";
 import PlanComparison from "../../components/plans/comparison/index.js";
@@ -136,13 +136,12 @@ const HomePage = (props) => {
     window.scrollTo(0,0)
   }, [])
 
-  const appContext = useContext(AppContext)
-  const toggleApplication = appContext.toggleApplication
+  const { plans } = useContext(FormContext);
 
-  const [planData, setPlanData] = useState(appContext.appState.plans)
-  const [applicationResult, setApplicationResult] = useState(appContext.appState.applicationResult)
-  const [applicationModal, setApplicationModal] = useState(appContext.appState.applicationSuccessModal)
-  const [email, setEmail] = useState(appContext.appState.email)
+  const [planData, setPlanData] = useState(plans)
+  const [applicationResult, setApplicationResult] = useState(false)
+  const [applicationModal, setApplicationModal] = useState(false)
+  const [email, setEmail] = useState(false)
 
 
   const successMessage = (
@@ -249,12 +248,8 @@ const HomePage = (props) => {
       <PlanComparison
         props={props}
         homepage={true}
-        benefits={[
-          planData[1].benefits,
-          planData[2].benefits,
-          planData[3].benefits,
-        ]}
-        types={[planData[1].type, planData[2].type, planData[3].type]}
+        benefits={[plans[1].benefits, plans[2].benefits, plans[3].benefits]}
+        types={[plans[1].type, plans[2].type, plans[3].type]}
       />
       <QuestionPrompt props={props} />
       <Modal

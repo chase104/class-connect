@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import {Toolbar, AppBar, Typography, Grid} from '@material-ui/core';
-import './styles.css'
-import SignedInLinks from '../signed-in-links/index'
-import SignedOutLinks from '../signed-out-links/index'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
+import "./styles.css";
+import SignedInLinks from "../signed-in-links/index";
+import SignedOutLinks from "../signed-out-links/index";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   appTitle: {
@@ -13,58 +12,57 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     margin: "12px 0px",
     fontSize: "3vw",
-    [theme.breakpoints.down('xs')]: {
-      fontSize: "3.5vw"
-    }
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3.5vw",
+    },
   },
   titleGridDiv: {
     display: "flex",
-    justifyContent:"center",
-    alignItems: "center"
-  }
-}))
-
-
+    justifyContent: "center",
+    alignItems: "center",
+  },
+}));
 
 const Navbar = (props) => {
-  console.log(props.location.pathname);
-  if(props.location.pathname == "/pdfpage"){
-    console.log("true");
+  if (props.location.pathname == "/pdfpage") {
   } else {
-    console.log("false");
   }
 
-  const [display, setDislay] = useState(null)
+  const [display, setDislay] = useState(null);
   useEffect(() => {
-    console.log("change detected");
-    if(props.location.pathname != "/pdfpage" && display != "flex"){
-      console.log("met condition");
-      setDislay(true)
+    if (props.location.pathname != "/pdfpage" && display != "flex") {
+      setDislay(true);
     } else {
-
-      console.log("non-met");
-      setDislay(false)
+      setDislay(false);
     }
-  }, [props.location.pathname])
-  const classes = useStyles()
+  }, [props.location.pathname]);
+  const classes = useStyles();
   return (
-    <AppBar className={display == true ? "flex-display" : "null-display"} position="static" color="primary" id="navbar-container" style={{display: props.location.pathname == "/pdfpage" ? "null" : "flex"}}>
-        <Toolbar className="header-holder">
-          <Grid container style={{minHeight: "inherit"}}>
-            <Grid item  xs={8} sm={7} md={7} className={classes.titleGridDiv}>
-                <Link to="/" className="no-decoration">
-                <Typography variant="h3" className={classes.appTitle}>
-                    Adventurer's College
-                </Typography>
-                </Link>
-            </Grid>
-            <Grid item sx={4} sm={5} md={5}>
-              <SignedOutLinks />
-            </Grid>
+    <AppBar
+      className={display == true ? "flex-display" : "null-display"}
+      position="static"
+      color="primary"
+      id="navbar-container"
+      style={{
+        display: props.location.pathname == "/pdfpage" ? "null" : "flex",
+      }}
+    >
+      <Toolbar className="header-holder">
+        <Grid container style={{ minHeight: "inherit" }}>
+          <Grid item xs={8} sm={7} md={7} className={classes.titleGridDiv}>
+            <Link to="/" className="no-decoration">
+              <Typography variant="h3" className={classes.appTitle}>
+                The Adventurer's College
+              </Typography>
+            </Link>
           </Grid>
-        </Toolbar>
+          <Grid item sx={4} sm={5} md={5}>
+            <SignedOutLinks />
+          </Grid>
+        </Grid>
+      </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
