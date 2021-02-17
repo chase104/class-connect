@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import './styles.css'
-import {Grid} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import "./styles.css";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   promptContainer: {
@@ -11,13 +11,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "5vh",
     backgroundColor: "rgba(255, 255, 255, .8)",
     paddingBottom: "5vh",
-    paddingTop: "5vh"
+    paddingTop: "5vh",
   },
   title: {
     display: "flex",
     justifyContent: "center",
     fontSize: "35px",
-    marginBottom: "12px"
+    marginBottom: "12px",
   },
   promptFooter: {
     display: "flex",
@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "28px",
     boxShadow: "4px 4px 10px darkslategrey",
     padding: "8px 0px",
-
   },
   individualPrompt: {
     minHeight: "30vh",
@@ -42,72 +41,96 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px",
     color: "white",
     backgroundColor: "#1FC3CD",
-  }
-}))
-const QuestionPrompt = ({props}) => {
-  const classes = useStyles()
-console.log(props);
+  },
+}));
+const QuestionPrompt = ({ props }) => {
+  const classes = useStyles();
 
+  const [mouseDown, setMouseDown] = useState(false);
 
-
-    const [mouseDown, setMouseDown] = useState(false)
-
-
-
-    const handleMouseDown = () => {
-      console.log("downed");
-      setMouseDown(true)
-    }
-    const handleMouseUp = () => {
-      console.log("mouseUp");
-    setMouseDown(false)
-    }
-
+  const handleMouseDown = () => {
+    setMouseDown(true);
+  };
+  const handleMouseUp = () => {
+    setMouseDown(false);
+  };
 
   return (
     <Grid container className={classes.promptContainer}>
-      <Grid item xs={11} sm={10} md={10} className={classes.title}>Want to know more?</Grid>
+      <Grid item xs={11} sm={10} md={10} className={classes.title}>
+        Want to know more?
+      </Grid>
       <Grid item xs={11} sm={10} md={10}>
-        <Grid container style={{boxShadow: "10px 10px 10px lightslategrey"}}>
-            <Grid item xs={4} sm={4} className={`${classes.individualPrompt} individual-prompt no-select ${mouseDown ? "mouse-down" : null}`} style={{borderRight: "1px solid black"}}
+        <Grid container style={{ boxShadow: "10px 10px 10px lightslategrey" }}>
+          <Grid
+            item
+            xs={4}
+            sm={4}
+            className={`${
+              classes.individualPrompt
+            } individual-prompt no-select ${mouseDown ? "mouse-down" : null}`}
+            style={{ borderRight: "1px solid black" }}
             onMouseDown={() => handleMouseDown()}
             onMouseUp={() => handleMouseUp()}
             onMouseOut={() => handleMouseUp()}
-            >
-              Request a free consultation
-            </Grid>
+          >
+            Request a free consultation
+          </Grid>
 
-            <Grid item xs={4} sm={4} className={`${classes.individualPrompt} individual-prompt no-select ${mouseDown ? "mouse-down" : null}`} style={{borderRight: "1px solid black"}}
+          <Grid
+            item
+            xs={4}
+            sm={4}
+            className={`${
+              classes.individualPrompt
+            } individual-prompt no-select ${mouseDown ? "mouse-down" : null}`}
+            style={{ borderRight: "1px solid black" }}
             onMouseDown={() => handleMouseDown()}
             onMouseUp={() => handleMouseUp()}
             onMouseOut={() => handleMouseUp()}
             onClick={() => {
-              window.scrollTo(0,0)
-              props.history.push("/faq")}}
-            >
-              FAQ page
-            </Grid>
+              window.scrollTo(0, 0);
+              props.history.push("/faq");
+            }}
+          >
+            FAQ page
+          </Grid>
 
-          <Grid item xs={4} sm={4} className={`${classes.individualPrompt} individual-prompt no-select ${mouseDown ? "mouse-down" : null}`}
-          onMouseDown={() => handleMouseDown()}
-          onMouseUp={() => handleMouseUp()}
-          onMouseOut={() => handleMouseUp()}
-          onClick={() => {
-            window.scrollTo(0,0)
-            props.history.push("/about")}}
+          <Grid
+            item
+            xs={4}
+            sm={4}
+            className={`${
+              classes.individualPrompt
+            } individual-prompt no-select ${mouseDown ? "mouse-down" : null}`}
+            onMouseDown={() => handleMouseDown()}
+            onMouseUp={() => handleMouseUp()}
+            onMouseOut={() => handleMouseUp()}
+            onClick={() => {
+              window.scrollTo(0, 0);
+              props.history.push("/about");
+            }}
           >
             About Page
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={11} sm={10} md={10} className={`${classes.promptFooter} application-button no-select ${mouseDown ? "mouse-down" : null}`}
-      onMouseDown={() => handleMouseDown()}
-      onMouseUp={() => handleMouseUp()}
-      onMouseOut={() => handleMouseUp()}
-      >Click HERE to start a no-commitment application!</Grid>
-
+      <Grid
+        item
+        xs={11}
+        sm={10}
+        md={10}
+        className={`${classes.promptFooter} application-button no-select ${
+          mouseDown ? "mouse-down" : null
+        }`}
+        onMouseDown={() => handleMouseDown()}
+        onMouseUp={() => handleMouseUp()}
+        onMouseOut={() => handleMouseUp()}
+      >
+        Click HERE to start a no-commitment application!
+      </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default QuestionPrompt
+export default QuestionPrompt;
