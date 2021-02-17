@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useContext } from "react";
 
 import "./styles.css";
+=======
+import React, { useContext } from "react";
+>>>>>>> 5272324dcfebef2637b246b6cd0cbb7bd43b5286
 import { makeStyles } from "@material-ui/core/styles";
+
+import { Context } from "../../contexts";
+
 import Tab from "../../components/tab/index.js";
+<<<<<<< HEAD
 import TabBar from "../../components/application/tab-bar/index.js";
 import { AppContext } from '../../App.js'
 import ApplicationPage from "../../components/application/application-page/index.js";
@@ -27,10 +35,36 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "5vh",
       marginBottom: "10vh"
 }
+=======
+import ApplicationPage from "../../components/application/application-page/index.js";
 
-}))
+import { changeAppLocation, submitApplication } from "./application.utils";
+import "./styles.css";
+>>>>>>> 5272324dcfebef2637b246b6cd0cbb7bd43b5286
+
+const useStyles = makeStyles((theme) => ({
+  applicationContainer: {
+    backgroundColor: "transparent",
+    minWidth: "70vw",
+    maxWidth: "70vh",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "5vh",
+    marginBottom: "10vh",
+  },
+  reviewContainer: {
+    backgroundColor: "transparent",
+    minWidth: "85vw",
+    maxWidth: "85vh",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "5vh",
+    marginBottom: "10vh",
+  },
+}));
 
 const Application = (props) => {
+<<<<<<< HEAD
   const classes = useStyles()
   const [appLocation, setAppLocation] = useState([0, 0])
   const [youState, setYouState] = useState([
@@ -435,6 +469,19 @@ const Application = (props) => {
 
 
 
+=======
+  const classes = useStyles();
+  const {
+    appLocation,
+    setAppLocation,
+    youState,
+    setYouState,
+    planState,
+    setPlanState,
+    studentState,
+    setStudentState,
+  } = useContext(Context);
+>>>>>>> 5272324dcfebef2637b246b6cd0cbb7bd43b5286
 
   return (
     <div style={{ marginBottom: "10vh" }}>
