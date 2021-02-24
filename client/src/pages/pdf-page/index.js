@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react'
 import myPdf from '../../assets/docs/application.pdf'
-
+import companyIcon from '../../images/favicon.png'
 
 const PdfPage = () => {
   return (
@@ -11,7 +11,6 @@ const PdfPage = () => {
         width="100%"
         height="100%"
       >
-
       </object>
     </div>
   )

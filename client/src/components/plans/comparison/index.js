@@ -44,7 +44,7 @@ const PlanComparison = ({benefits, types, props, homepage}) => {
 
 
   return (
-    <Grid container className={`${classes.comparisonContainer} ${ pointer ? "pointer" : null }`} onClick={() => {
+    <Grid container className={`${classes.comparisonContainer} ${ homepage ? "pointer" : null }`} onClick={() => {
       if (homepage == true) {
         window.scrollTo(0,0)
         props.history.push("/plans")

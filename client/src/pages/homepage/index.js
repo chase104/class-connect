@@ -132,17 +132,22 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = (props) => {
   const classes = useStyles()
 
-  useEffect(() => {
-    window.scrollTo(0,0)
-  }, [])
 
-  const { plans } = useContext(FormContext);
+
+  const { plans, applicationStatus, setStatus } = useContext(FormContext);
 
   const [planData, setPlanData] = useState(plans)
   const [applicationResult, setApplicationResult] = useState(false)
   const [applicationModal, setApplicationModal] = useState(false)
   const [email, setEmail] = useState(false)
 
+    useEffect(() => {
+      if (applicationStatus == true) {
+        setApplicationResult(true)
+        setApplicationModal(true)
+      }
+      window.scrollTo(0,0)
+    }, [])
 
   const successMessage = (
     <div  className={classes.modalHolder}>
@@ -200,7 +205,7 @@ const HomePage = (props) => {
 
   const closeModal = () => {
     setApplicationModal(false)
-    toggleApplication(false, null)
+    setStatus(false)
   }
 
   return (

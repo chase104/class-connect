@@ -13,9 +13,13 @@ const useStyles = makeStyles((theme) => ({
 
 const ApplicationPage = ({
   youState,
+  setYouState,
   studentState,
+  setStudentState,
   planState,
+  setPlanState,
   appLocation,
+  setAppLocation,
   changeAppLocation,
   submitApplication,
 }) => {
@@ -34,10 +38,32 @@ const ApplicationPage = ({
 
   const addStateChangeLocation = (newLocation, tab) => {
     if (tab) {
-      changeAppLocation(newLocation, pageState, tab);
+      changeAppLocation(
+        newLocation,
+        pageState,
+        tab,
+        appLocation,
+        setAppLocation,
+        youState,
+        setYouState,
+        studentState,
+        setStudentState,
+        planState,
+        setPlanState);
       setPageState(null);
     } else {
-      changeAppLocation(newLocation, pageState);
+      changeAppLocation(
+        newLocation,
+        pageState,
+        null,
+        appLocation,
+        setAppLocation,
+        youState,
+        setYouState,
+        studentState,
+        setStudentState,
+        planState,
+        setPlanState);
       setPageState(null);
     }
   };

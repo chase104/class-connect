@@ -18,6 +18,7 @@ import Games from "./pages/games/index.js";
 import Homepage from "./pages/homepage/index.js";
 import Login from "./pages/login/index.js";
 import PdfPage from "./pages/pdf-page/index.js";
+import Pdf from './pages/pdf-practice/index.js'
 import Application from "./pages/application/index.js";
 import Faq from "./pages/faq/index.js";
 import Plans from "./pages/plans/index.js";
@@ -83,6 +84,7 @@ export default function App() {
               <Route path="/login" component={Login} />
               <Route path="/faq" component={Faq} />
               <Route path="/plans" component={Plans} />
+              <Route path="/pdf" component={Pdf} />
               <Route path="/" component={Footer} />
             </div>
           </div>

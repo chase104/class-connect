@@ -9,6 +9,7 @@ import fullImage from "../assets/images/image-full.png";
 export const FormContext = createContext(null);
 
 export function FormProvider({ children }) {
+  const [applicationStatus, setStatus] = useState(false)
   const [studentState, setStudentState] = useState([
     [
       {
@@ -17,14 +18,14 @@ export function FormProvider({ children }) {
       },
       {
         type: "input",
-        key: "first-name",
+        key: "firstname",
         location: "101",
         label: "First name",
         answer: null,
       },
       {
         type: "input",
-        key: "last-name",
+        key: "lastname",
         location: "102",
         label: "Last name",
         answer: null,
@@ -72,7 +73,7 @@ export function FormProvider({ children }) {
       },
       {
         type: "input",
-        key: "years-studied",
+        key: "years studied",
         location: "113",
         label: "Years Studying English",
         answer: null,
@@ -101,7 +102,7 @@ export function FormProvider({ children }) {
       },
       {
         type: "calendar",
-        key: "startdate",
+        key: "start date",
         location: "202",
         label: "Desired Start Date",
         answer: null,
@@ -161,6 +162,7 @@ export function FormProvider({ children }) {
     },
   ]);
 
+
   return (
     <FormContext.Provider
       value={{
@@ -170,6 +172,8 @@ export function FormProvider({ children }) {
         setPlanState,
         plans,
         setPlans,
+        applicationStatus,
+        setStatus
       }}
     >
       {children}

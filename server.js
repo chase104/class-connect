@@ -7,8 +7,8 @@ const nodemailer = require('nodemailer')
 const pdf = require('html-pdf')
 const fs = require('fs')
 
-const pdfTemplate = require('./server-assets/practice.js')
-const applicationTemplate = require('./server-assets/index.js')
+const lessonTemplatePdf = require('./server-assets/lesson-materials.js')
+const applicationTemplatePdf = require('./server-assets/application-template-pdf.js')
 
 const app = express()
 require('dotenv').config()
@@ -32,6 +32,7 @@ app.post("/new-account", (req, res) => {
     }
   });
 });
+
 app.get("/get-account", (req, res) => {
   const accountInformation = req.body;
   AccountModel.find(accountInformation, (err, data) => {
@@ -43,9 +44,15 @@ app.get("/get-account", (req, res) => {
   });
 });
 
+app.get("/pdf", (req, res) => {
+  pdf.create(applicationTemplatePdf(req.body), {}).toFile(`application-copy-${req.body.parentName}.pdf`, (err) => {
+
+  })
+})
+
 app.delete("/delete-trials", (req, res) => {
   const accountInformation = req.body;
-  AccountModel.deleteMany(accountInformation, (err, data) => {
+  ApplicationModel.deleteMany(accountInformation, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -84,7 +91,15 @@ app.post("/submit-application", (req, res) => {
 
       `
       //generate pdf
-      pdf.create(pdfTemplate(req.body), {}).toFile(`application-copy-${req.body.parentName}.pdf`, (err) => {
+      const pdfSettings  = {
+        "header": {
+      "height": "8mm",
+      },
+        "footer": {
+      "height": "28mm"
+      }
+    }
+      pdf.create(applicationTemplatePdf(req.body), pdfSettings).toFile(`application-copy-${req.body.parentName}.pdf`, (err) => {
         let mailOptions = {
           from: 'chase.vanhalen2@gmail.com',
           to: req.body.email,
@@ -107,7 +122,7 @@ app.post("/submit-application", (req, res) => {
             })
           }
         })
-        res.status(201).send(data)
+        res.status(201).send("finished")
       })
 
     }

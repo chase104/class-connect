@@ -1,4 +1,4 @@
-
+const moment = require('moment')
 module.exports = (data) => {
   console.log("data: ",data);
   data.applicationData.map((page) => {
@@ -6,6 +6,21 @@ module.exports = (data) => {
   })
   const displayData = data.applicationData
   const today = new Date()
+
+
+  const mapFunction = (array) => {
+    let html = `<div>${
+      array.map((item) => {
+        let key = Object.keys(item)[0]
+        return `<div class="item-li">
+            <div class="item-title">${key}:</div>
+            <div class="item-value">${item[key] != undefined ? key == "start date" ? moment(item[key]).format('MMM Do YY') : item[key] : `no answer`}</div>
+          </div>`
+      }).join('')
+    }</div>`
+    return html
+  }
+
   return `
   <!doctype html>
      <html>
@@ -18,8 +33,7 @@ module.exports = (data) => {
                min-width: 800px;
                min-height: 100vh;
                margin: auto;
-               padding: 30px;
-               border: 1px solid #eee;
+               padding-left: 30px;
                box-shadow: 0 0 10px rgba(0, 0, 0, .15);
                font-size: 16px;
                line-height: 24px;
@@ -30,6 +44,8 @@ module.exports = (data) => {
              }
              .header-row{
                height: fit-content;
+               width: 100%;
+               display: inline-block;
              }
              .unit-holder{
                margin-left: 24px;
@@ -39,9 +55,8 @@ module.exports = (data) => {
              }
              .row-two{
                height: fit-content;
-               display: inline-block;
-               width: 85%;
-               border: 1px solid black;
+               display: block;
+               width: 100%;
                padding-left: 8px;
              }
              .lesson-title{
@@ -65,6 +80,7 @@ module.exports = (data) => {
                display: inline-block;
                max-width: 30%;
                float: right;
+               margin-right: 10%;
              }
              .unit-title{
                  font-size: 24px
@@ -97,6 +113,27 @@ module.exports = (data) => {
                font-weight: bold;
                margin-top: 12px
              }
+             .item-li{
+               margin: 0px !important;
+               width: 100%;
+               display: block;
+             }
+             .item-title{
+               display: inline-block;
+               font-weight: bold;
+             }
+             .item-value{
+               display: inline-block;
+             }
+             .unit-overview-contents{
+               position: relative;
+             }
+             .stay-together{
+               display: block;
+               width: 100%;
+               position: relative;
+               page-break-inside: avoid;
+             }
 
            </style>
         </head>
@@ -109,17 +146,24 @@ module.exports = (data) => {
                 <div class="person-title">Parent: ${data.parentName}</div>
                 <div class="person-title">Student: ${data.studentName}</div>
               </div>
-              <div class="date">Submit Date: ${data.submitDate}</div>
+              <div class="date">Submit Date: ${moment(data.submitDate).format('MMM Do YY')}</div>
              </div>
              <div class="row-two">
               <div class="big-title">Application Contents</div>
               <div class="unit-overview-contents">
               ${
                 displayData.map((array) => {
+                  let title = array[0].sectionTitle
+                  array.shift()
                   return `
-                  <h5>${array[0].sectionTitle}</h5>
+                  <div class="stay-together">
+                    <h3>${title}</h5>
+                    <div>
+                    ${mapFunction(array)}
+                    </div>
+                  </div>
                   `
-                })
+                }).join('')
                 }
                 <div class="very-big-column">
 

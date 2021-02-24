@@ -33,8 +33,8 @@ const useStyles = makeStyles((theme) => ({
 const Application = (props) => {
   const classes = useStyles();
 
-  const { appLocation, youState } = useContext(YouContext);
-  const { planState, studentState } = useContext(FormContext);
+  const { appLocation, setAppLocation, youState, setYouState } = useContext(YouContext);
+  const { planState, setPlanState, studentState, setStudentState, setStatus } = useContext(FormContext);
 
   return (
     <div style={{ marginBottom: "10vh" }}>
@@ -48,11 +48,15 @@ const Application = (props) => {
       >
         <ApplicationPage
           youState={youState}
+          setYouState={setYouState}
           studentState={studentState}
+          setStudentState={setStudentState}
           planState={planState}
+          setPlanState={setPlanState}
           appLocation={appLocation}
+          setAppLocation={setAppLocation}
           changeAppLocation={changeAppLocation}
-          submitApplication={submitApplication}
+          submitApplication={() => submitApplication(youState, studentState, planState, props, setStatus)}
         />
       </div>
     </div>

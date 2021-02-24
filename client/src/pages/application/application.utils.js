@@ -1,6 +1,21 @@
 import axios from "axios";
+import { Redirect } from 'react-router-dom'
 
-export const changeAppLocation = (newLocation, pageState, tab) => {
+
+
+
+export const changeAppLocation = (newLocation,
+  pageState,
+  tab,
+  appLocation,
+  setAppLocation,
+  youState,
+  setYouState,
+  studentState,
+  setStudentState,
+  planState,
+  setPlanState) => {
+  console.log(appLocation);
   let newState;
   const navigate = (stateLength, type) => {
     let previousPageLastPart;
@@ -71,7 +86,13 @@ export const changeAppLocation = (newLocation, pageState, tab) => {
   }
 };
 
-export const submitApplication = () => {
+export const submitApplication = (
+  youState,
+  studentState,
+  planState,
+  props,
+  setStatus
+) => {
   let applicationData = [];
 
   const processSection = (section) => {
@@ -104,9 +125,13 @@ export const submitApplication = () => {
       applicationData: applicationData,
       submitDate: new Date(),
       studentName: studentState[0][1].answer + " " + studentState[0][2].answer,
+      parentName: youState[0][1].answer + "-" + youState[0][2].answer,
       applicationStatus: "pending",
     },
   }).then((res) => {
-    props.history.push("/");
+    if (res.status >= 200) {
+      setStatus(true)
+      props.history.push("/");
+    }
   });
 };

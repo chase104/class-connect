@@ -72,7 +72,7 @@ module.exports = (data) => {
              }
              .border{
                border: 1px solid black;
-               padding-left: 4px;
+               padding: 4px;
              }
              .off-color{
                background-color:  #e6e6e6;
