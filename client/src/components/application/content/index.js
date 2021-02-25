@@ -12,6 +12,7 @@ import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import moment from 'moment'
 
 import Select from "@material-ui/core/Select";
 
@@ -254,7 +255,7 @@ const Content = ({
             }}
           >
             <div className={classes.sectionTitle}>{page[i].label + ": "}</div>
-            <div>{page[i].answer != null ? page[i].answer : "no answer"}</div>
+            <div>{page[i].answer != null ? page[i].key == "start date" ? moment(page[i].answer).format("MMM Do YY") : page[i].answer : "no answer"}</div>
           </div>
         );
       }

@@ -242,144 +242,63 @@ const ResourceRow = ({ type, title, subtitle }) => {
 
   const bottomButtons = () => {
     let finalButton;
+    let href;
+    let buttonContent;
     switch (modalInformation.id) {
       case 0:
-        finalButton = (
-          <a
-            target="_"
             href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              View A Sample Class{" "}
-            </Button>
-          </a>
-        );
+            buttonContent="View Sample Class"
         break;
       case 1:
-        finalButton = (
-          <a
-            target="_"
             href="/pdfpage"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              View Example Materials{" "}
-            </Button>
-          </a>
-        );
+            buttonContent="Example Materials"
         break;
       case 2:
-        finalButton = (
-          <a
-            target="_"
             href="/games"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              See Example Game{" "}
-            </Button>
-          </a>
-        );
+            buttonContent="Games Page"
         break;
       case 3:
-        finalButton = (
-          <a
-            target="_"
             href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              Contact Team{" "}
-            </Button>
-          </a>
-        );
+            buttonContent="Contact team"
         break;
       case 4:
-        finalButton = (
-          <a
-            target="_"
             href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              See Example Report{" "}
-            </Button>
-          </a>
-        );
+            buttonContent="Example Report"
         break;
       case 5:
-        finalButton = (
-          <a
-            target="_"
-            href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              Visit FAQ Page{" "}
-            </Button>
-          </a>
-        );
-        break;
+            href="/faq"
+            buttonContent="View Faq"
+          break;
       case 6:
-        finalButton = (
-          <a
-            target="_"
-            href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              Request Consultation{" "}
-            </Button>
-          </a>
-        );
-        break;
+            href="/consultation"
+            buttonContent="Request Consultation"
+          break;
       case 7:
-        finalButton = (
-          <a
-            target="_"
-            href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              Start / Continue Application{" "}
-            </Button>
-          </a>
-        );
+            href="/application"
+            buttonContent="Start Application"
         break;
       case 8:
-        finalButton = (
-          <a
-            target="_"
             href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            className="no-decoration"
-            style={{ marginLeft: "auto", marginRight: "5vw" }}
-          >
-            <Button className={`${classes.bottomButton} bottom-button`}>
-              {" "}
-              View Application Progress{" "}
-            </Button>
-          </a>
-        );
+            buttonContent="View Your Status"
         break;
-    }
+      case 9:
+            href="https://www.youtube.com/watch?v=E_z6SWNTOak"
+            buttonContent="View Sample Class"
+        break;
 
+    }
+    finalButton = (
+      <a
+        target="_"
+        href={href}
+        className="no-decoration"
+        style={{ marginLeft: "auto", marginRight: "5vw" }}
+      >
+        <Button className={`${classes.bottomButton} bottom-button`}>
+          {buttonContent}
+        </Button>
+      </a>
+    );
     return finalButton;
   };
 

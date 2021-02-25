@@ -1,6 +1,8 @@
 import React from 'react'
 import './styles.css'
 import { Grid, Typography, makeStyles } from '@material-ui/core'
+import classNames from 'classnames'
+
 
 const useStyles = makeStyles((theme) => ({
   tab:{
@@ -23,16 +25,22 @@ const useStyles = makeStyles((theme) => ({
   tabHolder:{
     display: "flex",
     justifyContent: "center"
+  },
+  admin:{
+    background: "#4c1fcd !important"
+  },
+  super:{
+    background: "#cd911f !important"
   }
 }))
 
-const Tab = ({message}) => {
+const Tab = ({message, superAdmin, admin}) => {
   const classes = useStyles();
 
   return (
     <Grid container  justify="end">
       <Grid item xs={6} sm={6} className={classes.tabHolder}>
-        <div className={classes.tab}>{message}</div>
+        <div className={superAdmin == true ? classNames(classes.tab, classes.super) : admin == true ? classNames(classes.tab, classes.admin)  : classes.tab}>{message}</div>
       </Grid>
       <Grid item xs={2} sm={2}>
       </Grid>
