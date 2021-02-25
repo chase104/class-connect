@@ -161,9 +161,6 @@ app.get('/api/customers', (req, res) => {
   res.json(customers);
 });
 
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 
 const port = process.env.PORT || 5000;
 
