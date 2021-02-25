@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require("path");
 const mongoose = require('mongoose')
 const AccountModel = require('./dbUser.js')
 const ApplicationModel = require('./dbApplication')
@@ -12,6 +13,7 @@ const applicationTemplatePdf = require('./server-assets/application-template-pdf
 
 const app = express()
 require('dotenv').config()
+console.log(process.env.MONGODBPASSWORD);
 const connection_url = `mongodb+srv://dbAdmin:${process.env.MONGODBPASSWORD}@cluster0.a3pnl.mongodb.net/userDb?retryWrites=true&w=majority`
 
 app.use(bodyParser.json());
@@ -21,6 +23,10 @@ mongoose.connect(connection_url, {
   useCreateIndex: true,
   useUnifiedTopology: true,
 });
+
+// Set Static Folders
+app.use(express.static(path.join(__dirname, "client", "build")));
+
 
 app.post("/new-account", (req, res) => {
   const accountInformation = req.body;
