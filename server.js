@@ -15,7 +15,7 @@ const app = express()
 require('dotenv').config()
 console.log(process.env.MONGODBPASSWORD);
 const connection_url = `mongodb+srv://dbAdmin:${process.env.MONGODBPASSWORD}@cluster0.a3pnl.mongodb.net/userDb?retryWrites=true&w=majority`
-
+console.log(connection_url);
 app.use(bodyParser.json());
 
 mongoose.connect(connection_url, {
@@ -161,11 +161,10 @@ app.get('/api/customers', (req, res) => {
   res.json(customers);
 });
 
-const port = 5000;
 
-app.listen(port, () =>
+app.listen(process.env.PORT, () =>
   console.log(
-    `Server started on port: ${port}`,
+    `Server started on port: ${process.env.PORT}`,
     `variable one: ${process.env.VARIABLEONE}`
   )
 );
