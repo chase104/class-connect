@@ -26,6 +26,10 @@ mongoose.connect(connection_url, {
   useUnifiedTopology: true,
 });
 
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 // Set Static Folders
 app.use(express.static(path.join(__dirname, "client", "build")));
 
@@ -163,9 +167,7 @@ app.get('/api/customers', (req, res) => {
   res.json(customers);
 });
 
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+
 
 const port = process.env.PORT || 5000;
 
