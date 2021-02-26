@@ -13,10 +13,12 @@ const applicationTemplatePdf = require('./server-assets/application-template-pdf
 
 const app = express()
 require('dotenv').config()
-console.log(process.env.MONGODBPASSWORD);
+
 const connection_url = `mongodb+srv://dbAdmin:${process.env.MONGODBPASSWORD}@cluster0.a3pnl.mongodb.net/userDb?retryWrites=true&w=majority`
-console.log(connection_url);
-app.use(bodyParser.json());
+
+// initialize body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 mongoose.connect(connection_url, {
   useNewUrlParser: true,
@@ -161,8 +163,12 @@ app.get('/api/customers', (req, res) => {
   res.json(customers);
 });
 
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 const port = process.env.SERVERPORT || 5000;
+
 console.log(port);
 app.listen(port, () =>
   console.log(
