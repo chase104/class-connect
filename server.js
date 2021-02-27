@@ -28,8 +28,13 @@ mongoose.connect(connection_url, {
 
 
 // Set Static Folders
-app.use(express.static(path.join(__dirname, "client", "build")));
-
+console.log("node env: ", process.env.NODE_ENV);
+console.log(path.join(__dirname, "client", "build"));
+if (process.env.NODE_ENV === "production") {
+  //server static content
+  //npm run build
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
 
 app.post("/new-account", (req, res) => {
   const accountInformation = req.body;
@@ -165,17 +170,14 @@ app.get('/api/customers', (req, res) => {
 });
 
 app.get("*", function(req, res) {
-  console.log("primary call");
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 
 const port = process.env.PORT || 5000;
 
-console.log(port);
 app.listen(port, () =>
   console.log(
     `Server started on port: ${port}`,
-    `variable one: ${process.env.VARIABLEONE}`
   )
 );
