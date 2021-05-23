@@ -34,7 +34,11 @@ const useStyles = makeStyles((theme) => ({
     color: "white"
   },
   listHolder: {
-    fontSize: "1.6vw"
+    fontSize: "1.6vw",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "20px",
+      marginLeft: "8px"
+    }
   },
   centerItems:{
     display: "flex",
@@ -61,7 +65,7 @@ const Footer = () => {
     <div className={classes.footerContainer} style={{
 }}>
       <Grid container className={classes.gridContainer}>
-        <Grid item xs={3} sm={3} md={3} className={classes.footerBlock} style={{}}>
+        <Grid item xs={10} sm={3} md={3} className={classes.footerBlock} style={{}}>
           <div className={classes.footerTitle}>APP By Chase Van Halen</div>
           <div className={classes.listHolder}>
             <div>chase.vanhalen88@gmail.com</div>
@@ -69,7 +73,7 @@ const Footer = () => {
             <div className="link-hover"><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>GitHub <ExitToAppIcon /></a></div>
           </div>
         </Grid>
-        <Grid item xs={3} sm={3} md={3} className={classes.footerBlock} style={{borderRight: "1px solid black", paddingLeft: "12px", borderLeft: "1px solid black"}}>
+        <Grid item xs={10} sm={3} md={3} className={`${classes.footerBlock} middle-div`} style={{}}>
         <div  className={classes.footerTitle}>Other Apps By Chase</div>
         <div className={classes.listHolder}>
           <div className="link-hover"><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>FreeFinance <ExitToAppIcon /></a></div>
@@ -78,7 +82,7 @@ const Footer = () => {
           <div className="link-hover"><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>Local Business Hub <ExitToAppIcon /></a></div>
         </div>
         </Grid>
-        <Grid item xs={3} sm={3} md={3} className={classes.footerBlock} style={{marginLeft: "12px"}}>
+        <Grid item xs={10} sm={3} md={3} className={classes.footerBlock} style={{marginLeft: "12px"}}>
         <div  className={classes.footerTitle}>Is Chase Available For A Job?</div>
         <div className="blinker-holder">
         {blinkerState ? <FlareIcon  className="blinker-icon"/> : <RemoveIcon className="blinker-icon"/>}

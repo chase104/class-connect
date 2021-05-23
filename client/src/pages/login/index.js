@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "20vh",
     boxShadow: "4px 4px 16px darkgrey",
     maxWidth: "50vw",
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "84vw",
+    },
   },
   form: {
     padding: "20px 0px !important",
@@ -28,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
   },
   textField: {
     width: "50%",
+    [theme.breakpoints.down("xs")]: {
+      width: "90%",
+    },
   },
   button: {
     marginTop: "12px",

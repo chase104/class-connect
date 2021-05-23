@@ -1,0 +1,6 @@
+.package-benefits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 0px;
+}

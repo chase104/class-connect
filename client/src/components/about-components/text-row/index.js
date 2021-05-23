@@ -136,7 +136,7 @@ const TextRow = ({ image, rowId, title, subtitle, type }) => {
       </div>
       <Grid container className={classes.rowOneContainer}>
         <Grid container style={{ maxHeight: "24vh" }}>
-          <Grid item sm={2} xs={3} style={{ display: "flex" }}>
+          <Grid item sm={2} xs={3} className="text-row-icon">
             <img
               src={image}
               className={classes.rowOneImage}
@@ -146,7 +146,7 @@ const TextRow = ({ image, rowId, title, subtitle, type }) => {
               }}
             />
           </Grid>
-          <Grid item xs={9} s={9} md={9}>
+          <Grid item xs={12} s={9} md={9}>
             <Grid container>
               <Grid item xs={12} s={12} m={12}>
                 <div

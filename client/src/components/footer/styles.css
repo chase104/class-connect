@@ -1,25 +1,38 @@
-.blinker-holder{
+.blinker-holder {
   display: flex;
   flex-direction: row;
-  align-items: center
+  align-items: center;
 }
-.blinker-icon{
+.blinker-icon {
   color: white;
-  width: 2vw !important;
-  height: 2vw !important;
+  width: 20px !important;
+  height: 20px !important;
 }
-.available-color{
+.middle-div {
+  borde-right: 1px solid black;
+  border-left: 1px solid black;
+}
+.available-color {
   color: white;
-  font-size:  2rem
+  font-size: 2rem;
 }
-a{
+a {
   width: fit-content;
 }
-.link-hover{
-    width: fit-content;
-    background-color: #1FC3CD;
-    padding: 4px;
+.link-hover {
+  width: fit-content;
+  background-color: #1fc3cd;
+  padding: 4px;
 }
-.link-hover:hover{
+.link-hover:hover {
   filter: brightness(90%);
+}
+@media (max-width: 700px) {
+  .middle-div {
+    border-right: 0px;
+    border-left: 0px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 8px 0px;
+  }
 }

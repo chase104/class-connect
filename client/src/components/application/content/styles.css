@@ -1,19 +1,25 @@
-.button-hover:hover{
-  filter:brightness(80%);
+.button-hover:hover {
+  filter: brightness(80%);
 }
 
-
-.arrow-right{
+.control-label {
+  margin: 4vw 12vw !important;
+}
+.answer-div {
+  margin-left: auto;
+  margin-right: 10%;
+}
+.arrow-right {
   font-size: 3rem;
   transition: 1000ms ease-in-out !important;
   transition-property: margin-left, margin-right !important;
   margin-left: 0px;
-  margin-right: 0px
+  margin-right: 0px;
 }
-.arrow-left{
+.arrow-left {
   font-size: 3rem;
   transition: 1000ms ease-in-out !important;
   transition-property: margin-left, margin-right !important;
-  margin-left: -40px ;
-  margin-right: 40px ;
+  margin-left: -40px;
+  margin-right: 40px;
 }

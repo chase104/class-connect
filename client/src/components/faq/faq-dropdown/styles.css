@@ -1,43 +1,40 @@
-
-.faq-even{
+.faq-even {
   background-color: #e6e6e6;
-  cursor: pointer
+  cursor: pointer;
 }
-.faq-even:hover{
-  background-color: #cccccc
-}
-
-.even-down{
-  background-color:  #d9d9d9 !important;
+.faq-even:hover {
+  background-color: #cccccc;
 }
 
-.faq-odd{
+.even-down {
+  background-color: #d9d9d9 !important;
+}
+
+.faq-odd {
   background-color: white;
   cursor: pointer;
 }
-.faq-odd:hover{
+.faq-odd:hover {
   background-color: #d9d9d9;
 }
 
-.odd-down{
-  background-color:  #bfbfbf !important;
+.odd-down {
+  background-color: #bfbfbf !important;
 }
 
-
-
-.answer-div{
-  overflow: hidden
+.faq-answer-div {
+  overflow: hidden;
 }
-.display-on{
+.display-on {
   max-height: 60vh;
   transition: 500ms;
   transition-property: max-height;
-  transition-timing-function: cubic-bezier(0,0,0.78,1);
+  transition-timing-function: cubic-bezier(0, 0, 0.78, 1);
 }
-.display-none{
+.display-none {
   max-height: 0vh;
   transition: 500ms;
   transition-property: max-height;
-  transition-timing-function: cubic-bezier(0,0,0.78,1);
-  overflow: hidden
+  transition-timing-function: cubic-bezier(0, 0, 0.78, 1);
+  overflow: hidden;
 }

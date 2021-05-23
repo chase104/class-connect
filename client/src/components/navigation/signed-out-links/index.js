@@ -12,7 +12,7 @@ const SignedOutLinks = () => {
 
   return (
     <div className="icon-group-holder">
-      <Grid container>
+      <Grid container className="navbar-grid">
 
         <Grid item sm={3}>
           <Link to="/plans" className="no-decoration">
@@ -22,9 +22,9 @@ const SignedOutLinks = () => {
                   PLANS
                 </h4>
                 <div className="small-icons-holder">
-                    <AssignmentTurnedInIcon fontSize="small" style={{color: "white"}}/>
-                    <AssignmentTurnedInIcon fontSize="small" style={{color: "white"}}/>
-                    <AssignmentTurnedInIcon fontSize="small" style={{color: "white"}}/>
+                    <AssignmentTurnedInIcon className="plan-icon" fontSize="small" style={{color: "white"}}/>
+                    <AssignmentTurnedInIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
+                    <AssignmentTurnedInIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
                 </div>
               </div>
             </div>

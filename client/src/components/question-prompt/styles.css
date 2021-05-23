@@ -1,11 +1,22 @@
-.individual-prompt:hover{
+.individual-prompt:hover {
   filter: brightness(90%);
-  cursor: pointer
+  cursor: pointer;
 }
-.mouse-down{
-  filter:brightness(100%) !important;
+.prompt-border {
+  borde-right: 1px solid black;
+}
+
+.mouse-down {
+  filter: brightness(100%) !important;
 }
 .application-button:hover {
   filter: brightness(90%);
-  cursor: pointer
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .prompt-border {
+    border-right: 0px;
+    border-bottom: 1px solid black;
+  }
 }

@@ -76,7 +76,7 @@ export function YouProvider({ children }) {
       },
       {
         type: "select",
-        key: "relation to student",
+        key: "relation",
         location: "013",
         label: "Relation To Student",
         answer: null,

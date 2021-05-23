@@ -24,7 +24,12 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "40vh",
     height: "40vh",
     overflow: "hidden",
+    [theme.breakpoints.down('xs')]: {
+      maxHeight: "fit-content",
+      height: "fit-content"
+    }
   },
+  
   homeAboutContainer: {
     height: "40vh",
     position: "relative",
@@ -36,7 +41,10 @@ const useStyles = makeStyles((theme) => ({
   },
   playerWrapper: {
     position: "relative",
-    paddingTop: "56.25% " /* Player ratio: 100 / (1280 / 720) */,
+    paddingTop: "60% " /* Player ratio: 100 / (1280 / 720) */,
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: "90%",
+    }
   },
 
   reactPlayer: {
@@ -73,6 +81,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "18px"
   }
 },
+  videoHolder:{
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: "30px"
+    }
+  },
   modalTitle:{
     marginLeft: "auto",
     marginRight: "auto"
@@ -152,7 +165,6 @@ const HomePage = (props) => {
   const successMessage = (
     <div  className={classes.modalHolder}>
       <div className={classes.modalTitleHolder}>
-
         <div className={classes.modalTitle}>Success!</div>
         <IconButton className={classes.closeButton} onClick={() => closeModal()}>
           <CloseIcon />
@@ -214,7 +226,7 @@ const HomePage = (props) => {
       <Grid container className={classes.rowOneContainer}>
         <Grid item xs={11} sm={10}>
           <Grid container style={{ justifyContent: "center" }}>
-            <Grid xs={6} sm={6} md={6}>
+            <Grid xs={12} sm={6} md={6} className={classes.videoHolder}>
               <div className={classes.playerWrapper}>
                 <ReactPlayer
                   className={classes.reactPlayer}
@@ -224,7 +236,7 @@ const HomePage = (props) => {
                 />
               </div>
             </Grid>
-            <Grid xs={6} sm={6} md={6} style={{ backgroundColor: "white" }}>
+            <Grid xs={12} sm={6} md={6} style={{ backgroundColor: "white" }}>
               <Link to="/about" className="no-decoration">
                 <div className={`${classes.homeAboutContainer} `}>
                   <div className={classes.textHolder}>

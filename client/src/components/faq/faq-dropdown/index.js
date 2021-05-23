@@ -68,7 +68,7 @@ const FaqDropdown = ({ question, faqId, answer }) => {
         </div>
       </div>
       <div
-        className={`answer-div ${classes.answerContainer} ${
+        className={`faq-answer-div ${classes.answerContainer} ${
           answerState ? "display-on" : "display-none"
         }`}
       >

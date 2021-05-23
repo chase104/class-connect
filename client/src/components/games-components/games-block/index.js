@@ -31,7 +31,7 @@ const IndividualGame = ({ image, gameId, openModal }) => {
   return (
     <Grid
       item
-      xs={3}
+      xs={6}
       sm={3}
       id={gameId}
       className={` no-select ${classes.gameBlock} ${

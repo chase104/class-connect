@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "12px 0px",
     fontSize: "3vw",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "3.5vw",
+      fontSize: "20px",
     },
   },
   titleGridDiv: {
@@ -49,14 +49,14 @@ const Navbar = (props) => {
     >
       <Toolbar className="header-holder">
         <Grid container style={{ minHeight: "inherit" }}>
-          <Grid item xs={8} sm={7} md={7} className={classes.titleGridDiv}>
+          <Grid item xs={12} sm={7} md={7} className={classes.titleGridDiv}>
             <Link to="/" className="no-decoration">
               <Typography variant="h3" className={classes.appTitle}>
                 The Adventurer's College
               </Typography>
             </Link>
           </Grid>
-          <Grid item sx={4} sm={5} md={5}>
+          <Grid item sx={12} sm={5} md={5} className="navbar-icons">
             <SignedOutLinks />
           </Grid>
         </Grid>

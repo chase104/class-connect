@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
   },
   packageTitle:{
     fontWeight: "bold",
-    fontSize: "18px"
+    fontSize: "18px",
+    marginTop: "12px"
   },
   packageBlock:{
     backgroundColor: "white"
@@ -55,7 +56,7 @@ const PlanComparison = ({benefits, types, props, homepage}) => {
     >
         <Grid item xs={11} sm={10} md={10} className={classes.comparisonBlock}>
           <Grid container>
-            <Grid item xs={4} sm={4} className={`${classes.packageBlock} archer-block`}>
+            <Grid item xs={12} sm={4} className={`${classes.packageBlock} archer-block`}>
               <div className={classes.packageTitle}>{types[0] + " Package"}</div>
               <div style={{marginTop: "12px", marginBottom: "24px"}}>
                 {benefits[0].map((benefit) => {
@@ -70,7 +71,7 @@ const PlanComparison = ({benefits, types, props, homepage}) => {
                 })}
               </div>
             </Grid>
-            <Grid item xs={4} sm={4} className={classes.packageBlockTwo}>
+            <Grid item xs={12} sm={4} className={classes.packageBlockTwo}>
               <div className={classes.packageTitle}>{types[1]  + " Package"}</div>
               <div style={{marginTop: "12px", marginBottom: "24px"}}>
                 {benefits[1].map((benefit) => {
@@ -85,7 +86,7 @@ const PlanComparison = ({benefits, types, props, homepage}) => {
                 })}
               </div>
             </Grid>
-            <Grid item xs={4} sm={4} className={classes.packageBlock}>
+            <Grid item xs={12} sm={4} className={classes.packageBlock}>
               <div className={classes.packageTitle}>{types[2]  + " Package"}</div>
               <div style={{marginTop: "12px", marginBottom: "24px"}}>
                 {benefits[2].map((benefit) => {

@@ -52,10 +52,16 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1vh",
     marginTop: "4vh",
     width: "fit-content",
+    background: "#1fc3cd",
+    width: "100%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "40px",
+    },
   },
   sectionTitle: {
     marginRight: "8px",
     fontWeight: "bold",
+    textAlign: "left"
   },
   calendarHolder: {
     marginTop: "16px",
@@ -73,9 +79,7 @@ const useStyles = makeStyles((theme) => ({
   summaryColumn: {
     marginTop: "5vh",
   },
-  columnContent: {
-    marginLeft: "10%",
-  },
+
   displayButtonHolder: {
     display: "flex !important",
     flexDirection: "column",
@@ -105,6 +109,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
   },
+  columnContent:{
+    padding: "0px 12px",
+    [theme.breakpoints.down("xs")]: {
+      padding: "0px"
+    }
+  }
 }));
 
 const Content = ({
@@ -246,16 +256,19 @@ const Content = ({
       if (page[i].type == "title") {
         pageItem = <div className={classes.summaryTitle}>{page[i].label}</div>;
       } else {
+        
         pageItem = (
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "start",
+              paddingLeft: "10%",
+              backgroundColor: Number.isInteger(i/2) == true ?"#e6e6e6" : "white"
             }}
           >
             <div className={classes.sectionTitle}>{page[i].label + ": "}</div>
-            <div>{page[i].answer != null ? page[i].key == "start date" ? moment(page[i].answer).format("MMM Do YY") : page[i].answer : "no answer"}</div>
+            <div className="answer-div">{page[i].answer != null ? page[i].key == "start date" ? moment(page[i].answer).format("MMM Do YY") : page[i].answer : "no answer"}</div>
           </div>
         );
       }
@@ -285,6 +298,7 @@ const Content = ({
       <form className={classes.form}>
         {appLocation[0] == 0
           ? youState[appLocation[1]].map((component) => {
+              console.log(component)
               if (component.type == "input") {
                 return (
                   <TextField
@@ -335,6 +349,7 @@ const Content = ({
             })
           : appLocation[0] == 1
           ? studentState[appLocation[1]].map((component) => {
+            console.log(component)
               if (component.type == "input") {
                 return (
                   <TextField
@@ -389,6 +404,7 @@ const Content = ({
               }
             })
           : planState[appLocation[1]].map((component) => {
+            console.log(component)
               if (component.type == "input") {
                 return (
                   <TextField
@@ -465,16 +481,16 @@ const Content = ({
       {returnTitle()}
       {appLocation[0] == 3 ? (
         <Grid container style={{ display: "flex", marginBottom: "4vh" }}>
-          <Grid xs={6} sm={6} md={4} className={classes.summaryColumn}>
-            <div className={classes.columnContent}>{returnSummary("you")}</div>
+          <Grid xs={12} sm={6} md={4} className={classes.summaryColumn}>
+            <div >{returnSummary("you")}</div>
           </Grid>
-          <Grid xs={6} sm={6} md={4} className={classes.summaryColumn}>
+          <Grid xs={12} sm={6} md={4} className={classes.summaryColumn}>
             <div className={classes.columnContent}>
               {returnSummary("student")}
             </div>
           </Grid>
-          <Grid xs={6} sm={6} md={4} className={classes.summaryColumn}>
-            <div className={classes.columnContent}>{returnSummary("plan")}</div>
+          <Grid xs={12} sm={6} md={4} className={classes.summaryColumn}>
+            <div >{returnSummary("plan")}</div>
           </Grid>
         </Grid>
       ) : (
@@ -502,6 +518,7 @@ const Content = ({
                 color="primary"
               />
             }
+            className="control-label"
             label="I've reviewed my application, and all information included is accurate and true"
           />
         </div>

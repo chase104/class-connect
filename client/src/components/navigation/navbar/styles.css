@@ -1,33 +1,41 @@
-
-.MuiAppBar-root{
+.MuiAppBar-root {
 }
-.app-title{
-  font-family: 'Audiowide', cursive !important;
+.navbar-icons {
+  margin-top: 12px;
+  padding-bottom: 8px;
+}
+.app-title {
+  font-family: "Audiowide", cursive !important;
   text-decoration: none;
   color: inherit;
 }
-.header-one{
+.header-one {
   width: 30%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-.header-two{
+.header-two {
   width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.header-three{
+.header-three {
   width: 30%;
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
 }
 
-.flex-display{
-  display: flex
+.flex-display {
+  display: flex;
 }
-.null-display{
-  display: none !important
+.null-display {
+  display: none !important;
+}
+@media (min-width: 700px) {
+  .navbar-icons {
+    min-width: 94vw;
+  }
 }

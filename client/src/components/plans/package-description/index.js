@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#01AA31",
   },
   image: {
-    width: "100%",
+    width: "90%",
+    paddingRight: "8px"
   },
   imageHolder: {
     display: "flex",
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     textAlign: "justify",
-    padding: "0px 8px",
+    padding: "12px",
   },
 }));
 
@@ -65,7 +66,7 @@ const PackageDescription = ({ type, image, benefits, price, description }) => {
           style={{ border: "1px solid black" }}
         >
           <Grid container className={classes.innerContainer}>
-            <Grid item xs={4} sm={4} md={4} style={{ paddingTop: "12px" }}>
+            <Grid item xs={8} sm={4} md={4} className="package-benefits">
               {benefits.map((benefit) => {
                 return (
                   <div className={classes.benefitItem}>
@@ -77,12 +78,12 @@ const PackageDescription = ({ type, image, benefits, price, description }) => {
                 );
               })}
             </Grid>
-            <Grid item xs={3} sm={2} md={2}>
+            <Grid item xs={4} sm={2} md={2}>
               <div className={classes.imageHolder}>
                 <img src={image} className={classes.image} />
               </div>
             </Grid>
-            <Grid item xs={5} sm={6} md={6}>
+            <Grid item xs={12} sm={6} md={6}>
               <div className={classes.description}>{description}</div>
             </Grid>
           </Grid>

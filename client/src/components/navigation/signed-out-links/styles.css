@@ -1,40 +1,51 @@
-.navbar-icon{
+.navbar-icon {
   color: white;
   font-size: 1.6vw;
 }
-.icon-group-holder{
+.plan-icon {
+}
+.icon-group-holder {
   width: 100%;
   height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: stretch;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
 }
-.icon-holder{
+.icon-holder {
   background-color: #1fc3cd;
-  width: 100%
-
+  width: 100%;
 }
-.icon-holder:hover{
+.icon-holder:hover {
   filter: brightness(95%);
 }
-.icon-holder:active{
+.icon-holder:active {
   filter: brightness(100%);
-  background-color:   #21d4de
-
-
+  background-color: #21d4de;
 }
-.title-icon-holder{
+.title-icon-holder {
   display: flex;
   flex-direction: column;
   justify-content: center;
-align-items: center;
+  align-items: center;
 }
 
-.no-margin{
+.no-margin {
   margin: 0px !important;
 }
-.small-icons-holder{
+.small-icons-holder {
   display: flex;
   flex-wrap: nowrap;
-  overflow: overlay
+  overflow: overlay;
+}
+@media (max-width: 700px) {
+  .title-icon-holder h4 {
+    font-size: 20px !important;
+  }
+  .plan-icon {
+    font-size: 30px !important;
+  }
+  .navbar-grid {
+    justify-content: space-around;
+    width: 90vw !important;
+  }
 }

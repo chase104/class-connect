@@ -64,12 +64,11 @@ const QuestionPrompt = ({ props }) => {
         <Grid container style={{ boxShadow: "10px 10px 10px lightslategrey" }}>
           <Grid
             item
-            xs={4}
+            xs={12}
             sm={4}
             className={`${
               classes.individualPrompt
-            } individual-prompt no-select ${mouseDown ? "mouse-down" : null}`}
-            style={{ borderRight: "1px solid black" }}
+            } individual-prompt prompt-border no-select ${mouseDown ? "mouse-down" : null}`}
             onMouseDown={() => handleMouseDown()}
             onMouseUp={() => handleMouseUp()}
             onMouseOut={() => handleMouseUp()}
@@ -79,12 +78,12 @@ const QuestionPrompt = ({ props }) => {
 
           <Grid
             item
-            xs={4}
+            xs={12}
             sm={4}
             className={`${
               classes.individualPrompt
-            } individual-prompt no-select ${mouseDown ? "mouse-down" : null}`}
-            style={{ borderRight: "1px solid black" }}
+            } individual-prompt prompt-border no-select ${mouseDown ? "mouse-down" : null}`}
+           
             onMouseDown={() => handleMouseDown()}
             onMouseUp={() => handleMouseUp()}
             onMouseOut={() => handleMouseUp()}
@@ -98,7 +97,7 @@ const QuestionPrompt = ({ props }) => {
 
           <Grid
             item
-            xs={4}
+            xs={12}
             sm={4}
             className={`${
               classes.individualPrompt

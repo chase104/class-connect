@@ -427,7 +427,7 @@ const ResourceRow = ({ type, title, subtitle }) => {
               ))}
             </Grid>
           ) : (
-            <Grid container style={{ maxHeight: "32vh", minHeight: "32vh" }}>
+            <Grid container className="resource-row-container" >
               {stepInformation.map((step) => (
                 <Resource
                   openModal={(e) => handleOpen(e)}
