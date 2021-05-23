@@ -1,10 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import { PostAdd as PostAddIcon, AssignmentTurnedIn as AssignmentTurnedInIcon} from '@material-ui/icons';
 import './styles.css'
-import { IconButton, Typography, Grid } from '@material-ui/core';
-import { AccountBox as AccountCircleIcon, Notifications as NotifiationsIcon, NotificationImportantIcon as NewNotificationIcon } from '@material-ui/icons';
 
+import { IconButton, Typography, Grid } from '@material-ui/core';
+
+import { PostAdd as PostAddIcon, AssignmentTurnedIn as AssignmentTurnedInIcon} from '@material-ui/icons';
+import { 
+    AccountBox as AccountCircleIcon,
+    Notifications as NotifiationsIcon,
+    NotificationImportantIcon as NewNotificationIcon,
+    Info as InfoIcon,
+    AccountBox as AccountBoxIcon,
+   } from '@material-ui/icons';
 
 
 
@@ -22,8 +29,6 @@ const SignedOutLinks = () => {
                   PLANS
                 </h4>
                 <div className="small-icons-holder">
-                    <AssignmentTurnedInIcon className="plan-icon" fontSize="small" style={{color: "white"}}/>
-                    <AssignmentTurnedInIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
                     <AssignmentTurnedInIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
                 </div>
               </div>
@@ -49,6 +54,9 @@ const SignedOutLinks = () => {
               <h4 className="navbar-icon no-select no-margin" >
                 ABOUT
               </h4>
+              <div className="small-icons-holder">
+                    <InfoIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
+                </div>
             </div>
           </div>
           </Link>
@@ -60,6 +68,9 @@ const SignedOutLinks = () => {
               <h4 className="navbar-icon no-select no-margin" >
                 LOGIN
               </h4>
+              <div className="small-icons-holder">
+                    <AccountBoxIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
+                </div>
             </div>
           </div>
           </Link>

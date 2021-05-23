@@ -54,6 +54,10 @@ const QuestionPrompt = ({ props }) => {
   const handleMouseUp = () => {
     setMouseDown(false);
   };
+  const handleApplicationClick = () => {
+    props.history.push('/application')
+    window.scrollTo(0,0)
+  }
 
   return (
     <Grid container className={classes.promptContainer}>
@@ -125,7 +129,10 @@ const QuestionPrompt = ({ props }) => {
         onMouseDown={() => handleMouseDown()}
         onMouseUp={() => handleMouseUp()}
         onMouseOut={() => handleMouseUp()}
+        onClick={() => handleApplicationClick()}
       >
+        
+
         Click HERE to start a no-commitment application!
       </Grid>
     </Grid>

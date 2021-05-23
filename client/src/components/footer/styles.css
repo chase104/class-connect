@@ -9,8 +9,9 @@
   height: 20px !important;
 }
 .middle-div {
-  borde-right: 1px solid black;
+  border-right: 1px solid black;
   border-left: 1px solid black;
+  padding: 0px 8px;
 }
 .available-color {
   color: white;
