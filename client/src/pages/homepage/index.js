@@ -241,7 +241,7 @@ const HomePage = (props) => {
                 <div className={`${classes.homeAboutContainer} `}>
                   <div className={classes.textHolder}>
                     <Typography variant="body1">
-                      LearningLab is a modern online school that can offer
+                      The Adventurer's College is a modern online school that can offer
                       interactive language classes with native-speaking teachers
                       to you child. Our focus on learning through gamification,
                       which is on the cutting edge of language education,

@@ -121,7 +121,7 @@ export function FormProvider({ children }) {
       ],
       price: 25,
       description:
-        "The Trial package is meant to give you a chance to make sure LearningLab is the right fit for you! You'll be able to access three (3) classes along with the lesson materials for those lessons. In addition to this, you'll have access to the games page while the trial is active.",
+        "The Trial package is meant to give you a chance to make sure The Adventurer's College is the right fit for you! You'll be able to access three (3) classes along with the lesson materials for those lessons. In addition to this, you'll have access to the games page while the trial is active.",
     },
     {
       type: "Archer",
@@ -158,7 +158,7 @@ export function FormProvider({ children }) {
       ],
       price: 695,
       description:
-        "This Full-Access package give you absolutely everything you need for the complete LearningLab experience, in addition to all our other services, you also get access to our exciting host of games related to class-material. This helps greatly to reinforce concepts and terms from class. You'll also have an additional 6 classes added to the course that serve to solidify everything learned. Lastly, you will also be able to schedule two (2) videocalls with a member of our Educational Assistance Team, in which you'll have a conversation about your child's progress.",
+        "This Full-Access package give you absolutely everything you need for the complete The Adventurer's College   experience, in addition to all our other services, you also get access to our exciting host of games related to class-material. This helps greatly to reinforce concepts and terms from class. You'll also have an additional 6 classes added to the course that serve to solidify everything learned. Lastly, you will also be able to schedule two (2) videocalls with a member of our Educational Assistance Team, in which you'll have a conversation about your child's progress.",
     },
   ]);
 
