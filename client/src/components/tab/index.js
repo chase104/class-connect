@@ -7,6 +7,7 @@ import classNames from 'classnames'
 const useStyles = makeStyles((theme) => ({
   tab:{
     fontSize: "30px",
+    fontFamily: "'Audiowide', cursive !important",
     background: "#1FC3CD",
     borderRadius: "0px 0px 20px 20px",
     color: "white",

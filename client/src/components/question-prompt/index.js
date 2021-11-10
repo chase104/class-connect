@@ -12,12 +12,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(255, 255, 255, .8)",
     paddingBottom: "5vh",
     paddingTop: "5vh",
+
   },
   title: {
     display: "flex",
     justifyContent: "center",
     fontSize: "35px",
     marginBottom: "12px",
+    fontFamily: "'Audiowide', cursive !important",
+
   },
   promptFooter: {
     display: "flex",

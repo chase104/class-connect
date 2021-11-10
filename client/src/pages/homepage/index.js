@@ -29,15 +29,26 @@ const useStyles = makeStyles((theme) => ({
       height: "fit-content"
     }
   },
-  
+  rowInnerContainer: {
+    justifyContent: "center",
+    height: "100%"
+  },
+  descriptionContainer: {
+    backgroundColor: "white",
+    position: "relative"
+  },
   homeAboutContainer: {
     height: "40vh",
-    position: "relative",
+    display: "flex",
+    flexDirection: "column"
+    
   },
   textHolder: {
     textAlign: "justify",
     padding: 16,
     fontSize: "24px",
+    marginTop: "auto",
+    marginBottom: "auto"
   },
   playerWrapper: {
     position: "relative",
@@ -224,7 +235,7 @@ const HomePage = (props) => {
       <Tab message="Home" />
       <Grid container className={classes.rowOneContainer}>
         <Grid item xs={11} sm={10}>
-          <Grid container style={{ justifyContent: "center" }}>
+          <Grid container className={classes.rowInnerContainer}>
             <Grid xs={12} sm={6} md={6} className={classes.videoHolder}>
               <div className={classes.playerWrapper}>
                 <ReactPlayer
@@ -242,7 +253,7 @@ const HomePage = (props) => {
                 />
               </div>
             </Grid>
-            <Grid xs={12} sm={6} md={6} style={{ backgroundColor: "white" }}>
+            <Grid xs={12} sm={6} md={6} className={classes.descriptionContainer}>
               <Link to="/about" className="no-decoration">
                 <div className={`${classes.homeAboutContainer} `}>
                   <div className={classes.textHolder}>
@@ -261,7 +272,7 @@ const HomePage = (props) => {
                       in teaching in a much more interactive way.
                     </Typography>
                   </div>
-                  <div className={classes.readMore}>Read More</div>
+                  <div className={classes.readMore}>Learn More</div>
                 </div>
               </Link>
             </Grid>
