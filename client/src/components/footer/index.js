@@ -21,22 +21,25 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "12px"
   },
   footerBlock:{
-    minHeight: "inherit",
     height: "100%",
     textAlign: "left",
     color: "white",
     marginTop: "16px",
     marginBottom: "8px",
+    [theme.breakpoints.down('xs')]: {
+      marginTop: "4px",
+      marginBottom: "4px",
+    }
   },
   footerTitle: {
     fontWeight: "bold",
-    fontSize: "20px",
+    fontSize: "24px",
     color: "white"
   },
   listHolder: {
-    fontSize: "1.6vw",
+    fontSize: "20px",
     [theme.breakpoints.down('xs')]: {
-      fontSize: "20px",
+      fontSize: "16px",
       marginLeft: "8px"
     }
   },
@@ -45,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginTop: "4px"
   }
+
 }))
 const Footer = () => {
   const classes = useStyles()
@@ -68,30 +72,30 @@ const Footer = () => {
         <Grid item xs={10} sm={3} md={3} className={classes.footerBlock} style={{}}>
           <div className={classes.footerTitle}>APP By Chase Van Halen</div>
           <div className={classes.listHolder}>
-            <div>chase.vanhalen88@gmail.com</div>
-            <div className="link-hover"><a href="https://www.linkedin.com/in/chase-van-halen-8068a5108/" target="_blank" className={`no-decoration ${classes.centerItems}`} >LinkedIn <ExitToAppIcon /></a> </div>
-            <div className="link-hover"><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>GitHub <ExitToAppIcon /></a></div>
+            <div className="email-holder">
+              <div>chase.vanhalen88</div>
+              <div>@gmail.com</div>
+            </div>
+            <div className="link-hover"><a href="https://www.linkedin.com/in/chase-van-halen-8068a5108/" target="_blank" className={`no-decoration ${classes.centerItems}`} >LinkedIn <ExitToAppIcon className="exit-icon" /></a> </div>
+            <div className="link-hover"><a href="https://github.com/chase104/class-connect" target="_blank" className={`no-decoration ${classes.centerItems}`}>GitHub <ExitToAppIcon className="exit-icon" /></a></div>
           </div>
         </Grid>
         <Grid item xs={10} sm={3} md={3} className={`${classes.footerBlock} middle-div`} style={{}}>
         <div  className={classes.footerTitle}>Other Apps By Chase</div>
         <div className={classes.listHolder}>
-          <div className="link-hover"><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>FreeFinance <ExitToAppIcon /></a></div>
-          <div className="link-hover"v><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>A Kitchen's Cookbook <ExitToAppIcon /></a></div>
-          <div className="link-hover"><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>CodingParadise <ExitToAppIcon /></a></div>
-          <div className="link-hover"><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>Local Business Hub <ExitToAppIcon /></a></div>
+          <div className="link-hover"><a href="https://stream-simply.herokuapp.com/" target="_blank" className={`no-decoration ${classes.centerItems}`}>Stream Simply<ExitToAppIcon className="exit-icon" /></a></div>
         </div>
         </Grid>
         <Grid item xs={10} sm={3} md={3} className={classes.footerBlock} style={{marginLeft: "12px"}}>
         <div  className={classes.footerTitle}>Is Chase Available For A Job?</div>
         <div className="blinker-holder">
-        {blinkerState ? <FlareIcon  className="blinker-icon"/> : <RemoveIcon className="blinker-icon"/>}
-        <div className="available-color">Yes</div>
+          <div className="blinker-icon"></div>
+          <div className="available-color">Yes</div>
         </div>
         <div className={classes.listHolder}>
           <div style={{color: "white", }}>Full Stack Developer</div>
           <div style={{color: "white", }}>Front-End / Back-End</div>
-          <div className="link-hover"><a href="https://github.com/chase104" target="_blank" className={`no-decoration ${classes.centerItems}`}>Portfolio <ExitToAppIcon /></a></div>
+          <div className="link-hover"><a href="https://vanhalen-portfolio.herokuapp.com/" target="_blank" className={`no-decoration ${classes.centerItems}`}>Portfolio <ExitToAppIcon className="exit-icon"/></a></div>
 
         </div>
         </Grid>

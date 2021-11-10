@@ -1,21 +1,42 @@
 .blinker-holder {
   display: flex;
-  flex-direction: row;
   align-items: center;
 }
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .blinker-icon {
-  color: white;
-  width: 20px !important;
-  height: 20px !important;
+  background-color: white;
+  border-radius: 50%;
+  width: 12px !important;
+  height: 12px !important;
+  margin-right: 4px;
+  animation: blink 1s infinite;
+}
+.exit-icon {
+  margin: 4px 0 0 4px;
+}
+.email-holder {
+  display: flex;
+  flex-wrap: wrap;
 }
 .middle-div {
-  border-right: 1px solid black;
-  border-left: 1px solid black;
+  border-right: 1px solid rgb(26, 24, 24);
+  border-left: 1px solid rgb(26, 24, 24);
   padding: 0px 8px;
+  min-height: 150px;
 }
 .available-color {
   color: white;
-  font-size: 2rem;
+  font-size: 20px;
 }
 a {
   width: fit-content;
@@ -35,5 +56,6 @@ a {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     padding: 8px 0px;
+    min-height: 50px !important;
   }
 }

@@ -23,3 +23,16 @@
   margin-left: -40px;
   margin-right: 40px;
 }
+.rotate {
+
+  animation: rotateLoader 1s linear infinite
+}
+@keyframes rotateLoader
+{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

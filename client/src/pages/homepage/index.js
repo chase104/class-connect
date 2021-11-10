@@ -145,8 +145,6 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = (props) => {
   const classes = useStyles()
 
-
-
   const { plans, applicationStatus, setStatus } = useContext(FormContext);
 
   const [planData, setPlanData] = useState(plans)
@@ -178,6 +176,7 @@ const HomePage = (props) => {
 
     </div>
   )
+
   const modalMessage = (
     <div  className={`${classes.modalHolder} ${classes.hideScrollbar}`}>
       <div className={classes.modalTitleHolder}>
@@ -233,6 +232,13 @@ const HomePage = (props) => {
                   url="https://www.youtube.com/watch?v=UalTfOIDQ7M"
                   width="100%"
                   height="40vh"
+                  playing={true}
+                  controls={true}
+                  volume={1}
+                  muted={true}
+                  onStart={() => {
+                    console.log("playing")
+                  }}
                 />
               </div>
             </Grid>

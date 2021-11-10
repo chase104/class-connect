@@ -15,6 +15,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import moment from 'moment'
 
 import Select from "@material-ui/core/Select";
+import AutorenewIcon from '@material-ui/icons/Autorenew';
 
 const useStyles = makeStyles((theme) => ({
   contentContainer: {
@@ -91,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
   displayButton: {
     backgroundColor: "#4c1fcd",
+    minWidth: "100px",
     color: "white",
     fontWeight: "bold",
     fontSize: "larger",
@@ -109,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
   },
-  columnContent:{
+  columnContent: {
     padding: "0px 12px",
     [theme.breakpoints.down("xs")]: {
       padding: "0px"
@@ -129,6 +131,7 @@ const Content = ({
   let tempAnswers = {};
 
   const [tempAnswersState, setTempAnswersState] = useState(tempAnswers);
+  const [submitting, setSubmitting] = useState(false);
   const [resetState, setResetState] = useState(true);
   const [calendarValue, changeCalendar] = useState(new Date());
   const [selectValues, setSelectValues] = useState({
@@ -220,14 +223,17 @@ const Content = ({
       [e.target.id]: e.target.value,
     });
   };
-  const handleInputClick = (e) => {};
-  const handleCalendarChange = () => {};
+  const handleInputClick = (e) => { };
+  const handleCalendarChange = () => { };
 
   const handleCheckboxChange = () => {
     setSubmitCheckbox(!submitCheckbox);
   };
 
   const checkSubmit = () => {
+    if (submitCheckbox) {
+      setSubmitting(true)
+    }
     submitCheckbox ? submitApplication() : setCheckboxError(true);
   };
 
@@ -256,7 +262,7 @@ const Content = ({
       if (page[i].type == "title") {
         pageItem = <div className={classes.summaryTitle}>{page[i].label}</div>;
       } else {
-        
+
         pageItem = (
           <div
             style={{
@@ -264,7 +270,7 @@ const Content = ({
               alignItems: "center",
               justifyContent: "start",
               paddingLeft: "10%",
-              backgroundColor: Number.isInteger(i/2) == true ?"#e6e6e6" : "white"
+              backgroundColor: Number.isInteger(i / 2) == true ? "#e6e6e6" : "white"
             }}
           >
             <div className={classes.sectionTitle}>{page[i].label + ": "}</div>
@@ -281,13 +287,13 @@ const Content = ({
     <div>
       {type == "you"
         ? youState.map((page) => {
-            return iteratePage(page);
-          })
+          return iteratePage(page);
+        })
         : type == "student"
-        ? studentState.map((page) => {
+          ? studentState.map((page) => {
             return iteratePage(page);
           })
-        : planState.map((page) => {
+          : planState.map((page) => {
             return iteratePage(page);
           })}
     </div>
@@ -298,58 +304,58 @@ const Content = ({
       <form className={classes.form}>
         {appLocation[0] == 0
           ? youState[appLocation[1]].map((component) => {
-              console.log(component)
-              if (component.type == "input") {
-                return (
-                  <TextField
+            console.log(component)
+            if (component.type == "input") {
+              return (
+                <TextField
+                  variant="outlined"
+                  label={component.label}
+                  id={component.location}
+                  key={component.location}
+                  className={classes.shortWidth}
+                  value={tempAnswersState[component.location]}
+                  onClick={(e) => handleInputClick(e)}
+                  onChange={(e) => handleInputChange(e)}
+                ></TextField>
+              );
+            } else if (component.type == "select") {
+              return (
+                <FormControl className={classes.shortWidth}>
+                  <InputLabel
+                    id="demo-simple-select-filled-label"
                     variant="outlined"
-                    label={component.label}
+                  >
+                    {component.label}
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-filled-label"
                     id={component.location}
                     key={component.location}
-                    className={classes.shortWidth}
+                    name={component.location}
                     value={tempAnswersState[component.location]}
-                    onClick={(e) => handleInputClick(e)}
-                    onChange={(e) => handleInputChange(e)}
-                  ></TextField>
-                );
-              } else if (component.type == "select") {
-                return (
-                  <FormControl className={classes.shortWidth}>
-                    <InputLabel
-                      id="demo-simple-select-filled-label"
-                      variant="outlined"
-                    >
-                      {component.label}
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-filled-label"
-                      id={component.location}
-                      key={component.location}
-                      name={component.location}
-                      value={tempAnswersState[component.location]}
-                      onChange={(e) => handleSelectChange(e)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      {selectValues[component.key].map((object) => (
-                        <MenuItem value={object.value}>{object.title}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                );
-              } else if (component.type == "calendar") {
-                return (
-                  <Calendar
-                    onChange={(e) => handleCalendarChange(e)}
-                    value={calendarValue}
-                  />
-                );
-              }
-            })
+                    onChange={(e) => handleSelectChange(e)}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {selectValues[component.key].map((object) => (
+                      <MenuItem value={object.value}>{object.title}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              );
+            } else if (component.type == "calendar") {
+              return (
+                <Calendar
+                  onChange={(e) => handleCalendarChange(e)}
+                  value={calendarValue}
+                />
+              );
+            }
+          })
           : appLocation[0] == 1
-          ? studentState[appLocation[1]].map((component) => {
-            console.log(component)
+            ? studentState[appLocation[1]].map((component) => {
+              console.log(component)
               if (component.type == "input") {
                 return (
                   <TextField
@@ -403,8 +409,8 @@ const Content = ({
                 );
               }
             })
-          : planState[appLocation[1]].map((component) => {
-            console.log(component)
+            : planState[appLocation[1]].map((component) => {
+              console.log(component)
               if (component.type == "input") {
                 return (
                   <TextField
@@ -497,15 +503,13 @@ const Content = ({
         returnForm()
       )}
       <div
-        className={`${
-          appLocation[0] == 3 ? classes.displayButtonHolder : classes.noDisplay
-        }`}
+        className={`${appLocation[0] == 3 ? classes.displayButtonHolder : classes.noDisplay
+          }`}
       >
         <div className={classes.checkboxHolder}>
           <div
-            className={`${
-              checkboxError == true ? classes.checkboxError : classes.noDisplay
-            }`}
+            className={`${checkboxError == true ? classes.checkboxError : classes.noDisplay
+              }`}
           >
             confirm you've reviewed the summary before submitting
           </div>
@@ -536,7 +540,7 @@ const Content = ({
             className={`${classes.displayButton} button-hover`}
             onClick={() => checkSubmit()}
           >
-            Submit
+            {submitting ? <AutorenewIcon className="rotate" /> : "Submit"}
           </Button>
         </div>
       </div>
