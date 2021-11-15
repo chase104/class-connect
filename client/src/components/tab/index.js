@@ -39,7 +39,7 @@ const Tab = ({message, superAdmin, admin}) => {
   const classes = useStyles();
 
   return (
-    <Grid container  justify="end">
+    <Grid container  justify="end" id="mytab">
       <Grid item xs={6} sm={6} className={classes.tabHolder}>
         <div className={superAdmin == true ? classNames(classes.tab, classes.super) : admin == true ? classNames(classes.tab, classes.admin)  : classes.tab}>{message}</div>
       </Grid>

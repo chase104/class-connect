@@ -92,9 +92,15 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "4px -4px 10px darkslategrey",
     alignItems: "center",
   },
+  textRowIcon: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
+    },
+  },
 }));
 
 const TextRow = ({ image, rowId, title, subtitle, type }) => {
+  
   const classes = useStyles();
 
   const [dropdownActive, setDropdownActive] = useState(false);
@@ -136,7 +142,7 @@ const TextRow = ({ image, rowId, title, subtitle, type }) => {
       </div>
       <Grid container className={classes.rowOneContainer}>
         <Grid container style={{ maxHeight: "24vh" }}>
-          <Grid item sm={2} xs={3} className="text-row-icon">
+          <Grid item sm={2} xs={3} className={classes.textRowIcon}>
             <img
               src={image}
               className={classes.rowOneImage}

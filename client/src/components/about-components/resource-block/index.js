@@ -50,7 +50,7 @@ const Resource = ({ title, image, classes, style, type, openModal, id }) => {
       onMouseUp={() => handleMouseUp()}
       onMouseOut={() => handleMouseUp()}
     >
-      <div style={titleStyles} id={id}>
+      <div style={titleStyles} className="resource-title" id={id}>
         {title}
       </div>
       <img src={image} id={id} className={classes.resourceImg} style={style} />

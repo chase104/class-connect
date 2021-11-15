@@ -20,6 +20,7 @@ import Login from "./pages/login/index.js";
 import PdfPage from "./pages/pdf-page/index.js";
 import Pdf from './pages/pdf-practice/index.js'
 import Application from "./pages/application/index.js";
+import Consultation from "./pages/consultation";
 import AdminDashboard from "./pages/dashboards/admin-dashboard/index.js";
 import SuperDashboard from "./pages/dashboards/super-admin-dashboard/index.js";
 import Faq from "./pages/faq/index.js";
@@ -82,6 +83,7 @@ export default function App() {
               <Route path="/application" component={Application} />
               <Route exact path="/" component={Homepage} />
               <Route path="/about" component={About} />
+              <Route path="/consultation" component={Consultation} />
               <Route path="/games" component={Games} />
               <Route path="/login" component={Login} />
               <Route path="/faq" component={Faq} />

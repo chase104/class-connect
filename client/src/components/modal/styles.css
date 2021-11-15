@@ -1,0 +1,10 @@
+.modal-container {
+  box-sizing: border-box;
+  width: 80vw;
+  background: #1fc3cd;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10vh;
+  padding: 30px;
+  color: white;
+}

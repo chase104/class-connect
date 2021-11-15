@@ -11,9 +11,18 @@ const useStyles = makeStyles({
     marginBottom: "10vh"
   }
 })
-const Faq = () => {
+const Faq = (props) => {
 
   useEffect(() => {
+
+    console.log(props.location.state)
+    if (props.location.state) {
+        var top = document.getElementById("prompt-anchor").offsetTop; //Getting Y of target element
+        window.scrollTo(0, top); 
+    } else {
+      var top = document.getElementById("mytab").offsetTop; //Getting Y of target element
+      window.scrollTo(0, top); 
+    }
   }, [])
   const classes = useStyles()
 

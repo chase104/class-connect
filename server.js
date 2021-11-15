@@ -2,6 +2,7 @@ const express = require('express')
 const path = require("path");
 const mongoose = require('mongoose')
 const AccountModel = require('./dbUser.js')
+const ConsultationModel = require('./consultationSchema.js')
 const ApplicationModel = require('./dbApplication')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
@@ -38,6 +39,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.post("/new-account", (req, res) => {
   const accountInformation = req.body;
+  console.log(accountInformation)
   AccountModel.create(accountInformation, (err, data) => {
     if (err) {
       res.status(500).send(err);
@@ -46,6 +48,19 @@ app.post("/new-account", (req, res) => {
     }
   });
 });
+
+app.post("/consultation-request", (req, res) => {
+  const info = req.body
+  console.log("request: ",info)
+  ConsultationModel.create(info, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data);
+    }
+  })
+})
+
 
 app.get("/get-account", (req, res) => {
   const accountInformation = req.body;

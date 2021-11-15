@@ -40,7 +40,7 @@ const QuestionPrompt = () => {
   const classes = useStyles()
   return (
     <Grid container className={classes.promptContainer} style={{marginTop: "10vh"}}>
-      <Grid item xs="10" sm="8" md="8" className={classes.innerContainer}>
+      <Grid item xs="10" sm="8" md="8" className={classes.innerContainer} id="prompt-anchor">
         <div>Didn't find an answer to your question?</div>
         <div style={{fontWeight: "normal"}}>Ask it here!</div>
         <form>

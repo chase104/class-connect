@@ -1,0 +1,31 @@
+.text-field {
+  width: 100%;
+  margin: 12px 0px !important;
+}
+.text-field textarea::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.text-field textarea {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.consultation-form {
+  padding: 20px 0px !important;
+  width: 60%;
+  margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+input:-internal-autofill-selected {
+  background-color: red !important;
+}
+
+@media (max-width: 700px) {
+  .consultation-form {
+    width: 100%;
+    margin-left: 0;
+  }
+}

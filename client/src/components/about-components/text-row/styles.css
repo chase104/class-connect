@@ -5,9 +5,7 @@
   font-size: 20px;
   font-family: "Audiowide", cursive !important;
 }
-.text-row-icon {
-  style: flex;
-}
+
 .expand {
   max-height: fit-content !important;
   position: relative;
@@ -25,9 +23,4 @@
 
 .lighter {
   background-color: #cccccc !important;
-}
-@media (max-width: 700px) {
-  .text-row-icon {
-    display: none;
-  }
 }

@@ -177,6 +177,14 @@ const Games = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const [modalInformation, setModalInformation] = useState({ id: "6" });
 
+  // scroll to tab
+  useEffect(() => {
+    setTimeout(() => {
+      var top = document.getElementById("mytab").offsetTop; //Getting Y of target element
+      window.scrollTo(0, top); 
+    }, 1)
+  }, [])
+
   useEffect(() => {
     const stateArray = [[], [], [], []];
     for (var j = 0; j < unitsToMap.length; j++) {

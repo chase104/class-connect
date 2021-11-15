@@ -161,19 +161,25 @@ export function FormProvider({ children }) {
         "This Full-Access package give you absolutely everything you need for the complete The Adventurer's College   experience, in addition to all our other services, you also get access to our exciting host of games related to class-material. This helps greatly to reinforce concepts and terms from class. You'll also have an additional 6 classes added to the course that serve to solidify everything learned. Lastly, you will also be able to schedule two (2) videocalls with a member of our Educational Assistance Team, in which you'll have a conversation about your child's progress.",
     },
   ]);
-
+  const [modal, setModal] = useState(false)
 
   return (
     <FormContext.Provider
       value={{
         studentState,
         setStudentState,
+
         planState,
         setPlanState,
+
         plans,
         setPlans,
+
         applicationStatus,
-        setStatus
+        setStatus,
+        
+        modal,
+        setModal
       }}
     >
       {children}
