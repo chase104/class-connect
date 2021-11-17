@@ -22,13 +22,7 @@ const About = () => {
 
 const classes = useStyles()
 
-  // scrolling to tab
-  useEffect(() => {
-      var top = document.getElementById("mytab").offsetTop; //Getting Y of target element
-      window.scrollTo({
-        top: top
-      }); 
-  }, [])
+
 
   return (
     <div className="about-container">

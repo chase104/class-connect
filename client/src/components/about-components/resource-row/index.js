@@ -169,10 +169,11 @@ const ResourceRow = (props) => {
   const [backgroundColor, setBackgroundColor] = useState(null);
   const [dropdownActive, setDropdownActive] = useState(false);
   const [mouseDown, setMouseDown] = useState(false);
-  const [openModal, setOpenModal] = React.useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const [modalInformation, setModalInformation] = useState({ id: "6" });
 
   const handleOpen = (e) => {
+    console.log("handeling top level open")
     if (e.target.id <= 5) {
       setModalInformation({
         ...resourceInformation[e.target.id],
@@ -206,9 +207,13 @@ const ResourceRow = (props) => {
           break;
       }
     }
+    console.log("setting modal open")
     setOpenModal(true);
   };
-  useEffect(() => {}, [modalInformation]);
+  useEffect(() => {
+    console.log("modal info changed")
+  }, [modalInformation]);
+
   const handleClose = () => {
     setOpenModal(false);
   };
@@ -246,45 +251,56 @@ const ResourceRow = (props) => {
   const bottomButtons = () => {
     let href;
     let buttonContent;
+    let externalLink = true
+    console.log("bottom buttons, ", modalInformation.id)
     switch (modalInformation.id) {
       case 0:
-            href="https://www.youtube.com/watch?v=FqsO1AK2OzE"
-            buttonContent="View Sample Class"
+            href="https://www.youtube.com/watch?v=FqsO1AK2OzE";
+            buttonContent="View Sample Class";
         break;
       case 1:
-            href="/pdfpage"
-            buttonContent="Example Materials"
+            href="/pdfpage";
+            buttonContent="Example Materials";
+            externalLink = false;
         break;
       case 2:
             href="/games"
             buttonContent="Games Page"
+            externalLink = false;
         break;
       case 3:
             href={
               pathname: "/faq",
-              state: "FROM CONTACT"
+              state: "FROM CONTACT",
             }
-            buttonContent="Contact team"
+            externalLink = false;
+            buttonContent="Contact team";
         break;
       case 4:
-            href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            buttonContent="Example Report"
+            href="https://www.youtube.com/watch?v=E_z6SWNTOak";
         break;
       case 5:
-            href="/faq"
-            buttonContent="View Faq"
+            href="/faq";
+            buttonContent="View Faq";
+            externalLink = false;
+
           break;
       case 6:
             href="/consultation"
             buttonContent="Request Consultation"
+            externalLink = false;
+
           break;
       case 7:
-            href="/application"
+          href={
+            pathname: "/application",
+            state: "FROM CONTACT",
+          }
             buttonContent="Start Application"
+            externalLink = false;
         break;
       case 8:
             href="https://www.youtube.com/watch?v=E_z6SWNTOak"
-            buttonContent="View Your Status"
         break;
       case 9:
             href="https://www.youtube.com/watch?v=E_z6SWNTOak"
@@ -292,28 +308,32 @@ const ResourceRow = (props) => {
         break;
 
     }
-
-    // let finalButton = (
-    //   <a
-    //     target="_"
-    //     href={href}
-    //     className="no-decoration"
-    //     style={{ marginLeft: "auto", marginRight: "5vw" }}
-    //   >
-    //     <Button className={`${classes.bottomButton} bottom-button`}>
-    //       {buttonContent}
-    //     </Button>
-    //   </a>
-    // );
-    let finalButton = (
+    let myButton = (
+      <Button className={`${classes.bottomButton} bottom-button`}>
+      {buttonContent}
+      </Button>
+    )
+    let finalButton;
+    if (externalLink) {
+      finalButton = (
+        <a
+        target="_"
+        href={href}
+        className="no-decoration"
+        style={{ marginLeft: "auto", marginRight: "5vw" }}
+        >
+        {myButton}
+      </a>
+      )
+    } else {
+      finalButton = (
       <Link to={href} className="no-decoration">
-        <Button className={`${classes.bottomButton} bottom-button`}>
-          {buttonContent}
-        </Button>
+        {myButton}
       </Link>
-
-    );
-    if (buttonContent !== "Example Report") {
+      )
+    };
+    if (buttonContent) {
+      console.log(finalButton)
       return finalButton;
     }
   };

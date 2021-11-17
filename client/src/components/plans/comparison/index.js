@@ -64,7 +64,7 @@ const PlanComparison = ({benefits, types, props, homepage}) => {
                           <div>
                               <CheckCircle className={classes.CheckCircle}/>
                           </div>
-                          <div>
+                          <div style={{textAlign: "left"}}>
                             {benefit}
                           </div>
                         </div>
@@ -79,7 +79,7 @@ const PlanComparison = ({benefits, types, props, homepage}) => {
                           <div>
                               <CheckCircle className={classes.CheckCircle}/>
                           </div>
-                          <div>
+                          <div style={{textAlign: "left"}}>
                             {benefit}
                           </div>
                         </div>
@@ -94,7 +94,7 @@ const PlanComparison = ({benefits, types, props, homepage}) => {
                           <div style={{marginRight: "4px"}}>
                               <CheckCircle className={classes.CheckCircle}/>
                           </div>
-                          <div>
+                          <div style={{textAlign: "left"}}>
                             {benefit}
                           </div>
                         </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { FormContext, YouContext } from "../../contexts";
@@ -31,6 +31,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Application = (props) => {
+
+  useEffect(() => {
+    if (props.location.state) {
+      var top = document.getElementById("mytab").offsetTop; //Getting Y of target element
+      window.scrollTo(0, top); 
+    }
+
+  }, [])
   const classes = useStyles();
 
   const { appLocation, setAppLocation, youState, setYouState } = useContext(YouContext);
