@@ -1,21 +1,23 @@
-const express = require('express')
+const express = require("express");
 const path = require("path");
-const mongoose = require('mongoose')
-const AccountModel = require('./dbUser.js')
-const ConsultationModel = require('./consultationSchema.js')
-const ApplicationModel = require('./dbApplication')
-const bodyParser = require('body-parser')
-const nodemailer = require('nodemailer')
-const pdf = require('html-pdf')
-const fs = require('fs')
+const mongoose = require("mongoose");
+const AccountModel = require("./dbUser.js");
+const ConsultationModel = require("./consultationSchema.js");
+const ApplicationModel = require("./dbApplication");
+const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
+const pdf = require("html-pdf");
+const fs = require("fs");
 
-const lessonTemplatePdf = require('./server-assets/lesson-materials.js')
-const applicationTemplatePdf = require('./server-assets/application-template-pdf.js')
+const lessonTemplatePdf = require("./server-assets/lesson-materials.js");
+const applicationTemplatePdf = require("./server-assets/application-template-pdf.js");
 
-const app = express()
-require('dotenv').config()
+const app = express();
+require("dotenv").config();
 
-const connection_url = `mongodb+srv://dbAdmin:${process.env.MONGODBPASSWORD}@cluster0.a3pnl.mongodb.net/userDb?retryWrites=true&w=majority`
+const connection_url = `mongodb+srv://dbAdmin:${process.env.MONGODBPASSWORD}@cluster0.a3pnl.mongodb.net/userDb?retryWrites=true&w=majority`;
+
+// const connection_url = `mongodb+srv://dbAdmin:${process.env.MONGODBPASSWORD}@cluster0.a3pnl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 // initialize body parser
 app.use(express.json());
@@ -27,19 +29,16 @@ mongoose.connect(connection_url, {
   useUnifiedTopology: true,
 });
 
-
 // Set Static Folders
-console.log("node env: ", process.env.NODE_ENV);
+
 console.log(path.join(__dirname, "client", "build"));
-if (process.env.NODE_ENV === "production") {
-  //server static content
-  //npm run build
-  app.use(express.static(path.join(__dirname, "client/build")));
-}
+//server static content
+//npm run build
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.post("/new-account", (req, res) => {
   const accountInformation = req.body;
-  console.log(accountInformation)
+  console.log(accountInformation);
   AccountModel.create(accountInformation, (err, data) => {
     if (err) {
       res.status(500).send(err);
@@ -50,17 +49,16 @@ app.post("/new-account", (req, res) => {
 });
 
 app.post("/consultation-request", (req, res) => {
-  const info = req.body
-  console.log("request: ",info)
+  const info = req.body;
+  console.log("request: ", info);
   ConsultationModel.create(info, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
       res.status(201).send(data);
     }
-  })
-})
-
+  });
+});
 
 app.get("/get-account", (req, res) => {
   const accountInformation = req.body;
@@ -74,10 +72,10 @@ app.get("/get-account", (req, res) => {
 });
 
 app.get("/pdf", (req, res) => {
-  pdf.create(applicationTemplatePdf(req.body), {}).toFile(`application-copy-${req.body.parentName}.pdf`, (err) => {
-
-  })
-})
+  pdf
+    .create(applicationTemplatePdf(req.body), {})
+    .toFile(`application-copy-${req.body.parentName}.pdf`, (err) => {});
+});
 
 app.delete("/delete-trials", (req, res) => {
   const accountInformation = req.body;
@@ -95,14 +93,13 @@ app.post("/submit-application", (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-
       let transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: "gmail",
         auth: {
-          user: 'chase.vanhalen2@gmail.com',
-          pass: process.env.EMAILPASS
-        }
-      })
+          user: "EMAIL=playpodapp@gmail.com",
+          pass: process.env.EMAILPASS,
+        },
+      });
       let emailHtml = `
       <p>Hello ${req.body.parentName}!</p>
 
@@ -118,64 +115,83 @@ app.post("/submit-application", (req, res) => {
       <p>Best Wishes,</p>
       <p>Educational Assistance Team</p>
 
-      `
+      `;
       //generate pdf
-      const pdfSettings  = {
-        "header": {
-      "height": "8mm",
-      },
-        "footer": {
-      "height": "28mm"
-      }
-    }
-      pdf.create(applicationTemplatePdf(req.body), pdfSettings).toFile(`application-copy-${req.body.parentName}.pdf`, (err) => {
-        let mailOptions = {
-          from: 'chase.vanhalen2@gmail.com',
-          to: req.body.email,
-          subject: "Application copy from Adventurer's College",
-          html: emailHtml,
-          attachments: [
-            { filename: `application-copy-${req.body.parentName}.pdf`, path: `./application-copy-${req.body.parentName}.pdf`}
-          ]
-        }
+      const pdfSettings = {
+        header: {
+          height: "8mm",
+        },
+        footer: {
+          height: "28mm",
+        },
+      };
+      pdf
+        .create(applicationTemplatePdf(req.body), pdfSettings)
+        .toFile(`application-copy-${req.body.parentName}.pdf`, (err) => {
+          let mailOptions = {
+            from: "chase.vanhalen2@gmail.com",
+            to: req.body.email,
+            subject: "Application copy from Adventurer's College",
+            html: emailHtml,
+            attachments: [
+              {
+                filename: `application-copy-${req.body.parentName}.pdf`,
+                path: `./application-copy-${req.body.parentName}.pdf`,
+              },
+            ],
+          };
 
-        transporter.sendMail(mailOptions, function(err, data){
-          if (err) {
-            console.log("Error: ", err);
-          } else {
-            console.log("Email Sent!");
-            fs.unlink(`application-copy-${req.body.parentName}.pdf`, (err) => {
-              if (err) {
-                throw err
-              }
-            })
-          }
-        })
-        res.status(201).send("finished")
-      })
-
+          transporter.sendMail(mailOptions, function (err, data) {
+            if (err) {
+              console.log("Error: ", err);
+            } else {
+              console.log("Email Sent!");
+              fs.unlink(
+                `application-copy-${req.body.parentName}.pdf`,
+                (err) => {
+                  if (err) {
+                    throw err;
+                  }
+                }
+              );
+            }
+          });
+          res.status(201).send("finished");
+        });
     }
   });
 });
 
+app.get("/make-pdf", (req, res) => {
+  const pdfFile = pdf
+    .create(
+      applicationTemplate({
+        firstName: "chase",
+        level: "U3",
+        lesson: "23",
+        topics: ["Space", "Science"],
+        grammarTopic: "Passive Tense",
+      }),
+      {}
+    )
+    .toFile(`application.pdf`, (err) => {
+      var stream = fs.createReadStream("./application.pdf");
+      var filename = "application.pdf";
+      // Be careful of special characters
 
-app.get('/make-pdf', (req, res) => {
-  const pdfFile = pdf.create(applicationTemplate({firstName: "chase", level: "U3", lesson: "23", topics: ["Space", "Science"], grammarTopic: "Passive Tense"}), {}).toFile(`application.pdf`, (err) => {
-    var stream = fs.createReadStream('./application.pdf');
-    var filename = "application.pdf";
-    // Be careful of special characters
+      // Ideally this should strip them
 
-    // Ideally this should strip them
+      res.setHeader(
+        "Content-disposition",
+        'attachment; filename="' + filename + '"'
+      );
+      res.setHeader("Content-type", "application/pdf");
 
-    res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
-    res.setHeader('Content-type', 'application/pdf');
+      stream.pipe(res);
+    });
+});
 
-    stream.pipe(res);
-  })
-})
-
-
-app.get('/api/customers', (req, res) => {
+app.get("/api/customers", (req, res) => {
   const customers = [
     { id: 1, firstName: "john", lastName: "Doe" },
     { id: 2, firstName: "johnny", lastName: "Doeny" },
@@ -184,15 +200,10 @@ app.get('/api/customers', (req, res) => {
   res.json(customers);
 });
 
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-
 const port = process.env.PORT || 5000;
 
-app.listen(port, () =>
-  console.log(
-    `Server started on port: ${port}`,
-  )
-);
+app.listen(port, () => console.log(`Server started on port: ${port}`));
