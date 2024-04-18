@@ -1,20 +1,18 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.app-container{
+.app-container {
   display: flex;
 }
 .overlay {
@@ -27,7 +25,7 @@ code {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: .5s ease;
+  transition: 0.5s ease;
   background-color: #1565c0;
   pointer-events: none;
 }
@@ -42,15 +40,21 @@ code {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.about-container:hover .overlay{
-  opacity: .9;
+.about-container:hover .overlay {
+  opacity: 0.9;
 }
-.home-text-container:hover{
+.home-text-container:hover {
   opacity: 0;
-  transition: .5s ease;
+  transition: 0.5s ease;
 }
-.rest{
-  background-image: url('./images/landscape.png');
+.rest {
+  /* background-image: url('./images/landscape.png'); */
+  background: linear-gradient(
+      to bottom right,
+      rgba(244, 244, 242, 0),
+      rgba(244, 244, 242, 0)
+    ),
+    url("./images/school_background.jpg");
   background-position: top;
   background-size: cover;
   background-repeat: repeat-y;
@@ -59,35 +63,33 @@ code {
   display: flex;
   flex-direction: column;
 }
-.archer-block{
-  background-color: blue
+.archer-block {
+  background-color: blue;
 }
 .no-select {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.no-decoration{
-    text-decoration: none;
+.no-decoration {
+  text-decoration: none;
   color: inherit;
 }
 
-.hide-div{
+.hide-div {
   display: none !important;
 }
 
-
-
-.body-content{
+.body-content {
   display: block;
   width: 100%;
   height: auto;
-  background-color:rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 5px;
   border-radius: 20px;
   font-size: 1.5vw;
@@ -98,6 +100,6 @@ code {
   bottom: 0;
   right: 0;
 }
-.primary-color{
-  background: "#1565C0"
+.primary-color {
+  background: "#1565C0";
 }
