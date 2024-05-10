@@ -7,11 +7,11 @@ const useStyles = makeStyles((theme) => ({
   tabsContainer: {},
   tab: {
     fontSize: "24px",
+    color: "white",
     padding: "16px 4px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#bfbfbf",
     borderRadius: "30px 30px 0px 0px",
     [theme.breakpoints.down("xs")]: {
       fontSize: "16px",

@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   displayButton: {
-    backgroundColor: "#4c1fcd",
+    backgroundColor: "var(--color-primary) !important",
     minWidth: "100px",
     color: "white",
     fontWeight: "bold",
