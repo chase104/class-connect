@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     paddingTop: "20px",
-    color: "white",
   },
   formContainer: {
     borderRadius: "15px",
@@ -91,14 +90,13 @@ const Consultation = () => {
       <Tab message="Consultations" />
       <Container
         maxWidth="sm"
-        className={`color-primary  ${classes.formContainer}`}
+        className={`color-secondary  ${classes.formContainer}`}
       >
-        <h3 className={classes.title}>Request a consultation here!</h3>
+        <h3 className={classes.title}>Consulation Request</h3>
         <form onSubmit={(e) => handleSubmit(e)} className="consultation-form">
           <TextField
             label="Email"
             id="email"
-            color="secondary"
             value={formState.email}
             variant="outlined"
             onChange={(e) => handleChange(e)}
@@ -107,7 +105,6 @@ const Consultation = () => {
           <TextField
             label="Confirm Email"
             id="emailTwo"
-            color="secondary"
             value={formState.emailTwo}
             variant="outlined"
             onChange={(e) => handleChange(e)}
@@ -126,7 +123,6 @@ const Consultation = () => {
           <TextField
             label="Message (optional)"
             id="message"
-            color="secondary"
             value={formState.message}
             variant="outlined"
             multiline={true}
@@ -154,7 +150,7 @@ const Consultation = () => {
           />
           <Button
             type="submit"
-            color="secondary"
+            color="primary"
             variant="contained"
             className={classes.button}
           >

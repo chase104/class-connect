@@ -10,4 +10,11 @@
 }
 .resource-title {
   min-height: 75px;
+  color: white !important;
+}
+.resource-block img {
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
 }

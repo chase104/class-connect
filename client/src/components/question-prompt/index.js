@@ -60,7 +60,7 @@ const QuestionPrompt = ({ props }) => {
   const gridItems = [
     {
       label: "Request a free consultation",
-      path: null,
+      path: "/consultation",
     },
     {
       label: "FAQ page",

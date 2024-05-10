@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "32vh",
   },
   rowOneTextHolder: {
-    backgroundColor: "#1565c0",
+    backgroundColor: "var(--color-primary)",
     color: "white",
     overflow: "hidden",
     boxShadow: "4px 4px 10px #4d4d4d",
@@ -88,7 +88,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   resourceImg: {
-    maxWidth: "100%",
+    maxWidth: "80%",
+    maxHeight: "136px",
     marginTop: "auto",
     marginBottom: "auto",
   },
@@ -155,8 +156,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   bottomButton: {
-    backgroundColor: "#15c070 ",
-    color: "white",
     boxShadow: "4px 4px 3px darkslategrey",
   },
 }));
@@ -308,7 +307,9 @@ const ResourceRow = (props) => {
         break;
     }
     let myButton = (
-      <Button className={`${classes.bottomButton} bottom-button`}>
+      <Button
+        className={`${classes.bottomButton} color-secondary  bottom-button`}
+      >
         {buttonContent}
       </Button>
     );

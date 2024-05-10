@@ -1,11 +1,10 @@
-.bottom-button:hover {
-  background-color: #3dc015 !important;
-}
 .resource-row-container {
   max-height: 32vh;
   min-height: 32vh;
 }
-
+.bottom-button {
+  color: black !important;
+}
 @media (max-width: 700px) {
   .resource-row-container {
     max-height: none;

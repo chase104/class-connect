@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "30px",
   },
   unitTitle: {
-    backgroundColor: "#1565c0",
+    backgroundColor: "var(--color-primary)",
     textAlign: "start",
     marginLeft: "4vh",
     fontSize: "20px",

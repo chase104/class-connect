@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import "./styles.css";
 import Tab from "../../components/tab/index.js";
 import PlanComparison from "../../components/plans/comparison/index.js";
 import PackageDescription from "../../components/plans/package-description/index.js";
@@ -11,6 +12,8 @@ import basicImage from "../../assets/images/image-basic.png";
 import basicPlusImage from "../../assets/images/image-basic+.png";
 import fullImage from "../../assets/images/image-full.png";
 import { FormContext } from "../../contexts";
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom/cjs/react-router-dom.min.js";
 
 const Plans = () => {
   const { plans } = useContext(FormContext);
@@ -33,6 +36,9 @@ const Plans = () => {
           />
         );
       })}
+      <Link to="/application" className="apply-button">
+        <Button>Apply today!</Button>
+      </Link>
     </div>
   );
 };

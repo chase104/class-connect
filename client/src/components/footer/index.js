@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FlareIcon from "@material-ui/icons/Flare";
 import RemoveIcon from "@material-ui/icons/Remove";
@@ -17,12 +16,13 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "inherit",
     display: "flex",
     padding: "20px",
+    display: "flex",
+    justifyContent: "space-between",
   },
   footerBlock: {
     height: "100%",
     textAlign: "left",
     color: "white",
-    marginTop: "16px",
     marginBottom: "8px",
     [theme.breakpoints.down("xs")]: {
       marginTop: "4px",
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     color: "white",
+    alignItems: "flex-end",
   },
   footerLink: {
     color: "white !important",
@@ -77,56 +78,29 @@ const Footer = () => {
     { path: "/games", label: "Games" },
   ];
   return (
-    <div className={`color-primary ${classes.footerContainer}`} style={{}}>
-      <Grid container className={classes.gridContainer}>
-        <Grid item className={classes.footerBlock} style={{}}>
-          <div className={classes.footerTitle}>Adventurer's College</div>
+    <div className={`color-primary ${classes.footerContainer}`}>
+      <div container className={classes.gridContainer}>
+        <div item className={classes.footerBlock}>
+          <h3 className={classes.footerTitle}>Adventurer's College</h3>
           <div className={classes.listHolder}>
             <div className="email-holder">
-              <div>admin@</div>
+              <div>admin</div>
               <div>@adventure.education</div>
             </div>
-            {/* <div className="link-hover">
-              <a
-                href="https://www.linkedin.com/in/chase-van-halen-8068a5108/"
-                target="_blank"
-                className={`no-decoration ${classes.centerItems}`}
-              >
-                LinkedIn <ExitToAppIcon className="exit-icon" />
-              </a>{" "}
-            </div> */}
-            {/* <div className="link-hover color-primary">
-              <a
-                href="https://github.com/chase104/class-connect"
-                target="_blank"
-                className={`no-decoration ${classes.centerItems}`}
-              >
-                GitHub <ExitToAppIcon className="exit-icon" />
-              </a>
-            </div>
-            <div className="link-hover color-primary">
-              <a
-                href="https://vanhalen-portfolio.herokuapp.com/"
-                target="_blank"
-                className={`no-decoration ${classes.centerItems}`}
-              >
-                Portfolio <ExitToAppIcon className="exit-icon" />
-              </a>
-            </div> */}
-            <div className={classes.flexColumn}>
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  className={classes.footerLink}
-                  to={item.path}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
+            {/* make copywrite symbole
+             */}
+            <div>&copy; 2023 Adventure Education. All Rights Reserved.</div>
           </div>
-        </Grid>
-      </Grid>
+        </div>
+        <div className={classes.flexColumn}>
+          <h3>Navigation</h3>
+          {navItems.map((item) => (
+            <Link key={item.path} className={classes.footerLink} to={item.path}>
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

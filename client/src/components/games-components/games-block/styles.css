@@ -1,21 +1,19 @@
 .yes {
-  background-color: #64e1e8;
+  background-color: white;
   border: 1px solid white;
   transition: 250ms;
 }
 .yes:hover {
-  background-color: var(--color-primary);
   cursor: pointer;
 }
 .no {
-  background-color: var(--color-primary);
+  background-color: white;
   border: 1px solid white;
   transition: 250ms;
   transition-property: background-color;
 }
 .no:hover {
   cursor: pointer;
-  background-color: #64e1e8;
 }
 .down-color {
   background-color: white !important;

@@ -80,7 +80,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   resourceImg: {
-    maxWidth: "100%",
+    maxWidth: "80%",
+    maxHeight: "136px",
     marginTop: "auto",
     marginBottom: "auto",
   },
@@ -88,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "#1565c0",
+    backgroundColor: "var(--color-primary)",
     padding: "4px 4px",
   },
   titleHolderDiv: {
