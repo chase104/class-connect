@@ -3,14 +3,20 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import "./styles.css";
 import Tab from "../../components/tab/index.js";
-import { FormControl, Input, InputLabel, FilledInput, TextField, Button } from "@material-ui/core";
+import {
+  FormControl,
+  Input,
+  InputLabel,
+  FilledInput,
+  TextField,
+  Button,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
     marginBottom: "5vh",
   },
   loginContainer: {
-    backgroundColor: "#1FC3CD !important",
     borderRadius: "15px",
     marginTop: "5vh",
     minHeight: "20vh",
@@ -50,7 +56,10 @@ const Login = () => {
   return (
     <div className={classes.pageContainer}>
       <Tab message="Login" />
-      <Container maxWidth="sm" className={classes.loginContainer}>
+      <Container
+        maxWidth="sm"
+        className={`color-primary ${classes.loginContainer}`}
+      >
         <form onSubmit={(e) => handleSubmit(e)} className={classes.form}>
           <TextField
             label="Email"

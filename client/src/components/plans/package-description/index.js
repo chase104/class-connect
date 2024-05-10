@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
   packageTab: {
     width: "fit-content",
-    backgroundColor: "#1FC3CD",
     padding: "4px 24px",
     color: "white",
     fontWeight: "bold",
@@ -36,11 +35,13 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: "90%",
-    paddingRight: "8px"
+    paddingRight: "8px",
+    padding: "20px 0px",
   },
   imageHolder: {
     display: "flex",
     alignItems: "center",
+
     height: "100%",
   },
   description: {
@@ -55,8 +56,10 @@ const PackageDescription = ({ type, image, benefits, price, description }) => {
     <div className={classes.descriptionContainer}>
       <Grid container style={{ justifyContent: "center" }}>
         <Grid item xs={11} sm={10} style={{ display: "flex" }}>
-          <div className={classes.packageTab}>{type}</div>
-          <div className={classes.packageTab}>{"$ " + price}</div>
+          <div className={`color-primary ${classes.packageTab}`}>{type}</div>
+          <div className={`color-primary ${classes.packageTab}`}>
+            {"$ " + price}
+          </div>
         </Grid>
         <Grid
           item

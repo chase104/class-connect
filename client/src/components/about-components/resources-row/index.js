@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "32vh",
   },
   rowOneTextHolder: {
-    backgroundColor: "#1565c0",
+    backgroundColor: "var(--color-primary)",
     color: "white",
     maxHeight: "32vh",
     overflow: "hidden",

@@ -32,56 +32,26 @@ const TabBar = ({ appLocation, changeAppLocation }) => {
     changeAppLocation(e.target.id, true);
   };
 
+  let items = ["YOU", "STUDENT", "PLAN", "REVIEW & SUBMIT"];
+
   return (
     <Grid container className={classes.tabsContainer}>
-      <Grid
-        item
-        xs={3}
-        sm={3}
-        className={`${classes.tab} tab no-select ${
-          location == 0 ? "highlight" : null
-        }`}
-        id={0}
-        onClick={(e) => handleTabClick(e)}
-      >
-        YOU
-      </Grid>
-      <Grid
-        item
-        xs={3}
-        sm={3}
-        className={`${classes.tab} tab no-select ${
-          location == 1 ? "highlight" : null
-        }`}
-        id={1}
-        onClick={(e) => handleTabClick(e)}
-      >
-        STUDENT
-      </Grid>
-      <Grid
-        item
-        xs={3}
-        sm={3}
-        className={`${classes.tab} tab no-select ${
-          location == 2 ? "highlight" : null
-        }`}
-        id={2}
-        onClick={(e) => handleTabClick(e)}
-      >
-        PLAN
-      </Grid>
-      <Grid
-        item
-        xs={3}
-        sm={3}
-        className={`${classes.tab} tab no-select ${
-          location == 3 ? "highlight" : null
-        }`}
-        id={3}
-        onClick={(e) => handleTabClick(e)}
-      >
-        REVIEW & SUBMIT
-      </Grid>
+      {items.map((item, index) => {
+        return (
+          <Grid
+            item
+            xs={3}
+            sm={3}
+            className={`${classes.tab} color-primary tab no-select ${
+              location == index ? "highlight" : null
+            }`}
+            id={index}
+            onClick={(e) => handleTabClick(e)}
+          >
+            {item}
+          </Grid>
+        );
+      })}
     </Grid>
   );
 };

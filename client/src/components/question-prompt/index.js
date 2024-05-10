@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(255, 255, 255, .8)",
     paddingBottom: "5vh",
     paddingTop: "5vh",
-
   },
   title: {
     display: "flex",
@@ -20,15 +19,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "35px",
     marginBottom: "12px",
     fontFamily: "'Audiowide', cursive !important",
-
   },
   promptFooter: {
     display: "flex",
     justifyContent: "center",
     fontSize: "35px",
     marginTop: "5vh",
-    backgroundColor: "#1FC3CD",
-    border: "1px solid #1FC3CD",
+
     color: "white",
     fontSize: "28px",
     boxShadow: "4px 4px 10px darkslategrey",
@@ -43,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "35px",
     padding: "20px",
     color: "white",
-    backgroundColor: "#1FC3CD",
   },
 }));
 const QuestionPrompt = ({ props }) => {
@@ -58,10 +54,23 @@ const QuestionPrompt = ({ props }) => {
     setMouseDown(false);
   };
   const handleApplicationClick = () => {
-    props.history.push('/application')
-    window.scrollTo(0,0)
-  }
-
+    props.history.push("/application");
+    window.scrollTo(0, 0);
+  };
+  const gridItems = [
+    {
+      label: "Request a free consultation",
+      path: null,
+    },
+    {
+      label: "FAQ page",
+      path: "/faq",
+    },
+    {
+      label: "About Page",
+      path: "/about",
+    },
+  ];
   return (
     <Grid container className={classes.promptContainer}>
       <Grid item xs={11} sm={10} md={10} className={classes.title}>
@@ -69,56 +78,30 @@ const QuestionPrompt = ({ props }) => {
       </Grid>
       <Grid item xs={11} sm={10} md={10}>
         <Grid container style={{ boxShadow: "10px 10px 10px lightslategrey" }}>
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            className={`${
-              classes.individualPrompt
-            } individual-prompt prompt-border no-select ${mouseDown ? "mouse-down" : null}`}
-            onMouseDown={() => handleMouseDown()}
-            onMouseUp={() => handleMouseUp()}
-            onMouseOut={() => handleMouseUp()}
-          >
-            Request a free consultation
-          </Grid>
-
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            className={`${
-              classes.individualPrompt
-            } individual-prompt prompt-border no-select ${mouseDown ? "mouse-down" : null}`}
-           
-            onMouseDown={() => handleMouseDown()}
-            onMouseUp={() => handleMouseUp()}
-            onMouseOut={() => handleMouseUp()}
-            onClick={() => {
-              window.scrollTo(0, 0);
-              props.history.push("/faq");
-            }}
-          >
-            FAQ page
-          </Grid>
-
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            className={`${
-              classes.individualPrompt
-            } individual-prompt no-select ${mouseDown ? "mouse-down" : null}`}
-            onMouseDown={() => handleMouseDown()}
-            onMouseUp={() => handleMouseUp()}
-            onMouseOut={() => handleMouseUp()}
-            onClick={() => {
-              window.scrollTo(0, 0);
-              props.history.push("/about");
-            }}
-          >
-            About Page
-          </Grid>
+          {gridItems.map((item, index) => (
+            <Grid
+              key={index}
+              item
+              xs={12}
+              sm={4}
+              className={`${
+                classes.individualPrompt
+              } color-primary individual-prompt prompt-border no-select ${
+                mouseDown ? "mouse-down" : ""
+              }`}
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseOut={handleMouseUp}
+              onClick={() => {
+                if (item.path) {
+                  window.scrollTo(0, 0);
+                  props.history.push(item.path);
+                }
+              }}
+            >
+              {item.label}
+            </Grid>
+          ))}
         </Grid>
       </Grid>
       <Grid
@@ -126,7 +109,9 @@ const QuestionPrompt = ({ props }) => {
         xs={11}
         sm={10}
         md={10}
-        className={`${classes.promptFooter} application-button no-select ${
+        className={`${
+          classes.promptFooter
+        } color-primary application-button no-select ${
           mouseDown ? "mouse-down" : null
         }`}
         onMouseDown={() => handleMouseDown()}
@@ -134,8 +119,6 @@ const QuestionPrompt = ({ props }) => {
         onMouseOut={() => handleMouseUp()}
         onClick={() => handleApplicationClick()}
       >
-        
-
         Click HERE to start a no-commitment application!
       </Grid>
     </Grid>

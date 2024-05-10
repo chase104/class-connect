@@ -43,7 +43,7 @@ a {
 }
 .link-hover {
   width: fit-content;
-  background-color: #1fc3cd;
+
   padding: 4px;
 }
 .link-hover:hover {

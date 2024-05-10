@@ -1,86 +1,84 @@
-import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
-import './styles.css'
-
-import { IconButton, Typography, Grid } from '@material-ui/core';
-
-import { PostAdd as PostAddIcon, AssignmentTurnedIn as AssignmentTurnedInIcon} from '@material-ui/icons';
-import { 
-    AccountBox as AccountCircleIcon,
-    Notifications as NotifiationsIcon,
-    NotificationImportantIcon as NewNotificationIcon,
-    Info as InfoIcon,
-    AccountBox as AccountBoxIcon,
-   } from '@material-ui/icons';
-
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./styles.css";
+import { Grid } from "@material-ui/core";
+import { IconButton, Typography } from "@material-ui/core";
+import {
+  PostAdd as PostAddIcon,
+  AssignmentTurnedIn as AssignmentTurnedInIcon,
+  AccountBox as AccountCircleIcon,
+  Notifications as NotificationsIcon,
+  NotificationImportant as NewNotificationIcon,
+  Info as InfoIcon,
+  AccountBox as AccountBoxIcon,
+} from "@material-ui/icons";
 
 const SignedOutLinks = () => {
+  const [hover, setHover] = useState({
+    plans: false,
+    apply: false,
+    about: false,
+    login: false,
+  });
+
+  const toggleHover = (item) => {
+    setHover((prev) => ({ ...prev, [item]: !prev[item] }));
+  };
 
   return (
     <div className="icon-group-holder">
       <Grid container className="navbar-grid">
-
-        <Grid item sm={3}>
-          <Link to="/plans" className="no-decoration">
-            <div className="icon-holder">
-              <div className="title-icon-holder">
-                <h4 className="navbar-icon no-select no-margin">
-                  PLANS
-                </h4>
-                <div className="small-icons-holder">
-                    <AssignmentTurnedInIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
+        {[
+          {
+            path: "/plans",
+            label: "PLANS",
+            icon: <AssignmentTurnedInIcon fontSize="small" />,
+            key: "plans",
+          },
+          {
+            path: "/application",
+            label: "APPLY",
+            icon: <PostAddIcon />,
+            key: "apply",
+          },
+          {
+            path: "/about",
+            label: "ABOUT",
+            icon: <InfoIcon fontSize="small" />,
+            key: "about",
+          },
+          {
+            path: "/login",
+            label: "LOGIN",
+            icon: <AccountBoxIcon fontSize="small" />,
+            key: "login",
+          },
+        ].map((link) => (
+          <Grid item sm={3} key={link.key}>
+            <Link
+              to={link.path}
+              className="no-decoration"
+              onMouseEnter={() => toggleHover(link.key)}
+              onMouseLeave={() => toggleHover(link.key)}
+            >
+              <div className="icon-holder color-primary">
+                <div className="title-icon-holder">
+                  <h4 className="navbar-icon no-select no-margin">
+                    {link.label}
+                  </h4>
+                  <div className="small-icons-holder">
+                    {React.cloneElement(link.icon, {
+                      style: { color: hover[link.key] ? "#f0f0f0" : "white" },
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        </Grid>
-        <Grid item sm={3}>
-          <Link to="/application" className="no-decoration">
-          <div className="icon-holder" >
-            <div className="title-icon-holder">
-              <h4 className="navbar-icon no-select no-margin" >
-                APPLY
-              </h4>
-              <PostAddIcon style={{color: "white"}}/>
-            </div>
-          </div>
-          </Link>
-        </Grid>
-        <Grid item sm={3}>
-          <Link to="/about" className="no-decoration">
-          <div className="icon-holder" >
-            <div className="title-icon-holder">
-              <h4 className="navbar-icon no-select no-margin" >
-                ABOUT
-              </h4>
-              <div className="small-icons-holder">
-                    <InfoIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
-                </div>
-            </div>
-          </div>
-          </Link>
-        </Grid>
-        <Grid item sm={3}>
-          <Link to="/login" className="no-decoration">
-          <div className="icon-holder" >
-            <div className="title-icon-holder">
-              <h4 className="navbar-icon no-select no-margin" >
-                LOGIN
-              </h4>
-              <div className="small-icons-holder">
-                    <AccountBoxIcon className="plan-icon"  fontSize="small" style={{color: "white"}}/>
-                </div>
-            </div>
-          </div>
-          </Link>
-        </Grid>
-
-
-
+            </Link>
+          </Grid>
+        ))}
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default SignedOutLinks
+export default SignedOutLinks;

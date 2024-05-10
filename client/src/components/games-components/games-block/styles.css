@@ -1,25 +1,22 @@
-.yes{
-  background-color: #64e1e8 ;
+.yes {
+  background-color: #64e1e8;
   border: 1px solid white;
-  transition: 250ms
+  transition: 250ms;
 }
-.yes:hover{
-  background-color: #1fc3cd ;
+.yes:hover {
+  background-color: var(--color-primary);
   cursor: pointer;
-
-
 }
-.no{
-  background-color: #1FC3CD ;
+.no {
+  background-color: var(--color-primary);
   border: 1px solid white;
   transition: 250ms;
   transition-property: background-color;
-
 }
-.no:hover{
+.no:hover {
   cursor: pointer;
-  background-color: #64e1e8
+  background-color: #64e1e8;
 }
-.down-color{
-  background-color: white !important
+.down-color {
+  background-color: white !important;
 }

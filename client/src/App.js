@@ -1,4 +1,3 @@
-
 import React, { useState, createContext } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Container } from "@material-ui/core";
@@ -18,7 +17,7 @@ import Games from "./pages/games/index.js";
 import Homepage from "./pages/homepage/index.js";
 import Login from "./pages/login/index.js";
 import PdfPage from "./pages/pdf-page/index.js";
-import Pdf from './pages/pdf-practice/index.js'
+import Pdf from "./pages/pdf-practice/index.js";
 import Application from "./pages/application/index.js";
 import Consultation from "./pages/consultation";
 import AdminDashboard from "./pages/dashboards/admin-dashboard/index.js";
@@ -32,7 +31,7 @@ import "./App.css";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#1fc3cd",
+      main: "#80b3b1",
     },
     secondary: {
       main: "#ffffff",
@@ -43,7 +42,6 @@ const theme = createMuiTheme({
 export const PlanContext = createContext();
 
 export default function App() {
-
   const toggleApplication = (option, result, email) => {
     console.log(email);
     if (option) {
@@ -51,25 +49,23 @@ export default function App() {
         ...appState,
         applicationSuccessModal: true,
         applicationResult: result,
-        email: email
-
-      })
+        email: email,
+      });
     } else {
       setAppState({
         ...appState,
         applicationSuccessModal: false,
         applicationResult: result,
-      })
+      });
     }
-  }
+  };
 
   const setEmail = (email) => {
     setAppState({
       ...appState,
-    })
-    console.log("setting email :", email)
-
-  }
+    });
+    console.log("setting email :", email);
+  };
 
   return (
     <BrowserRouter>

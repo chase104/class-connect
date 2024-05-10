@@ -13,7 +13,6 @@
   align-items: stretch;
 }
 .icon-holder {
-  background-color: #1fc3cd;
   width: 100%;
 }
 .icon-holder:hover {
@@ -21,7 +20,6 @@
 }
 .icon-holder:active {
   filter: brightness(100%);
-  background-color: #21d4de;
 }
 .title-icon-holder {
   display: flex;

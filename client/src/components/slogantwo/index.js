@@ -31,7 +31,7 @@ const Slogan = (props) => {
       id="slogan-container"
       justify="center"
       style={{
-        borderBottom: "1px solid #1FC3CD",
+        borderBottom: "1px solid #80b3b1 ",
         backgroundColor: "white",
         paddingTop: "8px",
       }}
@@ -49,9 +49,7 @@ const Slogan = (props) => {
           >
             Paving the way forward
           </Typography>
-          <Typography>
-            Quality, convenience, and consistency are our guarentee
-          </Typography>
+          <Typography>Quality, Convenience, Consistency</Typography>
         </div>
       </Grid>
       <Grid item xs={1} sm={2}>

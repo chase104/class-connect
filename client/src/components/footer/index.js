@@ -5,12 +5,12 @@ import { Grid } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FlareIcon from "@material-ui/icons/Flare";
 import RemoveIcon from "@material-ui/icons/Remove";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
     width: "100%",
-    backgroundColor: "#1FC3CD",
-    minHeight: "fit-content",
+    minHeight: "200px",
     marginTop: "auto",
   },
   gridContainer: {
@@ -46,6 +46,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginTop: "4px",
   },
+  flexColumn: {
+    display: "flex",
+    flexDirection: "column",
+    color: "white",
+  },
+  footerLink: {
+    color: "white !important",
+  },
 }));
 const Footer = () => {
   const classes = useStyles();
@@ -61,18 +69,24 @@ const Footer = () => {
       }, 150);
     }, 1000);
   }, []);
-
+  const navItems = [
+    { path: "/", label: "Home" },
+    { path: "/application", label: "Apply" },
+    { path: "/about", label: "About" },
+    { path: "/login", label: "Login" },
+    { path: "/games", label: "Games" },
+  ];
   return (
-    <div className={classes.footerContainer} style={{}}>
+    <div className={`color-primary ${classes.footerContainer}`} style={{}}>
       <Grid container className={classes.gridContainer}>
         <Grid item className={classes.footerBlock} style={{}}>
-          <div className={classes.footerTitle}>APP By Chase Van Halen</div>
+          <div className={classes.footerTitle}>Adventurer's College</div>
           <div className={classes.listHolder}>
             <div className="email-holder">
-              <div>chase.vanhalen88</div>
-              <div>@gmail.com</div>
+              <div>admin@</div>
+              <div>@adventure.education</div>
             </div>
-            <div className="link-hover">
+            {/* <div className="link-hover">
               <a
                 href="https://www.linkedin.com/in/chase-van-halen-8068a5108/"
                 target="_blank"
@@ -80,8 +94,8 @@ const Footer = () => {
               >
                 LinkedIn <ExitToAppIcon className="exit-icon" />
               </a>{" "}
-            </div>
-            <div className="link-hover">
+            </div> */}
+            {/* <div className="link-hover color-primary">
               <a
                 href="https://github.com/chase104/class-connect"
                 target="_blank"
@@ -90,7 +104,7 @@ const Footer = () => {
                 GitHub <ExitToAppIcon className="exit-icon" />
               </a>
             </div>
-            <div className="link-hover">
+            <div className="link-hover color-primary">
               <a
                 href="https://vanhalen-portfolio.herokuapp.com/"
                 target="_blank"
@@ -98,6 +112,17 @@ const Footer = () => {
               >
                 Portfolio <ExitToAppIcon className="exit-icon" />
               </a>
+            </div> */}
+            <div className={classes.flexColumn}>
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  className={classes.footerLink}
+                  to={item.path}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
         </Grid>

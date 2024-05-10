@@ -5,10 +5,9 @@ import "./styles.css";
 import SignedInLinks from "../signed-in-links/index";
 import SignedOutLinks from "../signed-out-links/index";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Modal from '@material-ui/core/Modal';
+import Modal from "@material-ui/core/Modal";
 import { ModalContext } from "../../../contexts";
 import ModalBody from "../../modal/ModalBody";
-
 
 const useStyles = makeStyles((theme) => ({
   appTitle: {
@@ -27,12 +26,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const Navbar = (props) => {
-  
   const { modal, setModal } = useContext(ModalContext);
-  console.log(modal)
-
+  console.log(modal);
 
   const [display, setDislay] = useState(null);
 
@@ -44,12 +40,11 @@ const Navbar = (props) => {
     }
   }, [props.location.pathname]);
   const classes = useStyles();
-
+  let appbarClass = display ? "flex-display" : "null-display";
   return (
     <AppBar
-      className={display == true ? "flex-display" : "null-display"}
+      className={appbarClass + " color-primary"}
       position="static"
-      color="primary"
       id="navbar-container"
       style={{
         display: props.location.pathname == "/pdfpage" ? "null" : "flex",
@@ -69,11 +64,11 @@ const Navbar = (props) => {
           </Grid>
         </Grid>
         <Modal
-              open={modal}
-              onClose={() => setModal(false)}
-              aria-labelledby="simple-modal-title"
-              aria-describedby="simple-modal-description"
-              disableScrollLock={true}
+          open={modal}
+          onClose={() => setModal(false)}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          disableScrollLock={true}
         >
           <ModalBody />
         </Modal>

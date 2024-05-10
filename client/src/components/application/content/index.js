@@ -12,10 +12,10 @@ import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import moment from 'moment'
+import moment from "moment";
 
 import Select from "@material-ui/core/Select";
-import AutorenewIcon from '@material-ui/icons/Autorenew';
+import AutorenewIcon from "@material-ui/icons/Autorenew";
 
 const useStyles = makeStyles((theme) => ({
   contentContainer: {
@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1vh",
     marginTop: "4vh",
     width: "fit-content",
-    background: "#1fc3cd",
     width: "100%",
     [theme.breakpoints.down("xs")]: {
       marginTop: "40px",
@@ -62,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   sectionTitle: {
     marginRight: "8px",
     fontWeight: "bold",
-    textAlign: "left"
+    textAlign: "left",
   },
   calendarHolder: {
     marginTop: "16px",
@@ -114,9 +113,9 @@ const useStyles = makeStyles((theme) => ({
   columnContent: {
     padding: "0px 12px",
     [theme.breakpoints.down("xs")]: {
-      padding: "0px"
-    }
-  }
+      padding: "0px",
+    },
+  },
 }));
 
 const Content = ({
@@ -223,8 +222,8 @@ const Content = ({
       [e.target.id]: e.target.value,
     });
   };
-  const handleInputClick = (e) => { };
-  const handleCalendarChange = () => { };
+  const handleInputClick = (e) => {};
+  const handleCalendarChange = () => {};
 
   const handleCheckboxChange = () => {
     setSubmitCheckbox(!submitCheckbox);
@@ -232,7 +231,7 @@ const Content = ({
 
   const checkSubmit = () => {
     if (submitCheckbox) {
-      setSubmitting(true)
+      setSubmitting(true);
     }
     submitCheckbox ? submitApplication() : setCheckboxError(true);
   };
@@ -260,9 +259,12 @@ const Content = ({
     for (var i = 0; i < page.length; i++) {
       let pageItem;
       if (page[i].type == "title") {
-        pageItem = <div className={classes.summaryTitle}>{page[i].label}</div>;
+        pageItem = (
+          <div className={`color-primary ${classes.summaryTitle}`}>
+            {page[i].label}
+          </div>
+        );
       } else {
-
         pageItem = (
           <div
             style={{
@@ -270,11 +272,18 @@ const Content = ({
               alignItems: "center",
               justifyContent: "start",
               paddingLeft: "10%",
-              backgroundColor: Number.isInteger(i / 2) == true ? "#e6e6e6" : "white"
+              backgroundColor:
+                Number.isInteger(i / 2) == true ? "#e6e6e6" : "white",
             }}
           >
             <div className={classes.sectionTitle}>{page[i].label + ": "}</div>
-            <div className="answer-div">{page[i].answer != null ? page[i].key == "start date" ? moment(page[i].answer).format("MMM Do YY") : page[i].answer : "no answer"}</div>
+            <div className="answer-div">
+              {page[i].answer != null
+                ? page[i].key == "start date"
+                  ? moment(page[i].answer).format("MMM Do YY")
+                  : page[i].answer
+                : "no answer"}
+            </div>
           </div>
         );
       }
@@ -287,13 +296,13 @@ const Content = ({
     <div>
       {type == "you"
         ? youState.map((page) => {
-          return iteratePage(page);
-        })
-        : type == "student"
-          ? studentState.map((page) => {
             return iteratePage(page);
           })
-          : planState.map((page) => {
+        : type == "student"
+        ? studentState.map((page) => {
+            return iteratePage(page);
+          })
+        : planState.map((page) => {
             return iteratePage(page);
           })}
     </div>
@@ -304,58 +313,58 @@ const Content = ({
       <form className={classes.form}>
         {appLocation[0] == 0
           ? youState[appLocation[1]].map((component) => {
-            console.log(component)
-            if (component.type == "input") {
-              return (
-                <TextField
-                  variant="outlined"
-                  label={component.label}
-                  id={component.location}
-                  key={component.location}
-                  className={classes.shortWidth}
-                  value={tempAnswersState[component.location]}
-                  onClick={(e) => handleInputClick(e)}
-                  onChange={(e) => handleInputChange(e)}
-                ></TextField>
-              );
-            } else if (component.type == "select") {
-              return (
-                <FormControl className={classes.shortWidth}>
-                  <InputLabel
-                    id="demo-simple-select-filled-label"
+              console.log(component);
+              if (component.type == "input") {
+                return (
+                  <TextField
                     variant="outlined"
-                  >
-                    {component.label}
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-filled-label"
+                    label={component.label}
                     id={component.location}
                     key={component.location}
-                    name={component.location}
+                    className={classes.shortWidth}
                     value={tempAnswersState[component.location]}
-                    onChange={(e) => handleSelectChange(e)}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    {selectValues[component.key].map((object) => (
-                      <MenuItem value={object.value}>{object.title}</MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              );
-            } else if (component.type == "calendar") {
-              return (
-                <Calendar
-                  onChange={(e) => handleCalendarChange(e)}
-                  value={calendarValue}
-                />
-              );
-            }
-          })
+                    onClick={(e) => handleInputClick(e)}
+                    onChange={(e) => handleInputChange(e)}
+                  ></TextField>
+                );
+              } else if (component.type == "select") {
+                return (
+                  <FormControl className={classes.shortWidth}>
+                    <InputLabel
+                      id="demo-simple-select-filled-label"
+                      variant="outlined"
+                    >
+                      {component.label}
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-filled-label"
+                      id={component.location}
+                      key={component.location}
+                      name={component.location}
+                      value={tempAnswersState[component.location]}
+                      onChange={(e) => handleSelectChange(e)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      {selectValues[component.key].map((object) => (
+                        <MenuItem value={object.value}>{object.title}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                );
+              } else if (component.type == "calendar") {
+                return (
+                  <Calendar
+                    onChange={(e) => handleCalendarChange(e)}
+                    value={calendarValue}
+                  />
+                );
+              }
+            })
           : appLocation[0] == 1
-            ? studentState[appLocation[1]].map((component) => {
-              console.log(component)
+          ? studentState[appLocation[1]].map((component) => {
+              console.log(component);
               if (component.type == "input") {
                 return (
                   <TextField
@@ -409,8 +418,8 @@ const Content = ({
                 );
               }
             })
-            : planState[appLocation[1]].map((component) => {
-              console.log(component)
+          : planState[appLocation[1]].map((component) => {
+              console.log(component);
               if (component.type == "input") {
                 return (
                   <TextField
@@ -488,7 +497,7 @@ const Content = ({
       {appLocation[0] == 3 ? (
         <Grid container style={{ display: "flex", marginBottom: "4vh" }}>
           <Grid xs={12} sm={6} md={4} className={classes.summaryColumn}>
-            <div >{returnSummary("you")}</div>
+            <div>{returnSummary("you")}</div>
           </Grid>
           <Grid xs={12} sm={6} md={4} className={classes.summaryColumn}>
             <div className={classes.columnContent}>
@@ -496,20 +505,22 @@ const Content = ({
             </div>
           </Grid>
           <Grid xs={12} sm={6} md={4} className={classes.summaryColumn}>
-            <div >{returnSummary("plan")}</div>
+            <div>{returnSummary("plan")}</div>
           </Grid>
         </Grid>
       ) : (
         returnForm()
       )}
       <div
-        className={`${appLocation[0] == 3 ? classes.displayButtonHolder : classes.noDisplay
-          }`}
+        className={`${
+          appLocation[0] == 3 ? classes.displayButtonHolder : classes.noDisplay
+        }`}
       >
         <div className={classes.checkboxHolder}>
           <div
-            className={`${checkboxError == true ? classes.checkboxError : classes.noDisplay
-              }`}
+            className={`${
+              checkboxError == true ? classes.checkboxError : classes.noDisplay
+            }`}
           >
             confirm you've reviewed the summary before submitting
           </div>

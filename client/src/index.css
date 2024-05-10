@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+:root {
+  --color-primary: #58959b;
+}
+
 .app-container {
   display: flex;
 }
@@ -26,7 +30,7 @@ code {
   width: 100%;
   opacity: 0;
   transition: 0.5s ease;
-  background-color: #1565c0;
+  background-color: var(--color-primary);
   pointer-events: none;
 }
 .text {
@@ -46,6 +50,12 @@ code {
 .home-text-container:hover {
   opacity: 0;
   transition: 0.5s ease;
+}
+.color-primary {
+  background-color: #58959b !important;
+}
+.color-secondary {
+  background-color: #f7f7f7 !important;
 }
 .rest {
   /* background-image: url('./images/landscape.png'); */
@@ -99,7 +109,4 @@ code {
   left: 0;
   bottom: 0;
   right: 0;
-}
-.primary-color {
-  background: "#1565C0";
 }

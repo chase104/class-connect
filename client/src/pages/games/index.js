@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
       width: "70%",
     },
     maxHeight: "70vh",
-    backgroundColor: "#1565c0",
+    backgroundColor: "var(--color-primary)",
     border: "2px solid black",
     boxShadow: "10px 10px 10px black",
     padding: "12px",
@@ -181,9 +181,9 @@ const Games = () => {
   useEffect(() => {
     setTimeout(() => {
       var top = document.getElementById("mytab").offsetTop; //Getting Y of target element
-      window.scrollTo(0, top); 
-    }, 1)
-  }, [])
+      window.scrollTo(0, top);
+    }, 1);
+  }, []);
 
   useEffect(() => {
     const stateArray = [[], [], [], []];

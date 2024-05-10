@@ -4,22 +4,14 @@ import "./styles.css";
 
 const Resource = ({ title, image, classes, style, type, openModal, id }) => {
   const [mouseDown, setMouseDown] = useState(false);
-  const [styles, setStyles] = useState(null);
   const [titleStyles, setTitleStyles] = useState(null);
   useEffect(() => {
     if (type == "resource") {
-      setStyles({
-        backgroundColor: "#1FC3CD",
-      });
       setTitleStyles({
         fontWeight: "bold",
         color: "black",
       });
     } else {
-      setStyles({
-        backgroundColor: "white",
-        color: "black",
-      });
       setTitleStyles({
         fontWeight: "bold",
         color: "black",
@@ -41,8 +33,9 @@ const Resource = ({ title, image, classes, style, type, openModal, id }) => {
       xs={4}
       sm={type == "resource" ? 2 : 2}
       id={id}
-      style={styles}
-      className={`${classes.resourceContainer} resource-block no-select ${
+      className={`${
+        classes.resourceContainer
+      } color-primary resource-block no-select ${
         mouseDown ? (type == "resource" ? "lighter-box" : "grey-box") : null
       }`}
       onClick={(e) => openModal(e)}
