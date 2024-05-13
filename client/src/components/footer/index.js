@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   gridContainer: {
     minHeight: "inherit",
     display: "flex",
-    padding: "20px",
+    padding: "20px 80px",
     display: "flex",
     justifyContent: "space-between",
   },
